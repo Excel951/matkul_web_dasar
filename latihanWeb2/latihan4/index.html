@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Belajar CSS</title>
+    <meta charset="UTF-8">
+    <style>
+        p {
+            color:red;
+            text-align: center;
+            background-color: aquamarine;
+            border-style: dotted;
+            margin: 25px 50px 75px 100px;
+            padding: 5px 10px 15px 20px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: medium;
+            /* transition: background-color 0.25s, color 0.25s, font-size 0.25s ease-in-out; */
+        }
+        p:hover {
+            color: aqua;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <p>Belajar CSS</p>
+    <p>CSS adalah cascade style sheets untuk 
+        merubah gaya tampilan elemen html</p>
+    <!-- <script>
+        const p=document.querySelectorAll(`p`)
+        function randColor() {
+            const r=Math.floor(Math.random()*255)
+            const g=Math.floor(Math.random()*255)
+            const b=Math.floor(Math.random()*255)
+            return `rgb(${r},${g},${b})`
+        }
+        function randSize() {
+            const s=Math.floor(Math.random()*30)+10
+            return `${s}px`
+        }
+        setInterval(()=>{
+            for(let ps of p) {
+                ps.style.fontSize=randSize()
+                ps.style.color=randColor()
+                ps.style.backgroundColor=randColor()
+            }
+        },500)
+    </script> -->
+</body>
+</html>

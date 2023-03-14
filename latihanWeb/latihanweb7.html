@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Web 7</title>
+</head>
+<body>
+    <h1>Form Belajar</h1>
+    <form action="">
+        <label for="kode">Kode: </label>
+        <input type="text" name="kode" id="kode">
+        <!-- <br> -->
+        <label for="nama">Nama: </label>
+        <input type="text" name="nama" id="nama">
+
+        <fieldset>
+            <legend>Mata Pelajaran</legend>
+            <label for="pilih">Pilih Pelajaran 1:</label>
+            <br>
+            <input type="radio" name="pilih" id="php" value="php">
+            <label for="php">PHP</label>
+            <br>
+            <input type="radio" name="pilih" id="phyton" value="phyton">
+            <label for="phyton">Phyton</label>
+            <br>
+            <input type="radio" name="pilih" id="java" value="java">
+            <label for="java">Java</label>
+            <br>
+            <br>
+            <label for="pilih2">Pilih Pelajaran Wajib 2:</label>
+            <br>
+            <input type="checkbox" name="pilih2" id="html" value="html">
+            <label for="html">HTML</label>
+            <br>
+            <input type="checkbox" name="pilih2" id="css" value="css">
+            <label for="css">CSS</label>
+            <br>
+            <input type="checkbox" name="pilih2" id="js" value="js">
+            <label for="js">JS</label>
+            <br>
+            <br>
+            <label for="model">Level Belajar: </label>
+            <select name="model" id="model">
+                <option value="Dasar">Dasar</option>
+                <option value="Menengah">Menengah</option>
+                <option value="Lanjut">Lanjut</option>
+            </select>
+        </fieldset>
+        <br>
+        <label for="keterangan">Keterangan: </label>
+        <br>
+        <textarea name="keterangan" id="ket" cols="30" rows="10">Kami dengan ini...</textarea>
+        <br>
+        <label for="file">Pilih file untuk upoad: </label>
+        <input type="file" name="filefoto" id="filefoto">
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
