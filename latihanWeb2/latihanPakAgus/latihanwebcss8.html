@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1"
+	/>
+	<head>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0;
+			}
+			.header {
+				background-color: #f1f1f1;
+				padding: 20px;
+				text-align: center;
+			}
+
+			.topnav {
+				overflow: hidden;
+				background-color: #0c57e3;
+			}
+			.topnav a {
+				float: left;
+				display: block;
+				color: #f2f2f2;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+			}
+			.topnav a:hover {
+				background-color: #e90d0d;
+				color: rgb(233, 231, 236);
+			}
+			.column {
+				float: left;
+				width: 25%;
+				padding: 15px;
+				text-align: center;
+			}
+			.column1 {
+				float: left;
+				width: 50%;
+				padding: 15px;
+				text-align: center;
+			}
+			.row::after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			.footer {
+				background-color: #f1f1f1;
+				padding: 10px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<h1>Header</h1>
+		</div>
+
+		<div class="topnav">
+			<a href="#">Barang</a>
+			<a href="#">Supplier</a>
+			<a href="#">Karyawan</a>
+		</div>
+
+		<div class="row">
+			<div class="column">HTML</div>
+			<div class="column">CSS</div>
+			<div class="column">JS</div>
+			<div class="column">JQ</div>
+		</div>
+		<div class="row">
+			<div class="column1">PHP</div>
+			<div class="column1">MYSQL</div>
+		</div>
+		<div class="footer">
+			<p>Footer</p>
+		</div>
+	</body>
+</html>
