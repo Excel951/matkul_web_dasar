@@ -156,6 +156,25 @@
 			tbody tr:hover {
 				background-color: #e5e5e5;
 			}
+			.button {
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				align-items: center;
+				border: 1px solid transparent;
+				border-radius: 4px;
+				box-shadow: none;
+				/* display: inline-flex; */
+				font-size: 1rem;
+				height: 2.5em;
+				/* justify-content: flex-start;/ */
+				line-height: 1.5;
+				padding-bottom: calc(0.5em - 1px);
+				padding-left: calc(0.75em - 1px);
+				padding-right: calc(0.75em - 1px);
+				padding-top: calc(0.5em - 1px);
+				position: relative;
+				vertical-align: top;
+			}
 		</style>
 	</head>
 	<body>
@@ -184,7 +203,7 @@
 		</header>
 		<main>
 			<a href="insert.html">
-				<button class="is-primary">+</button>
+				<button class="button is-primary">+</button>
 			</a>
 			<table
 				border="5"
@@ -214,15 +233,17 @@
 							<a href="update.html">
 								<button
 									type="submit"
-									class="is-info">
+									class="button is-info">
 									U
 								</button>
 							</a>
-							<button
-								type="reset"
-								class="is-danger">
-								X
-							</button>
+							<a href="">
+								<button
+									type="reset"
+									class="button is-danger">
+									X
+								</button>
+							</a>
 						</td>
 					</tr>
 					<tr>
@@ -235,13 +256,13 @@
 							<a href="update.html">
 								<button
 									type="submit"
-									class="is-info">
+									class="button is-info">
 									U
 								</button>
 							</a>
 							<button
 								type="reset"
-								class="is-danger">
+								class="button is-danger">
 								X
 							</button>
 						</td>
@@ -256,13 +277,13 @@
 							<a href="update.html">
 								<button
 									type="submit"
-									class="is-info">
+									class="button is-info">
 									U
 								</button>
 							</a>
 							<button
 								type="reset"
-								class="is-danger">
+								class="button is-danger">
 								X
 							</button>
 						</td>
@@ -277,13 +298,13 @@
 							<a href="update.html">
 								<button
 									type="submit"
-									class="is-info">
+									class="button is-info">
 									U
 								</button>
 							</a>
 							<button
 								type="reset"
-								class="is-danger">
+								class="button is-danger">
 								X
 							</button>
 						</td>
