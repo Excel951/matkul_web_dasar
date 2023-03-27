@@ -25,6 +25,9 @@
 				padding: 0em 0em;
 				margin: 0;
 			}
+			.topnav #barang {
+				background-color: #8d7b68;
+			}
 			.linav {
 				transition: background-color 0.23s ease-in-out;
 				display: inline-block;
@@ -93,6 +96,10 @@
 			}
 			footer {
 				text-align: center;
+				bottom: 0;
+				position: absolute;
+				width: 100%;
+				padding: 0.5rem;
 			}
 			th {
 				color: #fff;
@@ -233,6 +240,12 @@
 				padding: calc(0.75em - 1px);
 				resize: vertical;
 			}
+			tr:nth-of-type(even) {
+				background-color: rgb(165, 165, 165);
+			}
+			table {
+				border-collapse: collapse;
+			}
 		</style>
 	</head>
 	<body>
@@ -264,8 +277,6 @@
 				<button class="button is-primary">+</button>
 			</a>
 			<table
-				border="5"
-				bordercolor="darkblue"
 				width="100%"
 				height="100"
 				align="0 auto">
