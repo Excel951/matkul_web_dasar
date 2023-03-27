@@ -1,55 +1,48 @@
 const form = document.querySelector(`form`);
 
+function getData() {
+	const elemen = [];
+	elemen.push(document.querySelector(`#nama`));
+	elemen.push(document.querySelector(`#email`));
+	elemen.push(document.querySelector(`#jmlSaudara`));
+	elemen.push(document.querySelector(`#alamat`));
+
+	return elemen;
+}
+
+function removeData() {
+	let data = getData();
+	data.map((data) => {
+		if (data.tagName.toLowerCase() === `select`) {
+			data.value = `1`;
+		} else {
+			data.value = ``;
+		}
+	});
+}
+
 form.addEventListener(`submit`, (e) => {
-	e.preventDefault();
-	let nama = document.querySelector(`#nama`);
-	let email = document.querySelector(`#email`);
-	let saudara = document.querySelector(`#jmlSaudara`);
-	let alamat = document.querySelector(`#alamat`);
+	try {
+		e.preventDefault();
 
-	const tbody = document.querySelector(`tbody`);
-	let tr = document.createElement(`tr`);
-	console.log(tr);
-	console.log(`ini`);
-	// for (let index = 0; index < data.length; index++) {
-	let td0 = document.createElement(`td`);
-	let td1 = document.createElement(`td`);
-	let td2 = document.createElement(`td`);
-	let td3 = document.createElement(`td`);
+		const tbody = document.querySelector(`tbody`);
 
-	td0.innerText = nama.value;
-	td1.innerText = email.value;
-	td2.innerText = saudara.value;
-	td3.innerText = alamat.value;
+		let data = getData().map((data) => {
+			return data.value;
+		});
 
-	tr.appendChild(td0);
-	tr.appendChild(td1);
-	tr.appendChild(td2);
-	tr.appendChild(td3);
-
-	tr.insertAdjacentElement(`beforeend`, td0);
-	tr.insertAdjacentElement(`beforeend`, td1);
-	tr.insertAdjacentElement(`beforeend`, td2);
-	tr.insertAdjacentElement(`beforeend`, td3);
-	// }
-	tbody.insertAdjacentElement(`beforeend`, tr);
-
-	nama.value = ``;
-	email.value = ``;
-	alamat.value = ``;
-	saudara.value = `1`;
+		let row = tbody.insertRow();
+		for (let i = 0; i < tbody.rows.length + 1; i++) {
+			let cell = row.insertCell();
+			cell.append(data.shift());
+		}
+	} catch (error) {
+		console.log(error);
+	}
 });
 
 form.addEventListener(`reset`, (e) => {
 	e.preventDefault();
 
-	let nama = document.querySelector(`#nama`);
-	let email = document.querySelector(`#email`);
-	let saudara = document.querySelector(`#jmlSaudara`);
-	let alamat = document.querySelector(`#alamat`);
-
-	nama.value = ``;
-	email.value = ``;
-	alamat.value = ``;
-	saudara.value = `1`;
+	removeData();
 });
