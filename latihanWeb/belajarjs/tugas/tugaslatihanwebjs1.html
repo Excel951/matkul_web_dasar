@@ -31,13 +31,13 @@
 		</form>
 		<script>
 			function ubah() {
-				if (document.querySelector(`#provinsi`).value == "jabar") {
+				if (document.querySelector(`#provinsi`).value === "jabar") {
 					document.querySelector(`#kota`).innerHTML =
 						'<option value="1">A</option><option value="2">AA</option>';
-				} else if (document.querySelector(`#provinsi`).value == "jabar") {
+				} else if (document.querySelector(`#provinsi`).value === "jabar") {
 					document.querySelector(`#kota`).innerHTML =
 						'<option value="1">B</option><option value="2">BB</option>';
-				} else if (document.querySelector(`#provinsi`).value == "jabar") {
+				} else if (document.querySelector(`#provinsi`).value === "jabar") {
 					document.querySelector(`#kota`).innerHTML =
 						'<option value="1">C</option><option value="2">CC</option>';
 				}

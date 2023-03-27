@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Penjualan</title>
+	</head>
+	<body>
+		<h1>Penjualan</h1>
+		<form>
+			<label for="kode">Kode:</label>
+			<!-- kode berisi format waktu
+                tahunbulanharijammenitdetik
+            dikerjakan dengan js
+            -->
+			<input
+				type="text"
+				id="kode" />
+			<br />
+			<label for="tgl">Tanggal:</label>
+			<!-- dikerjakan dengan js -->
+			<input
+				type="text"
+				id="tgl" />
+			<br />
+			<label for="konsumen">Konsumen:</label>
+			<input
+				type="text"
+				id="konsumen" />
+			<br />
+			<label for="karyawan">Karyawan:</label
+			><select
+				name="karyawan"
+				id="karyawan">
+				<option value="ani">Ani</option>
+				<option value="budi">Budi</option>
+				<option value="cindi">Cindi</option>
+			</select>
+			<br />
+			<label for="jabatan">Jabatan:</label>
+			<select
+				name="jabatan"
+				id="jabatan">
+				<option value="admin">Admin</option>
+				<option value="supervisor">Supervisor</option>
+				<option value="operator">Operator</option>
+			</select>
+			<br />
+			<br />
+			<label for="kodebrg">Kode Barang</label>
+			<select
+				name="kodebrg"
+				id="kodebrg">
+				<option value="1">A</option>
+				<option value="2">B</option>
+			</select>
+			<label for="nama">Nama</label>
+			<input
+				type="text"
+				name="nama"
+				id="nama" />
+			<label for="satuan">Satuan</label>
+			<input
+				type="text"
+				name="satuan"
+				id="satuan" />
+			<label for="harga">Harga</label>
+			<input
+				type="text"
+				name="harga"
+				id="harga" />
+			<label for="jumlah">Jumlah</label>
+			<input
+				type="text"
+				name="jumlah"
+				id="jumlah" />
+			<button
+				type="button"
+				onclick="myfunction()">
+				Save
+			</button>
+		</form>
+
+		<br />
+		<table
+			id="mytable"
+			border="1">
+			<thead>
+				<tr>
+					<th>Kode</th>
+					<th>Nama</th>
+					<th>Satuan</th>
+					<th>Harga</th>
+					<th>Jumlah</th>
+					<th>Total</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+		<br />
+		<label for="total">Total: </label>
+		<label id="total">0</label>
+
+		<script>
+			let year = new Date(Date.now().getYear());
+			let kode = new Date();
+
+			function myfunction() {
+				let table = document.querySelector(`#mytable`);
+				let panjang = table.rows.length;
+				let row = table.insertRow(panjang);
+				let cell1 = row.insertCell(0);
+				let cell2 = row.insertCell(1);
+				let cell3 = row.insertCell(2);
+				let cell4 = row.insertCell(3);
+				let cell5 = row.insertCell(4);
+				let cell6 = row.insertCell(5);
+				let cell7 = row.insertCell(6);
+				row.setAttribute(`id`, `idrow${panjang}`);
+				cell1.innerHTML = document.querySelector(`#kodebrg`).value;
+				cell2.innerHTML = document.querySelector(`#nama`).value;
+				cell3.innerHTML = document.querySelector(`#satuan`).value;
+				cell4.innerHTML = document.querySelector(`#harga`).value;
+				cell5.innerHTML = document.querySelector(`#jumlah`).value;
+				// cell6.innerHTML = document.querySelector(`#kodebrg`).value; total
+				// cell7.innerHTML = document.querySelector(`#kodebrg`).value; action
+			}
+
+			function deleterow(rowid) {
+				let row = document.querySelector(`#${rowid}`);
+				row.remove();
+				total();
+			}
+
+			function total() {
+				let total = 0;
+				for (let i = 0; i < panjang; i++) {
+					let x = table.rows[i].cells;
+					total = total + Number([3].value);
+				}
+				document.querySelector(`#total`).value = total;
+			}
+		</script>
+	</body>
+</html>

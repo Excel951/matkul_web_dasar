@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<p>Table Js</p>
+		<form>
+			<label for="kode">Kode:</label>
+			<input
+				type="text"
+				id="kode" />
+			<label for="nama">Nama:</label>
+			<input
+				type="text"
+				id="nama" />
+			<label for="satuan">Satuan:</label>
+			<input
+				type="text"
+				id="satuan" />
+			<label for="harga">Harga:</label>
+			<input
+				type="text"
+				id="harga" />
+			<br />
+			<button
+				type="button"
+				onclick="myfunction()">
+				Save
+			</button>
+		</form>
+
+		<table
+			id="mytable"
+			border="1">
+			<theader>
+				<tr>
+					<th>Kode</th>
+					<th>Nama</th>
+					<th>Satuan</th>
+					<th>Harga</th>
+					<th>Action</th>
+				</tr>
+			</theader>
+			<tbody></tbody>
+		</table>
+		<br />
+		<label for="total">Total</label>
+		<label id="total">0</label>
+
+		<script>
+			function myfunction() {
+				let table = document.querySelector(`#mytable`);
+				let panjang = table.rows.length;
+				console.log(panjang);
+				let row = table.insertRow(panjang);
+				let cell1 = row.insertCell(0);
+				let cell2 = row.insertCell(1);
+				let cell3 = row.insertCell(2);
+				let cell4 = row.insertCell(3);
+				let cell5 = row.insertCell(4);
+				row.setAttribute(`id`, `idrow${panjang}`);
+				cell1.value = document.querySelector(`#kode`).value;
+				cell2.value = document.querySelector(`#nama`).value;
+				cell3.value = document.querySelector(`#satuan`).value;
+				cell4.value = document.querySelector(`#harga`).value;
+				cell5.innerHTML = `<button onclick="deleterow("id${panjang}")>X</button>"`;
+				total();
+			}
+
+			function deleterow(rowid) {
+				let row = document.querySelector(`#${rowid}`);
+				row.remove();
+				total();
+			}
+
+			function total() {
+				let total = 0;
+				for (let i = 0; i < panjang; i++) {
+					let x = table.rows[i].cells;
+					total = total + Number([3].value);
+				}
+				document.querySelector(`#total`).value = total;
+			}
+		</script>
+	</body>
+</html>
