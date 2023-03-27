@@ -13,77 +13,122 @@
 	<body>
 		<h1>Penjualan</h1>
 		<form>
-			<label for="kode">Kode:</label>
-			<!-- kode berisi format waktu
-                tahunbulanharijammenitdetik
-            dikerjakan dengan js
-            -->
-			<input
-				type="text"
-				id="kode" />
+			<table>
+				<tr>
+					<td>
+						<label for="kode">Kode:</label>
+						<!-- kode berisi format waktu
+                            tahunbulanharijammenitdetik
+                        dikerjakan dengan js
+                        -->
+					</td>
+					<td>
+						<input
+							type="text"
+							id="kode"
+							readonly />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="tgl">Tanggal:</label>
+						<!-- dikerjakan dengan js -->
+					</td>
+					<td>
+						<input
+							type="text"
+							id="tgl"
+							readonly />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="konsumen">Konsumen:</label>
+					</td>
+					<td>
+						<input
+							type="text"
+							id="konsumen" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="karyawan">Karyawan:</label>
+					</td>
+					<td>
+						<select
+							name="karyawan"
+							id="karyawan">
+							<option value="ani">Ani</option>
+							<option value="budi">Budi</option>
+							<option value="cindi">Cindi</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="jabatan">Jabatan:</label>
+					</td>
+					<td>
+						<select
+							name="jabatan"
+							id="jabatan">
+							<option value="admin">Admin</option>
+							<option value="supervisor">Supervisor</option>
+							<option value="operator">Operator</option>
+						</select>
+					</td>
+				</tr>
+			</table>
 			<br />
-			<label for="tgl">Tanggal:</label>
-			<!-- dikerjakan dengan js -->
-			<input
-				type="text"
-				id="tgl" />
-			<br />
-			<label for="konsumen">Konsumen:</label>
-			<input
-				type="text"
-				id="konsumen" />
-			<br />
-			<label for="karyawan">Karyawan:</label
-			><select
-				name="karyawan"
-				id="karyawan">
-				<option value="ani">Ani</option>
-				<option value="budi">Budi</option>
-				<option value="cindi">Cindi</option>
-			</select>
-			<br />
-			<label for="jabatan">Jabatan:</label>
-			<select
-				name="jabatan"
-				id="jabatan">
-				<option value="admin">Admin</option>
-				<option value="supervisor">Supervisor</option>
-				<option value="operator">Operator</option>
-			</select>
-			<br />
-			<br />
-			<label for="kodebrg">Kode Barang</label>
-			<select
-				name="kodebrg"
-				id="kodebrg">
-				<option value="1">A</option>
-				<option value="2">B</option>
-			</select>
-			<label for="nama">Nama</label>
-			<input
-				type="text"
-				name="nama"
-				id="nama" />
-			<label for="satuan">Satuan</label>
-			<input
-				type="text"
-				name="satuan"
-				id="satuan" />
-			<label for="harga">Harga</label>
-			<input
-				type="text"
-				name="harga"
-				id="harga" />
-			<label for="jumlah">Jumlah</label>
-			<input
-				type="text"
-				name="jumlah"
-				id="jumlah" />
-			<button
-				type="button"
-				onclick="myfunction()">
-				Save
-			</button>
+			<table>
+				<tr>
+					<td>
+						<label for="kodebrg">Kode Barang</label><br />
+						<select
+							name="kodebrg"
+							id="kodebrg">
+							<option value="1">A</option>
+							<option value="2">B</option>
+						</select>
+					</td>
+					<td>
+						<label for="nama">Nama</label><br />
+						<input
+							type="text"
+							name="nama"
+							id="nama" />
+					</td>
+					<td>
+						<label for="satuan">Satuan</label><br />
+						<input
+							type="text"
+							name="satuan"
+							id="satuan" />
+					</td>
+					<td>
+						<label for="harga">Harga</label><br />
+						<input
+							type="text"
+							name="harga"
+							id="harga" />
+					</td>
+					<td>
+						<label for="jumlah">Jumlah</label><br />
+						<input
+							type="text"
+							name="jumlah"
+							id="jumlah" />
+					</td>
+					<td>
+						<button
+							type="button"
+							onclick="myfunction()">
+							Save
+						</button>
+					</td>
+				</tr>
+			</table>
 		</form>
 
 		<br />
@@ -108,8 +153,26 @@
 		<label id="total">0</label>
 
 		<script>
-			let year = new Date(Date.now().getYear());
-			let kode = new Date();
+			// ambil tanggal untuk kode
+			let year = new Date().getFullYear();
+			let month = new Date().getMonth() + 1;
+			let date = new Date().getDate();
+			let hour = new Date().getHours();
+			let minute = new Date().getMinutes();
+			let seconds = new Date().getSeconds();
+
+			// ambil element untuk tempat kode dan tgl
+			let kodeInput = document.querySelector(`#kode`);
+			let tgl = document.querySelector(`#tgl`);
+
+			// susun kode
+			let kode = `${year}${month}${date}${hour}${minute}${seconds}`;
+
+			// ambil tanggal
+			let dates = new Date().toLocaleDateString();
+
+			kodeInput.value = kode;
+			tgl.value = dates;
 
 			function myfunction() {
 				let table = document.querySelector(`#mytable`);
@@ -128,23 +191,35 @@
 				cell3.innerHTML = document.querySelector(`#satuan`).value;
 				cell4.innerHTML = document.querySelector(`#harga`).value;
 				cell5.innerHTML = document.querySelector(`#jumlah`).value;
-				// cell6.innerHTML = document.querySelector(`#kodebrg`).value; total
-				// cell7.innerHTML = document.querySelector(`#kodebrg`).value; action
+				let subtotal =
+					Number(document.querySelector(`#harga`).value) *
+					Number(document.querySelector(`#jumlah`).value);
+				cell6.innerHTML = subtotal;
+
+				let cancelBtn = document.createElement(`button`);
+				cancelBtn.textContent = `X`;
+				cancelBtn.setAttribute(`onclick`, `deleterow('idrow${panjang}')`);
+				cell7.insertAdjacentElement(`beforeend`, cancelBtn);
+				hitungtotal();
 			}
 
 			function deleterow(rowid) {
 				let row = document.querySelector(`#${rowid}`);
 				row.remove();
-				total();
+				hitungtotal();
 			}
 
-			function total() {
+			function hitungtotal() {
+				let table = document.querySelector(`#mytable`);
+				let panjang = table.rows.length;
 				let total = 0;
 				for (let i = 0; i < panjang; i++) {
 					let x = table.rows[i].cells;
-					total = total + Number([3].value);
+					console.log(Number(x[5].innerHTML));
+					total = total + Number(x[5].innerHTML);
 				}
-				document.querySelector(`#total`).value = total;
+				console.log(total);
+				document.querySelector(`#total`).textContent = total;
 			}
 		</script>
 	</body>
