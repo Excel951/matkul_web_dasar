@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	</head>
+	<body>
+		<div
+			id="myPlot1"
+			style="width: 100%; max-width: 700px"></div>
+		<div
+			id="myPlot2"
+			style="width: 100%; max-width: 700px"></div>
+
+		<script>
+			let arrayX = [`Penjualan`, `Pembelian`, `Pengeluaran`];
+			let arrayY = [55, 49, 44];
+
+			// define layout
+			let layout = {
+				title: "TOKO",
+			};
+
+			// define data
+			let data = [
+				{
+					labels: arrayX,
+					values: arrayY,
+					type: "pie",
+				},
+			];
+
+			Plotly.newPlot("myPlot1", data, layout);
+
+			data = [
+				{
+					labels: arrayX,
+					values: arrayY,
+					hole: 0.4,
+					type: "pie",
+				},
+			];
+
+			// display by plotly
+			Plotly.newPlot("myPlot2", data, layout);
+		</script>
+	</body>
+</html>

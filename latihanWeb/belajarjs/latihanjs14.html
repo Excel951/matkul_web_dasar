@@ -9,13 +9,20 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
-		<script src="latihanjs2.js"></script>
 	</head>
 	<body>
 		<h2>Javascript</h2>
-		<p id="isi"></p>
+		<p id="isi">isi</p>
+		<button
+			onclick="document.querySelector(`#isi`).innerHTML=`ubah dengan event`">
+			Klik
+		</button>
+		<p id="x">ubah</p>
+		<button onclick="ubah()">Klik ubah</button>
 		<script>
-			tampil();
+			function ubah() {
+				document.querySelector(`#x`).innerHTML = `ubah dengan fungsi`;
+			}
 		</script>
 	</body>
 </html>

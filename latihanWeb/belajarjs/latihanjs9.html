@@ -9,13 +9,21 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
-		<script src="latihanjs2.js"></script>
 	</head>
 	<body>
-		<h2>Javascript</h2>
+		<h2>if ... else di dalam js</h2>
 		<p id="isi"></p>
 		<script>
-			tampil();
+			const time = new Date.getHours();
+			let salam;
+			if (time < 10) {
+				salam = `Selamat pagi`;
+			} else if (time < 20) {
+				salam = `Selamat siang`;
+			} else {
+				salam = `Selamat malam`;
+			}
+			document.querySelector(`#isi`).innerHTML = salam;
 		</script>
 	</body>
 </html>

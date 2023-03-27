@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Tugas 1</title>
+	</head>
+	<body>
+		<h2>Pilih elemen</h2>
+		<form>
+			<label for="provinsi">Provinsi</label>
+			<select
+				name="provinsi"
+				id="provinsi"
+				onchange="ubah()">
+				<option value="jabar">Jawa Barat</option>
+				<option value="jateng">Jawa Tengah</option>
+				<option value="jatim">Jawa Timur</option>
+			</select>
+			<select
+				name="kota"
+				id="kota">
+				<option value="1">A</option>
+				<option value="2">AA</option>
+			</select>
+		</form>
+		<script>
+			function ubah() {
+				if (document.querySelector(`#provinsi`).value == "jabar") {
+					document.querySelector(`#kota`).innerHTML =
+						'<option value="1">A</option><option value="2">AA</option>';
+				} else if (document.querySelector(`#provinsi`).value == "jabar") {
+					document.querySelector(`#kota`).innerHTML =
+						'<option value="1">B</option><option value="2">BB</option>';
+				} else if (document.querySelector(`#provinsi`).value == "jabar") {
+					document.querySelector(`#kota`).innerHTML =
+						'<option value="1">C</option><option value="2">CC</option>';
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h2>Javascript</h2>
+		<p>Hasil penjumlahan variabel</p>
+		<p id="x">Hasil</p>
+		<p id="y">Hasil</p>
+		<p id="z">Hasil</p>
+		<script>
+			let a = 2000;
+			let b = 3000;
+			let c = a + b;
+			document.querySelector("#x").innerHTML = `Hasil : ${a} + ${b} = ${c}`;
+			let aa = 20;
+			let bb = 30;
+			let cc = aa + bb;
+			document.querySelector(`#y`).innerHTML = `Hasil : ${aa} + ${bb} = ${cc}`;
+			const pi = 3.14;
+			document.querySelector(`#z`).innerHTML = `Hasil : ${pi * 14}`;
+		</script>
+	</body>
+</html>

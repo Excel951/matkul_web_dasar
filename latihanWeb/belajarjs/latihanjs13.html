@@ -9,13 +9,15 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
-		<script src="latihanjs2.js"></script>
 	</head>
 	<body>
-		<h2>Javascript</h2>
+		<h2>function di js</h2>
 		<p id="isi"></p>
 		<script>
-			tampil();
+			function perkalian(p1, p2) {
+				return p1 * p2;
+			}
+			document.querySelector(`#isi`).innerHTML = perkalian(30, 40);
 		</script>
 	</body>
 </html>

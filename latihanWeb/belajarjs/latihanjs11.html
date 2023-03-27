@@ -9,13 +9,16 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
-		<script src="latihanjs2.js"></script>
 	</head>
 	<body>
-		<h2>Javascript</h2>
+		<h2>Loop dalam js</h2>
 		<p id="isi"></p>
 		<script>
-			tampil();
+			let text = ``;
+			for (let index = 0; index < 20; index++) {
+				text += 1 + `<br>`;
+			}
+			document.querySelector(`#isi`).innerHTML = text;
 		</script>
 	</body>
 </html>

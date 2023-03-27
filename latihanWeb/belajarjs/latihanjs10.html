@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h2>Switch dalam js</h2>
+		<p id="isi"></p>
+		<script>
+			let hari;
+			switch (new Date.getDays()) {
+				case 0:
+					hari = `Minggu`;
+					break;
+
+				case 1:
+					hari = `Senin`;
+					break;
+
+				case 2:
+					hari = `Selasa`;
+					break;
+
+				case 3:
+					hari = `Rabu`;
+					break;
+
+				case 4:
+					hari = `Kamis`;
+					break;
+
+				case 5:
+					hari = `Jumat`;
+					break;
+
+				case 6:
+					hari = `Sabtu`;
+					break;
+				default:
+					break;
+			}
+			document.querySelector(`#isi`).innerHTML = `Hari ini adalah hari ${hari}`;
+		</script>
+	</body>
+</html>
