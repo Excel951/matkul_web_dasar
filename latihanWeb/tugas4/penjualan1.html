@@ -8,7 +8,7 @@
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
-		<title>Insert Supplier</title>
+		<title>Master Supplier</title>
 		<style>
 			@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap");
 			* {
@@ -24,6 +24,9 @@
 				background-color: #f1dec9;
 				padding: 0em 0em;
 				margin: 0;
+			}
+			.topnav #penjualan {
+				background-color: #8d7b68;
 			}
 			.linav {
 				transition: background-color 0.23s ease-in-out;
@@ -192,7 +195,7 @@
 				color: #363636;
 				box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
 				max-width: 100%;
-				width: 100%;
+				width: 50%;
 			}
 			.input:hover,
 			.is-hovered.input,
@@ -237,6 +240,12 @@
 				padding: calc(0.75em - 1px);
 				resize: vertical;
 			}
+			tr:nth-of-type(even) {
+				background-color: rgb(165, 165, 165);
+			}
+			table {
+				border-collapse: collapse;
+			}
 		</style>
 	</head>
 	<body>
@@ -270,82 +279,89 @@
 			</div>
 		</header>
 		<main>
-			<h1>Master Supplier</h1>
-			<form
-				action="tugas3.html"
-				target="_blank"
-				method="post"
-				autocomplete="on">
-				<label for="kode">Kode: </label>
-				<br />
-				<input
-					type="text"
-					name="kode"
-					id="kode"
-					placeholder="1234" />
-				<br />
-				<label for="nama">Nama: </label>
-				<br />
-				<input
-					type="text"
-					name="nama"
-					id="nama"
-					placeholder="Nama Karyawan" />
-				<br />
-				<label for="perusahaan">Perusahaan:</label>
-				<br />
-				<input
-					type="text"
-					name="perusahaan"
-					id="perusahaan"
-					placeholder="PT. Perusahaan" />
-				<br />
-				<label for="telpSales">Telepon Sales:</label>
-				<br />
-				<input
-					type="text"
-					name="telpSales"
-					id="telpSales"
-					placeholder="0835723682374" />
-				<br />
-				<label for="telpKantor">Telepon Kantor:</label>
-				<br />
-				<input
-					type="text"
-					name="telpKantor"
-					id="telpKantor"
-					placeholder="0835722394824" />
-				<br />
-				<label for="email">Email:</label>
-				<br />
-				<input
-					type="text"
-					name="email"
-					id="email"
-					placeholder="supplier@gmail.com" />
-				<br />
-				<label for="keterangan">Keterangan:</label>
-				<br />
-				<textarea
-					class="textarea"
-					name="keterangan"
-					id="keterangan"
-					cols="30"
-					rows="10"
-					placeholder="Keterangan..."></textarea>
-				<br />
-				<br />
-				<input
-					type="submit"
-					name="save"
-					id="save"
-					value="Simpan" />
-				<input
-					type="submit"
-					name="cancel"
-					id="cancel"
-					value="Batal" />
-			</form>
+			<a href="penjualan.html">
+				<button class="is-primary">+</button>
+			</a>
+			<table
+				width="100%"
+				height="100"
+				align="0 auto">
+				<caption>
+					Master Supplier
+				</caption>
+				<thead>
+					<tr bgcolor="#345273">
+						<th style="width: 15%">Kode</th>
+						<th style="width: 15%">Nama</th>
+						<th style="width: 30%">Perusahaan</th>
+						<th style="width: 10%">Telp Sales</th>
+						<th style="width: 10%">Telp Kantor</th>
+						<th style="width: 10%">Email</th>
+						<th style="width: 40%">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>S001</td>
+						<td>Zuzu</td>
+						<td>PT. Lenovo Indonesia</td>
+						<td>085382747638</td>
+						<td>085734852940</td>
+						<td>lenovo@gmail.com</td>
+						<td align="right">
+							<a href="view.html">
+								<button
+									type="submit"
+									class="is-info">
+									V
+								</button>
+							</a>
+							<a href="update.html">
+								<button
+									type="submit"
+									class="is-info">
+									U
+								</button>
+							</a>
+							<button
+								type="reset"
+								class="is-danger">
+								X
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>S002</td>
+						<td>Sosro</td>
+						<td>PT. PNY Indonesia</td>
+						<td>085382834238</td>
+						<td>085783453240</td>
+						<td>pny@gmail.com</td>
+						<td align="right">
+							<a href="view.html">
+								<button
+									type="submit"
+									class="is-info">
+									V
+								</button>
+							</a>
+							<a href="update.html">
+								<button
+									type="submit"
+									class="is-info">
+									U
+								</button>
+							</a>
+							<button
+								type="reset"
+								class="is-danger">
+								X
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</main>
+		<footer>Ini Footer</footer>
 	</body>
 </html>

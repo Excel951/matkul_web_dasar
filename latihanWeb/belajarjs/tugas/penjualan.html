@@ -213,12 +213,12 @@
 				let table = document.querySelector(`#mytable`);
 				let panjang = table.rows.length;
 				let total = 0;
-				for (let i = 0; i < panjang; i++) {
-					let x = table.rows[i].cells;
-					console.log(Number(x[5].innerHTML));
-					total = total + Number(x[5].innerHTML);
+				for (let i = 1; i < panjang; i++) {
+					let data = table.rows[i].cells[5];
+					data = parseInt(data.innerHTML);
+					total = total + data;
 				}
-				console.log(total);
+				// console.log(total);
 				document.querySelector(`#total`).textContent = total;
 			}
 		</script>

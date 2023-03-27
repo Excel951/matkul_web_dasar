@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Penjualan</title>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap");
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0;
+				font-family: "Raleway", sans-serif;
+				font-size: 12pt;
+				background-color: #fff;
+			}
+			.topnav {
+				background-color: #f1dec9;
+				padding: 0em 0em;
+				margin: 0;
+			}
+			.topnav #penjualan {
+				background-color: #8d7b68;
+			}
+			.linav {
+				transition: background-color 0.23s ease-in-out;
+				display: inline-block;
+				background: none;
+				padding: 14px 16px;
+				margin: 0px;
+				pointer-events: fill;
+				color: #000;
+				text-decoration: none;
+			}
+			.linav:hover {
+				background-color: #8d7b68;
+			}
+			header {
+				display: grid;
+				align-items: center;
+				box-shadow: 0 0.5em 1.5em -0.6em #525252;
+				margin: 0 0 2rem 0;
+				position: sticky;
+				top: 0em;
+				background-color: inherit;
+			}
+			header h1 {
+				justify-self: center;
+			}
+			button,
+			input,
+			select {
+				/* -moz-appearance: none;
+				-webkit-appearance: none; */
+				align-items: center;
+				border: 1px solid transparent;
+				border-radius: 4px;
+				box-shadow: none;
+				/* display: inline-flex; */
+				font-size: 1rem;
+				height: 2.5em;
+				justify-content: flex-start;
+				line-height: 1.5;
+				padding-bottom: calc(0.5em - 1px);
+				padding-left: calc(0.75em - 1px);
+				padding-right: calc(0.75em - 1px);
+				padding-top: calc(0.5em - 1px);
+				/* position: relative; */
+				vertical-align: top;
+			}
+			input[type="submit"]:hover,
+			input[type="reset"]:hover {
+				background-color: #b5b5b5;
+				transition: background-color 0.2s ease-in-out;
+			}
+			button:hover {
+				border-color: #b5b5b5;
+				color: #363636;
+			}
+			button:active {
+				border-color: #4a4a4a;
+				color: #363636;
+			}
+			button:focus {
+				box-shadow: 0 0 0 0.125em rgb(72 95 199 / 25%);
+			}
+			main {
+				margin: 1.75rem;
+				display: block;
+			}
+			footer {
+				text-align: center;
+				bottom: 0;
+				position: absolute;
+				width: 100%;
+				padding: 0.5rem;
+			}
+			th {
+				color: #fff;
+			}
+			td {
+				text-align: center;
+			}
+			.is-primary {
+				background-color: #00d1b2;
+				border-color: transparent;
+				color: #fff;
+			}
+			.is-primary:hover {
+				background-color: #00c4a7;
+				border-color: transparent;
+				color: #fff;
+			}
+			.is-primary:active {
+				background-color: #00b89c;
+				border-color: transparent;
+				color: #fff;
+			}
+			.is-info {
+				background-color: #118ab2;
+				border-color: transparent;
+				color: #fff;
+			}
+			.is-info:hover {
+				background-color: #0078a0;
+				border-color: transparent;
+				color: #fff;
+			}
+			.is-info:active {
+				background-color: #006181;
+				border-color: transparent;
+				color: #fff;
+			}
+			.is-danger {
+				background-color: #ef476f;
+				border-color: transparent;
+				color: #fff;
+			}
+			.is-danger:hover {
+				background-color: #ec335e;
+				border-color: transparent;
+				color: #fff;
+			}
+			.is-danger:active {
+				background-color: #e90036;
+				border-color: transparent;
+				color: #fff;
+			}
+			.is-success {
+				background-color: #a7c957;
+				border-color: transparent;
+				color: #fff;
+			}
+			.is-success:hover {
+				background-color: #6a994e;
+				border-color: transparent;
+				color: #fff;
+			}
+			.is-success:active {
+				background-color: #386641;
+				border-color: transparent;
+				color: #fff;
+			}
+			caption {
+				margin-bottom: 0.5em;
+			}
+			.table tr:hover {
+				background-color: #e5e5e5;
+			}
+			.table tr:active {
+				background-color: #000;
+				color: #fff;
+				transition: all 10s ease-in-out;
+			}
+			form label {
+				margin-top: 0.5rem;
+			}
+			h1 {
+				text-align: center;
+			}
+			.input,
+			.select select,
+			.textarea,
+			select,
+			input[type="text"] {
+				background-color: #fff;
+				border-color: #dbdbdb;
+				border-radius: 4px;
+				color: #363636;
+				box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
+				max-width: 100%;
+				width: 50%;
+			}
+			.input:hover,
+			.is-hovered.input,
+			.is-hovered.textarea,
+			.select select.is-hovered,
+			.select select:hover,
+			.textarea:hover,
+			select:hover,
+			input[type="text"]:hover {
+				border-color: #b5b5b5;
+			}
+			.input:active,
+			.input:focus,
+			.is-active.input,
+			.is-active.textarea,
+			.is-focused.input,
+			.is-focused.textarea,
+			.select select.is-active,
+			.select select.is-focused,
+			.select select:active,
+			.select select:focus,
+			.textarea:active,
+			.textarea:focus,
+			select:active,
+			select:focus,
+			input[type="text"]:active,
+			input[type="text"]:focus {
+				border-color: #485fc7;
+				box-shadow: 0 0 0 0.125em rgba(72, 95, 199, 0.25);
+				outline: 0;
+			}
+			.select {
+				display: inline-block;
+				max-width: 100%;
+				/* position: relative; */
+				vertical-align: top;
+			}
+			textarea {
+				display: block;
+				max-width: 100%;
+				min-width: 50%;
+				padding: calc(0.75em - 1px);
+				resize: vertical;
+			}
+			.tr:nth-of-type(even) {
+				background-color: rgb(165, 165, 165);
+			}
+			table {
+				border-collapse: collapse;
+			}
+			th {
+				width: 10rem;
+			}
+			table.form td {
+				text-align: left;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Toko</h1>
+			<div class="topnav">
+				<a
+					id="barang"
+					class="linav"
+					href="../tugas1/tugas1.html"
+					>Barang</a
+				>
+				<a
+					id="supplier"
+					class="linav"
+					href="../tugas3/tugas3.html"
+					>Supplier</a
+				>
+				<a
+					id="karyawan"
+					class="linav"
+					href="../tugas2/tugas2.html"
+					>Karyawan</a
+				>
+				<a
+					href="../tugas4/penjualan1.html"
+					id="penjualan"
+					class="linav"
+					>Penjualan</a
+				>
+			</div>
+		</header>
+		<main>
+			<form>
+				<table
+					class="form"
+					width="80%">
+					<tr>
+						<td align="left">
+							<label for="kode">Kode:</label>
+							<!-- kode berisi format waktu
+                            tahunbulanharijammenitdetik
+                        dikerjakan dengan js
+                        -->
+						</td>
+						<td
+							width="70%"
+							align="left">
+							<input
+								type="text"
+								id="kode"
+								readonly />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="tgl">Tanggal:</label>
+							<!-- dikerjakan dengan js -->
+						</td>
+						<td>
+							<input
+								type="text"
+								id="tgl"
+								readonly />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="konsumen">Konsumen:</label>
+						</td>
+						<td>
+							<input
+								type="text"
+								id="konsumen" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="karyawan">Karyawan:</label>
+						</td>
+						<td>
+							<select
+								name="karyawan"
+								id="karyawan"
+								onchange="pilihkar(value)">
+								<option value="dika">Dika</option>
+								<option value="santoso">Santoso</option>
+								<option value="aldi">Aldi</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="jabatan">Jabatan:</label>
+						</td>
+						<td>
+							<select
+								name="jabatan"
+								id="jabatan">
+								<option value="admin">Admin</option>
+								<option value="supervisor">Supervisor</option>
+								<option value="operator">Operator</option>
+								<option value="manager">Manager</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<br />
+				<table
+					class="form"
+					width="90%">
+					<tr>
+						<td>
+							<label for="kodebrg">Kode Barang</label><br />
+							<select
+								name="kodebrg"
+								id="kodebrg"
+								onchange="pilihkodebrg(value)">
+								<option value="M001">VGA</option>
+								<option value="M002">RAM</option>
+								<option value="M003">CPU</option>
+								<option value="M004">Monitor</option>
+							</select>
+						</td>
+						<td>
+							<label for="nama">Nama</label><br />
+							<input
+								type="text"
+								name="nama"
+								id="nama"
+								readonly />
+						</td>
+						<td>
+							<label for="satuan">Satuan</label><br />
+							<input
+								type="text"
+								name="satuan"
+								id="satuan"
+								readonly />
+						</td>
+						<td>
+							<label for="harga">Harga</label><br />
+							<input
+								type="text"
+								name="harga"
+								id="harga"
+								readonly />
+						</td>
+						<td>
+							<label for="jumlah">Jumlah</label><br />
+							<input
+								type="text"
+								name="jumlah"
+								id="jumlah" />
+						</td>
+						<td>
+							<button
+								type="button"
+								onclick="myfunction()">
+								Save
+							</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+
+			<br />
+			<table
+				class="table"
+				id="mytable"
+				border="1">
+				<tr style="background-color: #485fc7">
+					<th>Kode</th>
+					<th>Nama</th>
+					<th>Satuan</th>
+					<th>Harga</th>
+					<th>Jumlah</th>
+					<th>Total</th>
+					<th>Action</th>
+				</tr>
+			</table>
+			<br />
+			<label for="total">Total: </label>
+			<label id="total">0</label>
+		</main>
+
+		<script>
+			// ambil tanggal untuk kode
+			let year = new Date().getFullYear();
+			let month = new Date().getMonth() + 1;
+			let date = new Date().getDate();
+			let hour = new Date().getHours();
+			let minute = new Date().getMinutes();
+			let seconds = new Date().getSeconds();
+
+			// ambil element untuk tempat kode dan tgl
+			let kodeInput = document.querySelector(`#kode`);
+			let tgl = document.querySelector(`#tgl`);
+
+			// susun kode
+			let kode = `${year}${month}${date}${hour}${minute}${seconds}`;
+
+			// ambil tanggal
+			let dates = new Date().toLocaleDateString();
+
+			kodeInput.value = kode;
+			tgl.value = dates;
+
+			function myfunction() {
+				let table = document.querySelector(`#mytable`);
+				let panjang = table.rows.length;
+				let row = table.insertRow(panjang);
+				let cell1 = row.insertCell(0);
+				let cell2 = row.insertCell(1);
+				let cell3 = row.insertCell(2);
+				let cell4 = row.insertCell(3);
+				let cell5 = row.insertCell(4);
+				let cell6 = row.insertCell(5);
+				let cell7 = row.insertCell(6);
+				row.setAttribute(`id`, `idrow${panjang}`);
+				row.setAttribute(`class`, `tr`);
+				cell1.innerHTML = document.querySelector(`#kodebrg`).value;
+				cell2.innerHTML = document.querySelector(`#nama`).value;
+				cell3.innerHTML = document.querySelector(`#satuan`).value;
+				cell4.innerHTML = document.querySelector(`#harga`).value;
+				cell5.innerHTML = document.querySelector(`#jumlah`).value;
+				let subtotal =
+					Number(document.querySelector(`#harga`).value) *
+					Number(document.querySelector(`#jumlah`).value);
+				cell6.innerHTML = subtotal;
+
+				let cancelBtn = document.createElement(`button`);
+				cancelBtn.textContent = `X`;
+				cancelBtn.setAttribute(`onclick`, `deleterow('idrow${panjang}')`);
+				cell7.insertAdjacentElement(`beforeend`, cancelBtn);
+				hitungtotal();
+			}
+
+			function deleterow(rowid) {
+				let row = document.querySelector(`#${rowid}`);
+				row.remove();
+				hitungtotal();
+			}
+
+			function hitungtotal() {
+				let table = document.querySelector(`#mytable`);
+				let panjang = table.rows.length;
+				let total = 0;
+				for (let i = 1; i < panjang; i++) {
+					let data = table.rows[i].cells[5];
+					data = parseInt(data.innerHTML);
+					total = total + data;
+				}
+				// console.log(total);
+				document.querySelector(`#total`).textContent = total;
+				clearform();
+			}
+
+			function pilihkodebrg(val) {
+				// data barang
+				const barang = {
+					M001: { nama: "VGA", satuan: `pcs`, harga: 4000 },
+					M002: { nama: "RAM", satuan: `pcs`, harga: 800 },
+					M003: { nama: "CPU", satuan: `pcs`, harga: 2000 },
+					M004: { nama: "Monitor", satuan: `pcs`, harga: 1500 },
+				};
+				console.log(val);
+				// console.log(barang[`${val}`]);
+
+				// ambil element yang akan diubah
+				const nama = document.querySelector(`#nama`);
+				const satuan = document.querySelector(`#satuan`);
+				const harga = document.querySelector(`#harga`);
+
+				// ubah element yang telah diambil dengan data yang ada
+				nama.value = barang[`${val}`].nama;
+				satuan.value = barang[`${val}`].satuan;
+				harga.value = barang[`${val}`].harga;
+			}
+
+			function clearform() {
+				const brg = {
+					0: document.querySelector(`#kodebrg`),
+					1: document.querySelector(`#nama`),
+					2: document.querySelector(`#satuan`),
+					3: document.querySelector(`#harga`),
+					4: document.querySelector(`#jumlah`),
+				};
+
+				for (let i = 0; i < 5; i++) {
+					brg[`${i}`].value = "";
+				}
+			}
+
+			function pilihkar(val) {
+				const jab = {
+					dika: "operator",
+					santoso: `manager`,
+					aldi: `admin`,
+				};
+
+				const elJab = document.querySelector(`#jabatan`);
+				elJab.value = jab[`${val}`];
+			}
+		</script>
+	</body>
+</html>
