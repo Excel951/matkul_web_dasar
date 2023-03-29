@@ -8,7 +8,7 @@
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
-		<title>Master Supplier</title>
+		<title>Master Penjualan</title>
 		<style>
 			@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap");
 			* {
@@ -285,31 +285,30 @@
 			<table
 				width="100%"
 				height="100"
-				align="0 auto">
+				align="0 auto"
+				id="mytable">
 				<caption>
 					Master Supplier
 				</caption>
 				<thead>
 					<tr bgcolor="#345273">
 						<th style="width: 15%">Kode</th>
-						<th style="width: 15%">Nama</th>
-						<th style="width: 30%">Perusahaan</th>
-						<th style="width: 10%">Telp Sales</th>
-						<th style="width: 10%">Telp Kantor</th>
-						<th style="width: 10%">Email</th>
+						<th style="width: 15%">Tanggal</th>
+						<th style="width: 30%">Konsumen</th>
+						<th style="width: 10%">Total</th>
+						<th style="width: 10%">Karyawan</th>
 						<th style="width: 40%">Action</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>S001</td>
-						<td>Zuzu</td>
-						<td>PT. Lenovo Indonesia</td>
-						<td>085382747638</td>
-						<td>085734852940</td>
-						<td>lenovo@gmail.com</td>
+						<td>20231201101010</td>
+						<td>01/12/2023</td>
+						<td>Habib</td>
+						<td>32000</td>
+						<td>Aldi</td>
 						<td align="right">
-							<a href="view.html">
+							<!-- <a href="view.html">
 								<button
 									type="submit"
 									class="is-info">
@@ -327,18 +326,17 @@
 								type="reset"
 								class="is-danger">
 								X
-							</button>
+							</button> -->
 						</td>
 					</tr>
 					<tr>
-						<td>S002</td>
-						<td>Sosro</td>
-						<td>PT. PNY Indonesia</td>
-						<td>085382834238</td>
-						<td>085783453240</td>
-						<td>pny@gmail.com</td>
+						<td>20231201101010</td>
+						<td>01/12/2023</td>
+						<td>Habib</td>
+						<td>32000</td>
+						<td>Aldi</td>
 						<td align="right">
-							<a href="view.html">
+							<!-- <a href="view.html">
 								<button
 									type="submit"
 									class="is-info">
@@ -356,12 +354,57 @@
 								type="reset"
 								class="is-danger">
 								X
-							</button>
+							</button> -->
+						</td>
+					</tr>
+					<tr>
+						<td>20241202111111</td>
+						<td>02/12/2024</td>
+						<td>Michael</td>
+						<td>20000</td>
+						<td>Dika</td>
+						<td align="right">
+							<!-- <a href="view.html">
+								<button
+									type="submit"
+									class="is-info">
+									V
+								</button>
+							</a>
+							<a href="update.html">
+								<button
+									type="submit"
+									class="is-info">
+									U
+								</button>
+							</a>
+							<button
+								type="reset"
+								class="is-danger">
+								X
+							</button> -->
 						</td>
 					</tr>
 				</tbody>
 			</table>
+			<br /><br />
+			<label for="total">Total: </label><label id="total">0</label>
 		</main>
 		<footer>Ini Footer</footer>
+		<script>
+			hitungtotal();
+			function hitungtotal() {
+				let table = document.querySelector(`#mytable`);
+				let panjang = table.rows.length;
+				let total = 0;
+				for (let i = 1; i < panjang; i++) {
+					let data = table.rows[i].cells[3];
+					data = parseInt(data.innerHTML);
+					total = total + data;
+				}
+				// console.log(total);
+				document.querySelector(`#total`).textContent = total;
+			}
+		</script>
 	</body>
 </html>
