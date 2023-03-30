@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Login Page</title>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap");
+
+			* {
+				margin: 0;
+				padding: 0;
+				font-family: "Raleway", sans-serif;
+			}
+
+			section {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: url("../../img/john-lee-oMneOBYhJxY-unsplash.jpg");
+				min-height: 100vh;
+				width: 100%;
+				background-position: center;
+				background-size: cover;
+			}
+
+			.form-box {
+				position: relative;
+				width: 400px;
+				height: 450px;
+				background: transparent;
+				border: 2px solid rgba(255, 255, 255, 0.5);
+				border-radius: 20px;
+				backdrop-filter: blur(15px);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			h2 {
+				font-size: 2em;
+				color: black;
+				text-align: center;
+			}
+
+			.inputbox {
+				position: relative;
+				margin: 30px 0;
+				width: 310px;
+				border-bottom: 2px solid black;
+			}
+
+			.inputbox label {
+				position: absolute;
+				top: 0%;
+				left: 5px;
+				transform: translateY(-50%);
+				color: black;
+				font-size: 1em;
+				pointer-events: none;
+				transition: 0.5s ease-in-out;
+			}
+
+			input:focus ~ label,
+			input:valid ~ label {
+				top: -5px;
+			}
+
+			.inputbox input {
+				width: 100%;
+				height: 50px;
+				background: transparent;
+				border: none;
+				outline: none;
+				font-size: 1em;
+				padding: 0px 35px 0px 5px;
+				color: black;
+			}
+
+			.inputbox ion-icon {
+				position: absolute;
+				right: 8px;
+				color: black;
+				font-size: 1.2em;
+				top: 20px;
+			}
+
+			.forget {
+				margin: -15px 0 15px;
+				font-size: 0.9em;
+				color: black;
+				display: flex;
+				justify-content: center;
+			}
+
+			.forget label input {
+				margin-right: 3px;
+			}
+
+			.forget label a {
+				color: black;
+				text-decoration: none;
+			}
+
+			.forget label a:hover {
+				text-decoration: underline;
+			}
+
+			button {
+				transition: background 0.5s, color 0.5s ease-in-out;
+				width: 100%;
+				height: 40px;
+				border-radius: 40px;
+				background: #fff;
+				color: black;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				font-size: 1em;
+				font-weight: 600;
+			}
+
+			button:hover {
+				transition: background-color 0.5s, color 0.5s ease-in-out;
+				background: #530101;
+				color: white;
+			}
+
+			.register {
+				font-size: 0.9em;
+				color: black;
+				text-align: center;
+				margin: 25px 0 10px;
+			}
+
+			.register p a {
+				text-decoration: none;
+				color: black;
+				font-weight: 600;
+			}
+
+			.register p a:hover {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<section>
+			<div class="form-box">
+				<div class="form-value">
+					<form>
+						<h2>Login</h2>
+						<div class="inputbox">
+							<label for="username">Username</label>
+							<input
+								type="text"
+								name="username"
+								id="username"
+								required />
+						</div>
+						<div class="inputbox">
+							<label for="password">Password</label>
+							<input
+								type="password"
+								name="password"
+								id="password"
+								required />
+						</div>
+						<button
+							id="loginBtn"
+							type="submit">
+							Login
+						</button>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<script>
+			const dataUsername = [
+				{ username: "deo", password: "12345" },
+				{ username: "dika", password: "dika123" },
+				{ username: "labkom", password: "labkomUndika" },
+			];
+
+			const submitBtn = document.querySelector(`#loginBtn`);
+
+			submitBtn.addEventListener(`click`, (e) => {
+				e.preventDefault();
+				loginProcess();
+			});
+
+			function loginProcess() {
+				const username = document.querySelector(`#username`);
+				const pass = document.querySelector(`#password`);
+
+				const valueUsername = username.value;
+				const valuePassword = password.value;
+
+				if (valueUsername === "" || valuePassword === "") {
+					console.log(`Tolong isi username dan password`);
+					window.alert(`Tolong isi username dan password`);
+					return;
+				}
+
+				// if()dataUsername.findIndex(e=>e.username===valueUsername);
+				// for (let data of dataUsername) {
+				// 	if (data.username === valueUsername) {
+				// 		if (data.password === valuePassword) {
+				// 			window.alert(`Berhasil Login`);
+				// 			i++;
+				// 		} else {
+				// 			window.alert(`Maaf password salah`);
+				// 			i++;
+				// 		}
+				// 	}
+				// }
+
+				username.value = "";
+				password.value = "";
+			}
+		</script>
+	</body>
+</html>
