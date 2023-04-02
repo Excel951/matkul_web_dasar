@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Belajar JQuery 5</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<script>
+			$(document).ready(() => {
+				$(`#ambil`).click(() => {
+					$.post(
+						"latihanwebjq5-1.php",
+						{ kode: "m001", nama: "CPU", satuan: "pcs" },
+						(data, status) => {
+							$("#isidata").text(data);
+							$("#isistatus").text(status);
+							const myObj = JSON.parse(data);
+							$(`#isidataitem1`).text(myObj.kode);
+							$(`#isidataitem2`).text(myObj.nama);
+						}
+					);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Post JQuery</h1>
+		<button id="ambil">Ambil Post</button>
+		<div id="isidata"></div>
+		<br />
+		<div id="isistatus"></div>
+		<br />
+		<div id="isidataitem1"></div>
+		<br />
+		<div id="isidataitem2"></div>
+		<br />
+	</body>
+</html>

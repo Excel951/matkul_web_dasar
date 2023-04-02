@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Belajar JQuery 2</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<script>
+			$(document).ready(() => {
+				$(`#save`).click(() => {
+					let kode = $(`#kode`).val();
+					let nama = $(`#nama`).val();
+					let satuan = $(`#satuan`).val();
+
+					console.log(`${kode} ${nama} ${satuan}`);
+
+					$(`#hasil`).text(`${kode} ${nama} ${satuan}`);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form action="">
+			<label for="kode">Kode: </label
+			><input
+				type="text"
+				name="kode"
+				id="kode" />
+			<label for="nama">Nama: </label
+			><input
+				type="text"
+				name="nama"
+				id="nama" />
+			<label for="satuan">Satuan: </label
+			><input
+				type="text"
+				name="satuan"
+				id="satuan" />
+		</form>
+		<button id="save">Save</button>
+		<div id="hasil"></div>
+	</body>
+</html>

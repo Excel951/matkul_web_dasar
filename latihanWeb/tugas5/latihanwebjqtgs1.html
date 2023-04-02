@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Tugas JQuery 1</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<script>
+			$(document).ready(() => {
+				$(`#provinsi`).change(() => {
+					let prov = $(`#provinsi`).val();
+					let kota = $(`#kota`);
+
+					if (prov == "jabar") {
+						kota.html(
+							`<option value="1">A</option><option value="2">AA</option>`
+						);
+					} else if (prov == "jateng") {
+						kota.html(
+							`<option value="1">B</option><option value="2">BB</option>`
+						);
+					} else if (prov == "jatim") {
+						kota.html(
+							`<option value="1">C</option><option value="2">CC</option>`
+						);
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form>
+			<label for="provinsi">Provinsi: </label>
+			<select
+				name="provinsi"
+				id="provinsi">
+				<option value="jabar">Jawa Barat</option>
+				<option value="jateng">Jawa Tengah</option>
+				<option value="jatim">Jawa Timur</option>
+			</select>
+			<select
+				name="kota"
+				id="kota">
+				<option value="1">A</option>
+				<option value="2">AA</option>
+			</select>
+		</form>
+	</body>
+</html>

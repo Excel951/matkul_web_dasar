@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Tugas JQuery 2</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	</head>
+	<body>
+		<form>
+			<table
+				class="form"
+				width="90%">
+				<tr>
+					<td>
+						<label for="kodebrg">Kode Barang</label><br />
+						<input
+							type="text"
+							name="kodebrg"
+							id="kodebrg" />
+					</td>
+					<td>
+						<label for="nama">Nama</label><br />
+						<input
+							type="text"
+							name="nama"
+							id="nama" />
+					</td>
+					<td>
+						<label for="satuan">Satuan</label><br />
+						<input
+							type="text"
+							name="satuan"
+							id="satuan" />
+					</td>
+					<td>
+						<label for="harga">Harga</label><br />
+						<input
+							type="text"
+							name="harga"
+							id="harga" />
+					</td>
+					<!-- <td>
+                        <label for="jumlah">Jumlah</label><br />
+                        <input
+                            type="text"
+                            name="jumlah"
+                            id="jumlah" />
+                    </td> -->
+					<td>
+						<button
+							type="button"
+							id="save">
+							Save
+						</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+
+		<table
+			class="table"
+			id="mytable"
+			border="1">
+			<thead>
+				<tr style="background-color: #485fc7">
+					<th>Kode</th>
+					<th>Nama</th>
+					<th>Satuan</th>
+					<th>Harga</th>
+					<th>Jumlah</th>
+					<th>Total</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody id="tbody"></tbody>
+		</table>
+		<br />
+		<label for="total">Total: </label>
+		<label id="total">0</label>
+
+		<script>
+			$(document).ready(() => {
+				let total = 0;
+
+				// ketika click atau simpan barang
+				$(`#save`).click(() => {
+					total = 0;
+					let panjang = $(`#tbody tr`).length;
+					let kode = $(`#kodebrg`).val();
+					let nama = $(`#nama`).val();
+					let harga = $(`#harga`).val();
+					let satuan = $(`#satuan`).val();
+
+					$(`#tbody`).append(
+						`<tr><td>${kode}</td><td>${nama}</td><td>${satuan}</td><td>${harga}</td><td><button id="id${panjang}" class="remove">X</button></td></tr>`
+					);
+
+					$(`#tbody tr`).each(() => {
+						let currentRow = $(this);
+						console.log(currentRow);
+						total = total + Number(currentRow.find("td:eq(3)").text());
+					});
+					$(`#total`).text(total);
+				});
+
+				// ketika click remove atau hapus rows
+				$(`#tbody`).on("click", ".remove", () => {
+					total = 0;
+					let id = $(this).attr("id");
+					// console.log(id);
+					$(this).closest("tr").remove();
+					$("#tbody tr").each(() => {
+						let currentRow = $(this);
+						total = total + Number(currentRow.find(`td:eq(3)`).text());
+					});
+					$(`#total`).text(total);
+				});
+			});
+		</script>
+	</body>
+</html>

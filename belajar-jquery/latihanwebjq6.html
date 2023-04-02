@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Belajar JQuery 6</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<script>
+			$(document).ready(() => {
+				$.fn.myFunction1 = function () {
+					alert("Menampilkan fungsi");
+				};
+				$.fn.myFunction2 = (x) => {
+					window.alert(`Menampilkan fungsi ${x}`);
+				};
+				$.fn.myFunction3 = (x, y) => {
+					window.alert(`Menampilkan fungsi ${x} ${y}`);
+				};
+
+				$("#call-btn1").click(() => {
+					$.fn.myFunction1();
+				});
+				$("#call-btn2").click(() => {
+					$.fn.myFunction2("oke");
+				});
+				$("#call-btn3").click(() => {
+					$.fn.myFunction3(1, 2);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button id="call-btn1">Click Me</button>
+		<button id="call-btn2">Click Me</button>
+		<button id="call-btn3">Click Me</button>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Belajar JQuery 4</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<script>
+			$(document).ready(() => {
+				$(`#ambil`).click(() => {
+					$.get(
+						`latihanwebjq4-1.php`,
+						{ kode: "m001", nama: "cpu", satuan: "pcs" },
+						(data, status) => {
+							$("#isidata").text(data);
+							$("#isistatus").text(status);
+							const obj = JSON.parse(data);
+							// console.log(obj);
+							$("#isidataitem1").text(obj.kode);
+							$("#isidataitem2").text(obj.nama);
+							// $("#isidataitem3").text(obj.satuan);
+						}
+					);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Get JQuery</h1>
+		<button id="ambil">Ambil Get</button>
+		<div id="isidata"></div>
+		<br />
+		<div id="isistatus"></div>
+		<br />
+		<div id="isidataitem1"></div>
+		<br />
+		<div id="isidataitem2"></div>
+		<br />
+		<!-- <div id="isidataitem3"></div> -->
+	</body>
+</html>
