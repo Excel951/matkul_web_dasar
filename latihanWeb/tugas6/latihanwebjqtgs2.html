@@ -73,7 +73,6 @@
 					<th>Nama</th>
 					<th>Satuan</th>
 					<th>Harga</th>
-					<th>Jumlah</th>
 					<th>Total</th>
 					<th>Action</th>
 				</tr>
@@ -101,21 +100,20 @@
 						`<tr><td>${kode}</td><td>${nama}</td><td>${satuan}</td><td>${harga}</td><td><button id="id${panjang}" class="remove">X</button></td></tr>`
 					);
 
-					$(`#tbody tr`).each(() => {
+					$(`#tbody tr`).each(function () {
 						let currentRow = $(this);
-						console.log(currentRow);
 						total = total + Number(currentRow.find("td:eq(3)").text());
 					});
 					$(`#total`).text(total);
 				});
 
 				// ketika click remove atau hapus rows
-				$(`#tbody`).on("click", ".remove", () => {
+				$(`#tbody`).on("click", ".remove", function () {
 					total = 0;
 					let id = $(this).attr("id");
-					// console.log(id);
+					console.log(id);
 					$(this).closest("tr").remove();
-					$("#tbody tr").each(() => {
+					$("#tbody tr").each(function () {
 						let currentRow = $(this);
 						total = total + Number(currentRow.find(`td:eq(3)`).text());
 					});
