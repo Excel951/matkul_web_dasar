@@ -22,5 +22,10 @@
 	<body>
 		<h1>Load JQuery</h1>
 		<div id="isi"></div>
+		<script>
+			$("#isi").on("click", "p", function () {
+				$("p").text("clicked");
+			});
+		</script>
 	</body>
 </html>

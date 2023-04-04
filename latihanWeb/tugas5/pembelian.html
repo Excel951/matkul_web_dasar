@@ -98,7 +98,7 @@
 			footer {
 				text-align: center;
 				bottom: 0;
-				position: absolute;
+				position: sticky;
 				width: 100%;
 				padding: 0.5rem;
 			}
@@ -172,7 +172,7 @@
 				margin-bottom: 0.5em;
 			}
 			.table tbody tr:hover {
-				background-color: #e5e5e5;
+				background-color: #ff8b8b;
 			}
 			.table tbody tr:active {
 				background-color: #000;
@@ -244,6 +244,9 @@
 			.table tbody tr:nth-of-type(even) {
 				background-color: rgb(165, 165, 165);
 			}
+			.table tbody tr:nth-of-type(even):hover {
+				background-color: #ff8b8b;
+			}
 			table {
 				border-collapse: collapse;
 			}
@@ -309,141 +312,50 @@
 					+
 				</button>
 			</div>
-			<div id="main">
-				<table
-					width="100%"
-					height="100"
-					align="0 auto"
-					class="table"
-					id="mytable">
-					<caption>
-						Master Pembelian
-					</caption>
-					<thead>
-						<tr bgcolor="#345273">
-							<th style="width: 15%">Kode</th>
-							<th style="width: 15%">Supplier</th>
-							<th style="width: 30%">Karyawan</th>
-							<th style="width: 10%">Jumlah</th>
-							<th style="width: 10%">Total</th>
-							<th style="width: 40%">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>20231201101010</td>
-							<td>PT. Lenovo Indonesia</td>
-							<td>Aldi</td>
-							<td>4</td>
-							<td>4000</td>
-							<td align="right">
-								<!-- <a href="view.html">
-									<button
-										type="submit"
-										class="is-info">
-										V
-									</button>
-								</a>
-								<a href="update.html">
-									<button
-										type="submit"
-										class="is-info">
-										U
-									</button>
-								</a> -->
-								<button
-									type="reset"
-									class="is-danger"
-									id="deleteCell">
-									X
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>20230404111110</td>
-							<td>PT. Lenovo Indonesia</td>
-							<td>Zakcy</td>
-							<td>5</td>
-							<td>4000</td>
-							<td align="right">
-								<!-- <a href="view.html">
-									<button
-										type="submit"
-										class="is-info">
-										V
-									</button>
-								</a>
-								<a href="update.html">
-									<button
-										type="submit"
-										class="is-info">
-										U
-									</button>
-								</a> -->
-								<button
-									type="reset"
-									class="is-danger"
-									id="deleteCell">
-									X
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>20220404211220</td>
-							<td>PT. Lenovo Indonesia</td>
-							<td>Dika</td>
-							<td>4</td>
-							<td>6000</td>
-							<td align="right">
-								<!-- <a href="view.html">
-									<button
-										type="submit"
-										class="is-info">
-										V
-									</button>
-								</a>
-								<a href="update.html">
-									<button
-										type="submit"
-										class="is-info">
-										U
-									</button>
-								</a> -->
-								<button
-									type="reset"
-									class="is-danger"
-									id="deleteCell">
-									X
-								</button>
-							</td>
-						</tr>
-						<tr id="totalCell">
-							<td colspan="3">Total</td>
-							<td id="totalbrg">0</td>
-							<td id="totalhrg">0</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+			<div id="main"></div>
 		</main>
 		<footer>Ini Footer</footer>
 		<script>
-			// sampai ubah karyawan
-
 			$(document).ready(function () {
+				// fungsi pada halaman master
+
+				// fungsi untuk berpindah halaman
 				$.fn.pindahHalaman = function () {
-					$("main #navPembelian").click(function (event) {
-						if (event.target.id === "btnRekap") {
-							$("#main").load("./pembelian2.html");
+					$("main").click(function (event) {
+						if (event.target.id === "btnPlus") {
+							$("#main").load("./pembelian3.html", function () {
+								$.fn.getJabatan();
+								$.fn.getBarang();
+								$.fn.removeBarang();
+								$.fn.ambilWaktu();
+								$("#save").click(function () {
+									$.fn.saveBarang();
+								});
+							});
+						} else if (event.target.id === "btnRekap") {
+							$("#main").load("./pembelian1.html", function () {
+								// hitung total barang
+								$.fn.hitungTotal("pembelian1", 3);
+								// hitung total harga
+								$.fn.hitungTotal("pembelian1", 4);
+							});
 						} else if (event.target.id === "btnDetail") {
-							$("#main").load("./pembelian3.html");
-						} else if (event.target.id === "btnPlus") {
-							$("#main").load("./pembelian4.html");
+							$("#main").load("./pembelian2.html", function () {
+								// hitung total barang
+								$.fn.hitungTotal("pembelian2", 1);
+								// hitung total harga
+								$.fn.hitungTotal("pembelian2", 2);
+							});
+						} else if (event.target.className === "view is-info") {
+							$("#main").load("./pembelian4.html", function () {
+								$.fn.ambilWaktu();
+							});
 						}
 					});
 				};
 
-				$.fn.hitungTotal = function (kolom) {
+				// menghitung total dari total barang dan harga
+				$.fn.hitungTotal = function (file, kolom) {
 					let total = 0;
 					let panjang = $("#mytable tbody tr").length;
 					$("#mytable tbody tr").each(function () {
@@ -451,11 +363,105 @@
 						let value = currentRow.find("td").eq(kolom).text();
 						total = total + Number(value);
 					});
-					if (kolom === 3) {
-						$("#totalbrg").text(total);
-					} else if (kolom === 4) {
-						$("#totalhrg").text(total);
+					if (file === "pembelian1") {
+						if (kolom === 3) {
+							$("#totalbrg").text(total);
+						} else if (kolom === 4) {
+							$("#totalhrg").text(total);
+						}
+					} else if (file === "pembelian2") {
+						if (kolom === 1) {
+							$("#totalbrg").text(total);
+						} else if (kolom === 2) {
+							$("#totalhrg").text(total);
+						}
+					} else if (file === "pembelian3") {
+						$("#total").text(total);
+					} else if (file === "pembelian4") {
 					}
+				};
+
+				// fungsi pada halaman pembelian3 (form pembelian)
+				// ambil waktu untuk kode pembelian dan tanggal
+				$.fn.ambilWaktu = function () {
+					let dates = new Date();
+					let year = dates.getFullYear();
+					let month = dates.getMonth() + 1;
+					let date = dates.getDate();
+					let hour = dates.getHours();
+					let minute = dates.getMinutes();
+					let seconds = dates.getSeconds();
+
+					$("#formPembelian #kode").val(
+						`${year}${month}${date}${hour}${minute}${seconds}`
+					);
+					$("#formPembelian #tgl").val(dates.toLocaleDateString());
+				};
+
+				// fungsi membersihkan form
+				$.fn.clearform = function () {
+					$(`#main #formBarang #kodebrg`).val("1");
+					$(`#main #formBarang #nama`).val("");
+					$(`#main #formBarang #satuan`).val("");
+					$(`#main #formBarang #harga`).val("");
+					$(`#main #formBarang #jumlah`).val("");
+				};
+
+				// fungsi untuk remove barang
+				$.fn.removeBarang = function () {
+					let total = 0;
+					$("#mytable tbody").on("click", ".remove", function () {
+						// let id = $(this).attr("id");
+
+						$(this).closest("tr").remove();
+						$.fn.hitungTotal("pembelian3", 5);
+					});
+				};
+
+				// click untuk simpan barang
+				$.fn.saveBarang = function () {
+					if ($("#kodebrg").val() != 1) {
+						// ambil panjang dari tabel
+						let panjang = $("#mytable").length;
+
+						// ambil value dari form barang
+						let kode = $(`#kodebrg`).val();
+						let nama = $(`#nama`).val();
+						let harga = $(`#harga`).val();
+						let satuan = $(`#satuan`).val();
+						let jumlah = $(`#jumlah`).val();
+						let totalhrg = harga * jumlah;
+
+						$(`#mytable tbody`).append(
+							`<tr><td>${kode}</td><td>${nama}</td><td>${satuan}</td><td>${harga}</td><td>${jumlah}</td><td>${totalhrg}</td><td><button id="id${panjang}" class="remove is-danger">X</button></td></tr>`
+						);
+
+						$.fn.hitungTotal("pembelian3", 5);
+						$.fn.clearform();
+					} else {
+						alert("Barang masih kosong");
+					}
+				};
+
+				// munculkan data barang
+				$.fn.getBarang = function () {
+					const barang = {
+						1: { nama: "", satuan: ``, harga: "" },
+						M001: { nama: "VGA", satuan: `pcs`, harga: 4000 },
+						M002: { nama: "RAM", satuan: `pcs`, harga: 800 },
+						M003: { nama: "CPU", satuan: `pcs`, harga: 2000 },
+						M004: { nama: "Monitor", satuan: `pcs`, harga: 1500 },
+					};
+
+					$("#main #formBarang #kodebrg").change(function () {
+						// ambil value (id) dari select
+						let currentSelect = $(this);
+						let id = currentSelect.val();
+
+						$("#nama").val(barang[`${id}`].nama);
+						$("#satuan").val(barang[`${id}`].satuan);
+						$("#harga").val(barang[`${id}`].harga);
+					});
 				};
 
 				// munculkan karyawan dan jabatan
@@ -466,19 +472,15 @@
 						aldi: `Admin`,
 					};
 
-					$("#main form .form #karyawan").change(function () {
+					$("#main #formPembelian #karyawan").change(function () {
 						let currentSelect = $(this);
-						console.log(currentSelect.val());
+						let valueOption = currentSelect.val();
+						$("#jabatan").val(jab[`${valueOption}`]);
 					});
 				};
 
 				// ambil tanggal dari sistem
 				$.fn.getDate = function () {};
-
-				// hitung total barang
-				$.fn.hitungTotal(3);
-				// hitung total harga
-				$.fn.hitungTotal(4);
 
 				// panggil function pindah halaman
 				$.fn.pindahHalaman();

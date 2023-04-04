@@ -1,146 +1,107 @@
-<form>
-	<table
-		class="form"
-		width="80%">
-		<tr>
-			<td align="left">
-				<label for="kode">Kode:</label>
-				<!-- kode berisi format waktu
-                            tahunbulanharijammenitdetik
-                        dikerjakan dengan js
-                        -->
-			</td>
-			<td
-				width="70%"
-				align="left">
-				<input
-					type="text"
-					id="kode"
-					readonly />
-			</td>
+<!-- Tabel Detail  -->
+<table
+	width="100%"
+	height="100"
+	align="0 auto"
+	class="table"
+	id="mytable">
+	<caption>
+		Tabel Detail
+	</caption>
+	<thead>
+		<tr bgcolor="#345273">
+			<th style="width: 30%">Kode</th>
+			<th style="width: 30%">Jumlah</th>
+			<th style="width: 30%">Harga</th>
+			<th style="width: 20%">Action</th>
 		</tr>
+	</thead>
+	<tbody>
 		<tr>
-			<td>
-				<label for="tgl">Tanggal:</label>
-				<!-- dikerjakan dengan js -->
-			</td>
-			<td>
-				<input
-					type="text"
-					id="tgl"
-					readonly />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label for="konsumen">Konsumen:</label>
-			</td>
-			<td>
-				<input
-					type="text"
-					id="konsumen" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label for="karyawan">Karyawan:</label>
-			</td>
-			<td>
-				<select
-					name="karyawan"
-					id="karyawan">
-					<option value="dika">Dika</option>
-					<option value="santoso">Santoso</option>
-					<option value="aldi">Aldi</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label for="jabatan">Jabatan:</label>
-			</td>
-			<td>
-				<input
-					type="text"
-					name="jabatan"
-					id="jabatan"
-					readonly />
-			</td>
-		</tr>
-	</table>
-	<br />
-	<table
-		class="form"
-		width="95%">
-		<tr>
-			<td>
-				<label for="kodebrg">Kode Barang</label><br />
-				<select
-					name="kodebrg"
-					id="kodebrg">
-					<option value="M001">M001</option>
-					<option value="M002">M002</option>
-					<option value="M003">M003</option>
-					<option value="M004">M004</option>
-				</select>
-			</td>
-			<td>
-				<label for="nama">Nama</label><br />
-				<input
-					type="text"
-					name="nama"
-					id="nama"
-					readonly />
-			</td>
-			<td>
-				<label for="satuan">Satuan</label><br />
-				<input
-					type="text"
-					name="satuan"
-					id="satuan"
-					readonly />
-			</td>
-			<td>
-				<label for="harga">Harga</label><br />
-				<input
-					type="text"
-					name="harga"
-					id="harga"
-					readonly />
-			</td>
-			<td>
-				<label for="jumlah">Jumlah</label><br />
-				<input
-					type="text"
-					name="jumlah"
-					id="jumlah" />
-			</td>
-			<td>
+			<td>20231201101010</td>
+			<td>4</td>
+			<td>4000</td>
+			<td align="right">
+				<!-- <a href="view.html">
+									<button
+										type="submit"
+										class="is-info">
+										V
+									</button>
+								</a>
+								<a href="update.html">
+									<button
+										type="submit"
+										class="is-info">
+										U
+									</button>
+								</a> -->
 				<button
-					type="button"
-					id="save">
-					Save
+					type="reset"
+					class="is-danger"
+					id="deleteCell">
+					X
 				</button>
 			</td>
 		</tr>
-	</table>
-</form>
-
-<br />
-<table
-	class="table"
-	id="mytable"
-	border="1">
-	<tr style="background-color: #485fc7">
-		<th>Kode</th>
-		<th>Nama</th>
-		<th>Satuan</th>
-		<th>Harga</th>
-		<th>Jumlah</th>
-		<th>Total</th>
-		<th>Action</th>
-	</tr>
+		<tr>
+			<td>20231201302010</td>
+			<td>15</td>
+			<td>2000</td>
+			<td align="right">
+				<!-- <a href="view.html">
+									<button
+										type="submit"
+										class="is-info">
+										V
+									</button>
+								</a>
+								<a href="update.html">
+									<button
+										type="submit"
+										class="is-info">
+										U
+									</button>
+								</a> -->
+				<button
+					type="reset"
+					class="is-danger"
+					id="deleteCell">
+					X
+				</button>
+			</td>
+		</tr>
+		<tr>
+			<td>20231201111213</td>
+			<td>40</td>
+			<td>1500</td>
+			<td align="right">
+				<!-- <a href="view.html">
+									<button
+										type="submit"
+										class="is-info">
+										V
+									</button>
+								</a>
+								<a href="update.html">
+									<button
+										type="submit"
+										class="is-info">
+										U
+									</button>
+								</a> -->
+				<button
+					type="reset"
+					class="is-danger"
+					id="deleteCell">
+					X
+				</button>
+			</td>
+		</tr>
+		<tr id="totalCell">
+			<td>Total</td>
+			<td id="totalbrg">0</td>
+			<td id="totalhrg">0</td>
+		</tr>
+	</tbody>
 </table>
-<br />
-<label for="total">Total: </label>
-<label id="total">0</label>
