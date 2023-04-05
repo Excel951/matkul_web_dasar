@@ -263,13 +263,13 @@
 			<h1>Toko</h1>
 			<div class="topnav">
 				<a
-					id="barang"
+					id="barangNav"
 					class="linav"
 					href="../tugas1/tugas1.html"
 					>Barang</a
 				>
 				<a
-					id="supplier"
+					id="supplierNav"
 					class="linav"
 					href="../tugas3/tugas3.html"
 					>Supplier</a
@@ -282,7 +282,7 @@
 				>
 				<a
 					href="../tugas4/penjualan1.html"
-					id="penjualan"
+					id="penjualanNav"
 					class="linav"
 					>Penjualan</a
 				>
@@ -331,6 +331,7 @@
 								$("#save").click(function () {
 									$.fn.saveBarang();
 								});
+								$.fn.getSupplier();
 							});
 						} else if (event.target.id === "btnRekap") {
 							$("#main").load("./pembelian1.html", function () {
@@ -349,6 +350,8 @@
 						} else if (event.target.className === "view is-info") {
 							$("#main").load("./pembelian4.html", function () {
 								$.fn.ambilWaktu();
+								$.fn.getJabatan();
+								$.fn.getSupplier();
 							});
 						}
 					});
@@ -379,6 +382,21 @@
 						$("#total").text(total);
 					} else if (file === "pembelian4") {
 					}
+				};
+
+				// fungsi pada halaman pembelian4 (detail)
+				$.fn.getSupplier = function () {
+					const supp = {
+						pny: { telp: "085783453240", alamat: "Surabaya" },
+						lenovo: { telp: "085734852940", alamat: "Jakarta" },
+					};
+
+					$("#main #formPembelian #supplier").change(function () {
+						let currentSelect = $(this);
+						let valueOption = currentSelect.val();
+						$("#telp").val(supp[`${valueOption}`].telp);
+						$("#alamat").val(supp[`${valueOption}`].alamat);
+					});
 				};
 
 				// fungsi pada halaman pembelian3 (form pembelian)

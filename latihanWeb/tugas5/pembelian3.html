@@ -10,7 +10,9 @@
 		id="formPembelian"
 		width="80%">
 		<tr>
-			<td align="left">
+			<td
+				align="left"
+				width="10%">
 				<label for="kode">Kode:</label>
 				<!-- kode berisi format waktu
                             tahunbulanharijammenitdetik
@@ -18,12 +20,29 @@
                         -->
 			</td>
 			<td
-				width="70%"
+				width="40%"
 				align="left">
 				<input
 					type="text"
 					id="kode"
 					readonly />
+			</td>
+			<td
+				width="10%"
+				align="left">
+				<label for="karyawan">Karyawan: </label>
+			</td>
+			<td
+				width="40%"
+				align="left">
+				<select
+					name="karyawan"
+					id="karyawan">
+					<option value="1">Pilih Karyawan</option>
+					<option value="dika">Dika</option>
+					<option value="santoso">Santoso</option>
+					<option value="aldi">Aldi</option>
+				</select>
 			</td>
 		</tr>
 		<tr>
@@ -37,41 +56,50 @@
 					id="tgl"
 					readonly />
 			</td>
+			<td><label for="jabatan">Jabatan: </label></td>
+			<td>
+				<input
+					type="text"
+					name="jabatan"
+					id="jabatan"
+					readonly />
+			</td>
 		</tr>
 		<tr>
 			<td>
 				<label for="supplier">Supplier:</label>
 			</td>
 			<td>
-				<input
-					type="text"
-					id="supplier" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<label for="karyawan">Karyawan:</label>
-			</td>
-			<td>
 				<select
-					name="karyawan"
-					id="karyawan">
-					<option value="1">Pilih Karyawan</option>
-					<option value="dika">Dika</option>
-					<option value="santoso">Santoso</option>
-					<option value="aldi">Aldi</option>
+					name="supplier"
+					id="supplier">
+					<option value="1">Pilih Supplier</option>
+					<option value="pny">PT. PNY Indonesia</option>
+					<option value="lenovo">PT. Lenovo Indonesia</option>
 				</select>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<label for="jabatan">Jabatan:</label>
+				<label for="telp">Telepon:</label>
 			</td>
 			<td>
 				<input
 					type="text"
-					name="jabatan"
-					id="jabatan"
+					name="telp"
+					id="telp"
+					readonly />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="alamat">Alamat:</label>
+			</td>
+			<td>
+				<input
+					type="text"
+					name="alamat"
+					id="alamat"
 					readonly />
 			</td>
 		</tr>
