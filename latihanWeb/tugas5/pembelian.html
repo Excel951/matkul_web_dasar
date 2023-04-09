@@ -402,23 +402,18 @@
 				// fungsi pada halaman pembelian3 (form pembelian)
 				// ambil waktu untuk kode pembelian dan tanggal
 				$.fn.ambilWaktu = function () {
-					// let dates = new Date();
-					// let year = dates.getFullYear();
-					// let month = dates.getMonth() + 1;
-					// let date = dates.getDate();
-					// let hour = dates.getHours();
-					// let minute = dates.getMinutes();
-					// let seconds = dates.getSeconds();
+					let dates = new Date();
+					let year = dates.getFullYear();
+					let month = dates.getMonth() + 1;
+					let date = dates.getDate();
+					let hour = dates.getHours();
+					let minute = dates.getMinutes();
+					let seconds = dates.getSeconds();
 
-					$("#formPembelian #kode")
-						.val
-						// kodeTgl.setKode
-						// `${year}${month}${date}${hour}${minute}${seconds}`
-						();
-					$("#formPembelian #tgl")
-						.val
-						// dates.toLocaleDateString()
-						();
+					$("#formPembelian #kode").val(
+						`${year}${month}${date}${hour}${minute}${seconds}`()
+					);
+					$("#formPembelian #tgl").val(dates.toLocaleDateString());
 				};
 
 				// fungsi membersihkan form
