@@ -317,7 +317,18 @@
 		<footer>Ini Footer</footer>
 		<script>
 			$(document).ready(function () {
-				// fungsi pada halaman master
+				// object
+				const barang = {
+					1: { nama: "", satuan: ``, harga: "" },
+					M001: { nama: "VGA", satuan: `pcs`, harga: 4000 },
+					M002: { nama: "RAM", satuan: `pcs`, harga: 800 },
+					M003: { nama: "CPU", satuan: `pcs`, harga: 2000 },
+					M004: { nama: "Monitor", satuan: `pcs`, harga: 1500 },
+				};
+				const supp = {
+					pny: { telp: "085783453240", alamat: "Surabaya" },
+					lenovo: { telp: "085734852940", alamat: "Jakarta" },
+				};
 
 				// fungsi untuk berpindah halaman
 				$.fn.pindahHalaman = function () {
@@ -386,10 +397,10 @@
 
 				// fungsi pada halaman pembelian4 (detail)
 				$.fn.getSupplier = function () {
-					const supp = {
-						pny: { telp: "085783453240", alamat: "Surabaya" },
-						lenovo: { telp: "085734852940", alamat: "Jakarta" },
-					};
+					// const supp = {
+					// 	pny: { telp: "085783453240", alamat: "Surabaya" },
+					// 	lenovo: { telp: "085734852940", alamat: "Jakarta" },
+					// };
 
 					$("#main #formPembelian #supplier").change(function () {
 						let currentSelect = $(this);
@@ -411,7 +422,7 @@
 					let seconds = dates.getSeconds();
 
 					$("#formPembelian #kode").val(
-						`${year}${month}${date}${hour}${minute}${seconds}`()
+						`${year}${month}${date}${hour}${minute}${seconds}`
 					);
 					$("#formPembelian #tgl").val(dates.toLocaleDateString());
 				};
@@ -463,13 +474,13 @@
 
 				// munculkan data barang
 				$.fn.getBarang = function () {
-					const barang = {
-						1: { nama: "", satuan: ``, harga: "" },
-						M001: { nama: "VGA", satuan: `pcs`, harga: 4000 },
-						M002: { nama: "RAM", satuan: `pcs`, harga: 800 },
-						M003: { nama: "CPU", satuan: `pcs`, harga: 2000 },
-						M004: { nama: "Monitor", satuan: `pcs`, harga: 1500 },
-					};
+					// const barang = {
+					// 	1: { nama: "", satuan: ``, harga: "" },
+					// 	M001: { nama: "VGA", satuan: `pcs`, harga: 4000 },
+					// 	M002: { nama: "RAM", satuan: `pcs`, harga: 800 },
+					// 	M003: { nama: "CPU", satuan: `pcs`, harga: 2000 },
+					// 	M004: { nama: "Monitor", satuan: `pcs`, harga: 1500 },
+					// };
 
 					$("#main #formBarang #kodebrg").change(function () {
 						// ambil value (id) dari select
