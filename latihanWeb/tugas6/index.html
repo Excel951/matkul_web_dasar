@@ -17,107 +17,186 @@
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 			crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 		<title>Master Toko</title>
 	</head>
 	<body>
-		<div class="container text-center">
-			<div class="row">
-				<div class="columns"></div>
-				<div class="columns">
-					<h1 class="h1">Toko</h1>
+		<header>
+			<div class="container text-center">
+				<div class="row">
+					<div class="columns"></div>
+					<div class="columns">
+						<h1 class="h1">Toko</h1>
+					</div>
+					<div class="columns"></div>
 				</div>
-				<div class="columns"></div>
 			</div>
-		</div>
-		<nav class="navbar navbar-expand-lg bg-body-tertiary">
-			<div class="container-fluid">
-				<button
-					class="navbar-toggler"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarNavDropdown"
-					aria-controls="navbarNavDropdown"
-					aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="container text-center">
-					<div class="row">
-						<div class="columns"></div>
-						<div
-							class="collapse navbar-collapse columns"
-							id="navbarNavDropdown">
-							<ul class="navbar-nav">
-								<li class="nav-item dropdown">
-									<a
-										class="nav-link dropdown-toggle"
-										href=""
-										role="button"
-										data-bs-toggle="dropdown"
-										aria-expanded="false">
-										Master
-									</a>
-									<ul class="dropdown-menu">
-										<li>
-											<a
-												class="dropdown-item"
-												href="#"
-												>Barang</a
-											>
-										</li>
-										<li>
-											<a
-												class="dropdown-item"
-												href="#"
-												>Supplier</a
-											>
-										</li>
-										<li>
-											<a
-												class="dropdown-item"
-												href="#"
-												>Karyawan</a
-											>
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<ul class="navbar-nav">
-								<li class="nav-item dropdown">
-									<a
-										class="nav-link dropdown-toggle"
-										href=""
-										role="button"
-										data-bs-toggle="dropdown"
-										aria-expanded="false">
-										Transaksi
-									</a>
-									<ul class="dropdown-menu">
-										<li>
-											<a
-												class="dropdown-item"
-												href="#"
-												>Penjualan</a
-											>
-										</li>
-										<li>
-											<a
-												class="dropdown-item"
-												href="#"
-												>Pembelian</a
-											>
-										</li>
-									</ul>
-								</li>
-							</ul>
+			<nav class="navbar navbar-expand-lg bg-body-tertiary">
+				<div class="container-fluid">
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarNavDropdown"
+						aria-controls="navbarNavDropdown"
+						aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="container text-center">
+						<div class="row">
+							<div class="columns"></div>
+							<div
+								class="collapse navbar-collapse columns"
+								id="navbarNavDropdown">
+								<ul class="navbar-nav">
+									<li class="nav-item dropdown">
+										<a
+											class="nav-link dropdown-toggle"
+											role="button"
+											data-bs-toggle="dropdown"
+											aria-expanded="false">
+											Master
+										</a>
+										<ul class="dropdown-menu">
+											<li>
+												<a
+													id="navBarang"
+													class="dropdown-item"
+													>Barang</a
+												>
+											</li>
+											<li>
+												<a
+													id="navSupplier"
+													class="dropdown-item"
+													>Supplier</a
+												>
+											</li>
+											<li>
+												<a
+													id="navKaryawan"
+													class="dropdown-item"
+													>Karyawan</a
+												>
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="navbar-nav">
+									<li class="nav-item dropdown">
+										<a
+											class="nav-link dropdown-toggle"
+											href=""
+											role="button"
+											data-bs-toggle="dropdown"
+											aria-expanded="false">
+											Transaksi
+										</a>
+										<ul class="dropdown-menu">
+											<li>
+												<a
+													id="navPenjualan"
+													class="dropdown-item"
+													>Penjualan</a
+												>
+											</li>
+											<li>
+												<a
+													id="navPembelian"
+													class="dropdown-item"
+													>Pembelian</a
+												>
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<ul class="navbar-nav">
+									<li class="nav-item dropdown">
+										<a
+											class="nav-link dropdown-toggle"
+											href=""
+											role="button"
+											data-bs-toggle="dropdown"
+											aria-expanded="false">
+											Laporan
+										</a>
+										<ul class="dropdown-menu">
+											<li>
+												<a
+													id="navLabaRugi"
+													class="dropdown-item"
+													>Laba Rugi</a
+												>
+											</li>
+											<li>
+												<a
+													id="navStok"
+													class="dropdown-item"
+													>Stok</a
+												>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="columns"></div>
 						</div>
-						<div class="columns"></div>
 					</div>
 				</div>
-			</div>
-		</nav>
-		<div id="main"></div>
+			</nav>
+		</header>
+		<main class=""></main>
 
-		<script></script>
+		<script>
+			$(document).ready(function () {
+				$.fn.pindahHalamanIndex = function () {
+					$("header #navbarNavDropdown").click(function (event) {
+						if (event.target.id === "navBarang") {
+							$("main").load("./tugas1/tugas1.html div", function () {});
+						}
+					});
+				};
+
+				$.fn.pindahHalamanPembelian = function () {
+					$("main").click(function (event) {
+						if (event.target.id === "btnPlus") {
+							$("#main").load("./tugas5/pembelian3.html", function () {
+								$.fn.getJabatan();
+								$.fn.getBarang();
+								$.fn.removeBarang();
+								$.fn.ambilWaktu();
+								$("#save").click(function () {
+									$.fn.saveBarang();
+								});
+								$.fn.getSupplier();
+							});
+						} else if (event.target.id === "btnRekap") {
+							$("#main").load("./tugas5/pembelian1.html", function () {
+								// hitung total barang
+								$.fn.hitungTotal("pembelian1", 3);
+								// hitung total harga
+								$.fn.hitungTotal("pembelian1", 4);
+							});
+						} else if (event.target.id === "btnDetail") {
+							$("#main").load("./tugas5/pembelian2.html", function () {
+								// hitung total barang
+								$.fn.hitungTotal("pembelian2", 1);
+								// hitung total harga
+								$.fn.hitungTotal("pembelian2", 2);
+							});
+						} else if (event.target.className === "view is-info") {
+							$("#main").load("./tugas5/pembelian4.html", function () {
+								$.fn.ambilWaktu();
+								$.fn.getJabatan();
+								$.fn.getSupplier();
+							});
+						}
+					});
+				};
+
+				$.fn.pindahHalamanIndex();
+			});
+		</script>
 	</body>
 </html>
