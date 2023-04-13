@@ -10,13 +10,8 @@
 			content="width=device-width, initial-scale=1.0" />
 		<link
 			href="../../bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-			crossorigin="anonymous" />
-		<script
-			src="../../bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-			crossorigin="anonymous"></script>
+			rel="stylesheet" />
+		<script src="../../bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 		<title>Master Toko</title>
 	</head>
@@ -63,6 +58,7 @@
 												<a
 													id="navBarang"
 													class="dropdown-item"
+													href="#"
 													>Barang</a
 												>
 											</li>
@@ -70,13 +66,16 @@
 												<a
 													id="navSupplier"
 													class="dropdown-item"
+													href="#"
 													>Supplier</a
 												>
 											</li>
 											<li>
 												<a
 													id="navKaryawan"
+													href=""
 													class="dropdown-item"
+													href="#"
 													>Karyawan</a
 												>
 											</li>
@@ -98,6 +97,7 @@
 												<a
 													id="navPenjualan"
 													class="dropdown-item"
+													href="#"
 													>Penjualan</a
 												>
 											</li>
@@ -105,6 +105,7 @@
 												<a
 													id="navPembelian"
 													class="dropdown-item"
+													href="#"
 													>Pembelian</a
 												>
 											</li>
@@ -126,6 +127,7 @@
 												<a
 													id="navLabaRugi"
 													class="dropdown-item"
+													href="#"
 													>Laba Rugi</a
 												>
 											</li>
@@ -133,6 +135,7 @@
 												<a
 													id="navStok"
 													class="dropdown-item"
+													href="#"
 													>Stok</a
 												>
 											</li>
@@ -146,7 +149,7 @@
 				</div>
 			</nav>
 		</header>
-		<main class=""></main>
+		<main class="container-fluid"></main>
 
 		<script>
 			$(document).ready(function () {
@@ -154,7 +157,20 @@
 					$("header #navbarNavDropdown").click(function (event) {
 						if (event.target.id === "navBarang") {
 							$("main").load("./tugas1/tugas1.html div", function () {});
+						} else if (event.target.id === "navKaryawan") {
+							$("main").load("./tugas2/tugas2.html div", function () {});
+						} else if (event.target.id === "navSupplier") {
+							$("main").load("./tugas3/tugas3.html div", function () {});
 						}
+						//else if (event.target.id === "navBarang") {
+						// 	$("main").load("./tugas1/tugas1.html div", function () {});
+						// } else if (event.target.id === "navSupplier") {
+						// 	$("main").load("./tugas2/tugas2.html div", function () {});
+						// } else if (event.target.id === "navKaryawan") {
+						// 	$("main").load("./tugas3/tugas3.html div", function () {});
+						// } else if (event.target.id === "navKaryawan") {
+						// 	$("main").load("./tugas3/tugas3.html div", function () {});
+						// }
 					});
 				};
 
