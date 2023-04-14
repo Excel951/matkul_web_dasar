@@ -8,175 +8,124 @@
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1.0" />
-		<title>Login Page</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+			crossorigin="anonymous" />
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+			crossorigin="anonymous"></script>
 		<style>
-			@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap");
+			.gradient-custom {
+				/* fallback for old browsers */
+				background: #6a11cb;
 
-			* {
-				margin: 0;
-				padding: 0;
-				font-family: "Raleway", sans-serif;
-			}
+				/* Chrome 10-25, Safari 5.1-6 */
+				background: -webkit-linear-gradient(
+					to right,
+					rgba(106, 17, 203, 1),
+					rgba(37, 117, 252, 1)
+				);
 
-			section {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				background: url("../../img/john-lee-oMneOBYhJxY-unsplash.jpg");
-				min-height: 100vh;
-				width: 100%;
-				background-position: center;
-				background-size: cover;
-			}
-
-			.form-box {
-				position: relative;
-				width: 400px;
-				height: 450px;
-				background: transparent;
-				border: 2px solid rgba(255, 255, 255, 0.5);
-				border-radius: 20px;
-				backdrop-filter: blur(15px);
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-
-			h2 {
-				font-size: 2em;
-				color: black;
-				text-align: center;
-			}
-
-			.inputbox {
-				position: relative;
-				margin: 30px 0;
-				width: 310px;
-				border-bottom: 2px solid black;
-			}
-
-			.inputbox label {
-				position: absolute;
-				top: 0%;
-				left: 5px;
-				transform: translateY(-50%);
-				color: black;
-				font-size: 1em;
-				pointer-events: none;
-				transition: 0.5s ease-in-out;
-			}
-
-			input:focus ~ label,
-			input:valid ~ label {
-				top: -5px;
-			}
-
-			.inputbox input {
-				width: 100%;
-				height: 50px;
-				background: transparent;
-				border: none;
-				outline: none;
-				font-size: 1em;
-				padding: 0px 35px 0px 5px;
-				color: black;
-			}
-
-			.inputbox ion-icon {
-				position: absolute;
-				right: 8px;
-				color: black;
-				font-size: 1.2em;
-				top: 20px;
-			}
-
-			.forget {
-				margin: -15px 0 15px;
-				font-size: 0.9em;
-				color: black;
-				display: flex;
-				justify-content: center;
-			}
-
-			.forget label input {
-				margin-right: 3px;
-			}
-
-			.forget label a {
-				color: black;
-				text-decoration: none;
-			}
-
-			.forget label a:hover {
-				text-decoration: underline;
-			}
-
-			button {
-				transition: background 0.5s, color 0.5s ease-in-out;
-				width: 100%;
-				height: 40px;
-				border-radius: 40px;
-				background: #fff;
-				color: black;
-				border: none;
-				outline: none;
-				cursor: pointer;
-				font-size: 1em;
-				font-weight: 600;
-			}
-
-			button:hover {
-				transition: background-color 0.5s, color 0.5s ease-in-out;
-				background: #530101;
-				color: white;
-			}
-
-			.register {
-				font-size: 0.9em;
-				color: black;
-				text-align: center;
-				margin: 25px 0 10px;
-			}
-
-			.register p a {
-				text-decoration: none;
-				color: black;
-				font-weight: 600;
-			}
-
-			.register p a:hover {
-				text-decoration: underline;
+				/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+				background: linear-gradient(
+					to right,
+					rgba(106, 17, 203, 1),
+					rgba(37, 117, 252, 1)
+				);
 			}
 		</style>
+		<title>Login Page</title>
 	</head>
 	<body>
-		<section>
-			<div class="form-box">
-				<div class="form-value">
-					<form>
-						<h2>Login</h2>
-						<div class="inputbox">
-							<label for="username">Username</label>
-							<input
-								type="text"
-								name="username"
-								id="username"
-								required />
+		<section class="vh-100 gradient-custom">
+			<div class="container py-5 h-100">
+				<div class="row d-flex justify-content-center align-items-center h-100">
+					<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+						<div
+							class="card bg-dark text-white"
+							style="border-radius: 1rem">
+							<div class="card-body p-5 text-center">
+								<div class="mb-md-5 mt-md-4 pb-5">
+									<h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+									<p class="text-white-50 mb-5">
+										Please enter your login and password!
+									</p>
+
+									<div class="form-outline form-white mb-4">
+										<input
+											type="text"
+											id="username"
+											class="form-control form-control-lg" />
+										<label
+											class="form-label"
+											for="username"
+											>Username</label
+										>
+									</div>
+
+									<div class="form-outline form-white mb-4">
+										<input
+											type="password"
+											id="password"
+											class="form-control form-control-lg" />
+										<label
+											class="form-label"
+											for="password"
+											>Password</label
+										>
+									</div>
+
+									<p class="small mb-5 pb-lg-2">
+										<a
+											class="text-white-50"
+											href="#!"
+											>Forgot password?</a
+										>
+									</p>
+
+									<button
+										id="loginBtn"
+										class="btn btn-outline-light btn-lg px-5"
+										type="submit">
+										Login
+									</button>
+
+									<div
+										class="d-flex justify-content-center text-center mt-4 pt-1">
+										<a
+											href="#!"
+											class="text-white"
+											><i class="fab fa-facebook-f fa-lg"></i
+										></a>
+										<a
+											href="#!"
+											class="text-white"
+											><i class="fab fa-twitter fa-lg mx-4 px-2"></i
+										></a>
+										<a
+											href="#!"
+											class="text-white"
+											><i class="fab fa-google fa-lg"></i
+										></a>
+									</div>
+								</div>
+
+								<div>
+									<p class="mb-0">
+										Don't have an account?
+										<a
+											href="#!"
+											class="text-white-50 fw-bold"
+											>Sign Up</a
+										>
+									</p>
+								</div>
+							</div>
 						</div>
-						<div class="inputbox">
-							<label for="password">Password</label>
-							<input
-								type="password"
-								name="password"
-								id="password"
-								required />
-						</div>
-						<button
-							id="loginBtn"
-							type="submit">
-							Login
-						</button>
-					</form>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -202,24 +151,32 @@
 				const valueUsername = username.value;
 				const valuePassword = password.value;
 
-				if (valueUsername === "" || valuePassword === "") {
-					console.log(`Tolong isi username dan password`);
-					window.alert(`Tolong isi username dan password`);
+				if (valueUsername === "") {
+					window.alert(`Tolong isi username`);
+					password.value = "";
+					return;
+				} else if (valuePassword === "") {
+					window.alert(`Tolong isi password`);
+					username.value = "";
 					return;
 				}
 
-				// if()dataUsername.findIndex(e=>e.username===valueUsername);
-				// for (let data of dataUsername) {
-				// 	if (data.username === valueUsername) {
-				// 		if (data.password === valuePassword) {
-				// 			window.alert(`Berhasil Login`);
-				// 			i++;
-				// 		} else {
-				// 			window.alert(`Maaf password salah`);
-				// 			i++;
-				// 		}
-				// 	}
-				// }
+				const usernamearr = [];
+				const passwordarr = [];
+				for (let data of dataUsername) {
+					usernamearr.push(data.username);
+					passwordarr.push(data.password);
+				}
+				if (usernamearr.includes(valueUsername)) {
+					const indexusername = usernamearr.indexOf(valueUsername);
+					if (passwordarr.indexOf(valuePassword) === indexusername) {
+						window.alert(`Berhasil Login`);
+					} else {
+						window.alert(`Maaf password salah`);
+					}
+				} else {
+					window.alert("Maaf username tidak terdaftar");
+				}
 
 				username.value = "";
 				password.value = "";

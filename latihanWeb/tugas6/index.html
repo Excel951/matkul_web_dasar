@@ -13,6 +13,11 @@
 			rel="stylesheet" />
 		<script src="../../bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<style>
+			#navbarNavDropdown .navbar-nav .dropdown-item:hover {
+				cursor: pointer;
+			}
+		</style>
 		<title>Master Toko</title>
 	</head>
 	<body>
@@ -58,7 +63,6 @@
 												<a
 													id="navBarang"
 													class="dropdown-item"
-													href="#"
 													>Barang</a
 												>
 											</li>
@@ -66,16 +70,13 @@
 												<a
 													id="navSupplier"
 													class="dropdown-item"
-													href="#"
 													>Supplier</a
 												>
 											</li>
 											<li>
 												<a
 													id="navKaryawan"
-													href=""
 													class="dropdown-item"
-													href="#"
 													>Karyawan</a
 												>
 											</li>
@@ -97,7 +98,6 @@
 												<a
 													id="navPenjualan"
 													class="dropdown-item"
-													href="#"
 													>Penjualan</a
 												>
 											</li>
@@ -105,7 +105,6 @@
 												<a
 													id="navPembelian"
 													class="dropdown-item"
-													href="#"
 													>Pembelian</a
 												>
 											</li>
@@ -127,7 +126,6 @@
 												<a
 													id="navLabaRugi"
 													class="dropdown-item"
-													href="#"
 													>Laba Rugi</a
 												>
 											</li>
@@ -135,7 +133,6 @@
 												<a
 													id="navStok"
 													class="dropdown-item"
-													href="#"
 													>Stok</a
 												>
 											</li>
@@ -156,21 +153,34 @@
 				$.fn.pindahHalamanIndex = function () {
 					$("header #navbarNavDropdown").click(function (event) {
 						if (event.target.id === "navBarang") {
-							$("main").load("./tugas1/tugas1.html div", function () {});
+							$("main").load("./tugas1/tugas1.html span", function () {
+								$("#btnAddBarang").click(function () {});
+								$("#mytable").on("click", ".update", function () {
+									$("#staticBackdrop .modal-content .modal-header")
+										.find("h1")
+										.text("Update Barang");
+									const el = $(this).closest("tr").find("td");
+									const kode = el[0].innerHTML;
+									const gol = el[1].innerHTML;
+									const nama = el[2].innerHTML;
+									const sat = el[3].innerHTML;
+									const hrg = el[4].innerHTML;
+									setTimeout(() => {
+										$(".modal-content .modal-body #kode").val = kode;
+									}, 1000);
+									console.log(el);
+									console.log(kode, gol, nama, sat, hrg);
+								});
+							});
 						} else if (event.target.id === "navKaryawan") {
-							$("main").load("./tugas2/tugas2.html div", function () {});
+							$("main").load("./tugas2/tugas2.html span", function () {});
 						} else if (event.target.id === "navSupplier") {
-							$("main").load("./tugas3/tugas3.html div", function () {});
+							$("main").load("./tugas3/tugas3.html span", function () {});
+						} else if (event.target.id === "navPenjualan") {
+							$("main").load("./tugas4/penjualan1.html span", function () {});
+						} else if (event.target.id === "navPembelian") {
+							$("main").load("./tugas5/pembelian.html span", function () {});
 						}
-						//else if (event.target.id === "navBarang") {
-						// 	$("main").load("./tugas1/tugas1.html div", function () {});
-						// } else if (event.target.id === "navSupplier") {
-						// 	$("main").load("./tugas2/tugas2.html div", function () {});
-						// } else if (event.target.id === "navKaryawan") {
-						// 	$("main").load("./tugas3/tugas3.html div", function () {});
-						// } else if (event.target.id === "navKaryawan") {
-						// 	$("main").load("./tugas3/tugas3.html div", function () {});
-						// }
 					});
 				};
 

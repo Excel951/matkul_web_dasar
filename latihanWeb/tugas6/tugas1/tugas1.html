@@ -11,115 +11,237 @@
 		<title>Master Barang (Tugas 1)</title>
 	</head>
 	<body>
-		<div>
-			<a href="insert.html">
-				<button class="button is-primary">+</button>
-			</a>
-			<table
-				width="100%"
-				height="100"
-				align="0 auto">
-				<caption>
-					Master Barang
-				</caption>
-				<thead bgcolor="#345273">
-					<th style="width: 15%">Kode</th>
-					<th style="width: 15%">Golongan</th>
-					<th style="width: 40%">Nama</th>
-					<th style="width: 10%">Satuan</th>
-					<th style="width: 10%">Harga</th>
-					<th style="width: 40%">Action</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td>M001</td>
-						<td>Komputer</td>
-						<td>VGA</td>
-						<td>pcs</td>
-						<td>4000</td>
-						<td class="action">
-							<a href="update.html">
+		<span class="container-fluid d-block mx-0 my-3">
+			<div class="container-fluid mt-3">
+				<h3 class="h3 text-center">Master Barang</h3>
+				<button
+					class="btn btn-secondary"
+					data-bs-toggle="modal"
+					data-bs-target="#staticBackdrop"
+					id="btnAddBarang">
+					+
+				</button>
+			</div>
+			<div class="container-fluid">
+				<table
+					id="mytable"
+					class="table mt-3"
+					width="100%"
+					height="100"
+					align="0 auto">
+					<thead bgcolor="#345273">
+						<th style="width: 15%">Kode</th>
+						<th style="width: 15%">Golongan</th>
+						<th style="width: 40%">Nama</th>
+						<th style="width: 10%">Satuan</th>
+						<th style="width: 10%">Harga</th>
+						<th style="width: 40%">Action</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>M001</td>
+							<td>Komputer</td>
+							<td>VGA</td>
+							<td>pcs</td>
+							<td>4000</td>
+							<td class="action">
 								<button
 									type="submit"
-									class="button is-info">
+									data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop"
+									class="btn btn-info update">
 									U
 								</button>
-							</a>
-							<a href="">
 								<button
 									type="reset"
-									class="button is-danger">
+									data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop"
+									class="btn btn-danger remove">
 									X
 								</button>
-							</a>
-						</td>
-					</tr>
-					<tr>
-						<td>M002</td>
-						<td>Komputer</td>
-						<td>RAM</td>
-						<td>pcs</td>
-						<td>800</td>
-						<td class="action">
-							<a href="update.html">
+							</td>
+						</tr>
+						<tr>
+							<td>M002</td>
+							<td>Komputer</td>
+							<td>RAM</td>
+							<td>pcs</td>
+							<td>800</td>
+							<td class="action">
 								<button
 									type="submit"
-									class="button is-info">
+									data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop"
+									class="btn btn-info update">
 									U
 								</button>
-							</a>
-							<button
-								type="reset"
-								class="button is-danger">
-								X
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<td>M003</td>
-						<td>Komputer</td>
-						<td>CPU</td>
-						<td>pcs</td>
-						<td>2000</td>
-						<td class="action">
-							<a href="update.html">
+								<button
+									type="reset"
+									data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop"
+									class="btn btn-danger remove">
+									X
+								</button>
+							</td>
+						</tr>
+						<tr>
+							<td>M003</td>
+							<td>Komputer</td>
+							<td>CPU</td>
+							<td>pcs</td>
+							<td>2000</td>
+							<td class="action">
 								<button
 									type="submit"
-									class="button is-info">
+									data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop"
+									class="btn btn-info update">
 									U
 								</button>
-							</a>
-							<button
-								type="reset"
-								class="button is-danger">
-								X
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<td>M004</td>
-						<td>Komputer</td>
-						<td>Monitor</td>
-						<td>pcs</td>
-						<td>1500</td>
-						<td class="action">
-							<a href="update.html">
+								<button
+									type="reset"
+									data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop"
+									class="btn btn-danger remove">
+									X
+								</button>
+							</td>
+						</tr>
+						<tr>
+							<td>M004</td>
+							<td>Komputer</td>
+							<td>Monitor</td>
+							<td>pcs</td>
+							<td>1500</td>
+							<td class="action">
 								<button
 									type="submit"
-									class="button is-info">
+									data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop"
+									class="btn btn-info update">
 									U
 								</button>
-							</a>
+								<button
+									type="reset"
+									data-bs-toggle="modal"
+									data-bs-target="#staticBackdrop"
+									class="btn btn-danger remove">
+									X
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- =================== MODAL INSERT & UPDATE ======================== -->
+			<div
+				class="modal fade"
+				id="staticBackdrop"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				tabindex="-1"
+				aria-labelledby="staticBackdropLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+					<div class="modal-content">
+						<div
+							class="modal-header"
+							id="staticBackdropLabel">
+							<h1>Tambah Barang</h1>
+						</div>
+						<div class="modal-body">
+							<form
+								action="tugas1.html"
+								target="_blank"
+								method="post"
+								autocomplete="on">
+								<div class="mb-3">
+									<label
+										for="kode"
+										class="form-label input-group"
+										>Kode:
+									</label>
+									<input
+										type="text"
+										name="kode"
+										id="kode"
+										class="form-control input-group"
+										placeholder="1234" />
+								</div>
+								<div class="mb-3">
+									<label
+										for="nama"
+										class="form-label input-group"
+										>Nama:
+									</label>
+									<input
+										type="text"
+										name="nama"
+										id="nama"
+										class="form-control input-group"
+										placeholder="Komputer" />
+								</div>
+								<div class="mb-3">
+									<label
+										for="gol"
+										class="form-label input-group"
+										>Golongan:
+									</label>
+									<select
+										class="select form-select input-group"
+										name="gol"
+										id="gol">
+										<option value="null">Pilih Golongan</option>
+										<option value="Komputer">Komputer</option>
+										<option value="Smartphone">Smartphone</option>
+										<option value="CPU">CPU</option>
+									</select>
+								</div>
+								<div class="mb-3">
+									<label
+										for="satuan"
+										class="form-label input-group"
+										>Satuan</label
+									>
+									<input
+										type="text"
+										name="satuan"
+										id="satuan"
+										class="form-control input-group"
+										placeholder="pcs" />
+								</div>
+								<div class="mb-3">
+									<label
+										for="harga"
+										class="form-label input-group"
+										>Harga</label
+									>
+									<input
+										type="text"
+										name="harga"
+										id="harga"
+										class="form-control input-group"
+										placeholder="1000" />
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
 							<button
-								type="reset"
-								class="button is-danger">
-								X
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal">
+								Close
 							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<footer>Ini Footer</footer>
+							<button
+								type="button"
+								id="btnSaveBarang"
+								class="btn btn-primary">
+								Save
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</span>
 	</body>
 </html>
