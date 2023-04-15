@@ -1,249 +1,396 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			http-equiv="X-UA-Compatible"
-			content="IE=edge" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<title>Master Barang (Tugas 1)</title>
-	</head>
-	<body>
-		<span class="container-fluid d-block mx-0 my-3">
-			<div class="container-fluid mt-3">
-				<h3 class="h3 text-center">Master Barang</h3>
-				<button
-					class="btn btn-secondary"
-					data-bs-toggle="modal"
-					data-bs-target="#staticBackdrop"
-					id="btnAddBarang">
-					+
-				</button>
-			</div>
-			<div class="container-fluid">
-				<table
-					id="mytable"
-					class="table mt-3"
-					width="100%"
-					height="100"
-					align="0 auto">
-					<thead bgcolor="#345273">
-						<th style="width: 15%">Kode</th>
-						<th style="width: 15%">Golongan</th>
-						<th style="width: 40%">Nama</th>
-						<th style="width: 10%">Satuan</th>
-						<th style="width: 10%">Harga</th>
-						<th style="width: 40%">Action</th>
-					</thead>
-					<tbody>
-						<tr>
-							<td>M001</td>
-							<td>Komputer</td>
-							<td>VGA</td>
-							<td>pcs</td>
-							<td>4000</td>
-							<td class="action">
-								<button
-									type="submit"
-									data-bs-toggle="modal"
-									data-bs-target="#staticBackdrop"
-									class="btn btn-info update">
-									U
-								</button>
-								<button
-									type="reset"
-									data-bs-toggle="modal"
-									data-bs-target="#staticBackdrop"
-									class="btn btn-danger remove">
-									X
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>M002</td>
-							<td>Komputer</td>
-							<td>RAM</td>
-							<td>pcs</td>
-							<td>800</td>
-							<td class="action">
-								<button
-									type="submit"
-									data-bs-toggle="modal"
-									data-bs-target="#staticBackdrop"
-									class="btn btn-info update">
-									U
-								</button>
-								<button
-									type="reset"
-									data-bs-toggle="modal"
-									data-bs-target="#staticBackdrop"
-									class="btn btn-danger remove">
-									X
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>M003</td>
-							<td>Komputer</td>
-							<td>CPU</td>
-							<td>pcs</td>
-							<td>2000</td>
-							<td class="action">
-								<button
-									type="submit"
-									data-bs-toggle="modal"
-									data-bs-target="#staticBackdrop"
-									class="btn btn-info update">
-									U
-								</button>
-								<button
-									type="reset"
-									data-bs-toggle="modal"
-									data-bs-target="#staticBackdrop"
-									class="btn btn-danger remove">
-									X
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>M004</td>
-							<td>Komputer</td>
-							<td>Monitor</td>
-							<td>pcs</td>
-							<td>1500</td>
-							<td class="action">
-								<button
-									type="submit"
-									data-bs-toggle="modal"
-									data-bs-target="#staticBackdrop"
-									class="btn btn-info update">
-									U
-								</button>
-								<button
-									type="reset"
-									data-bs-toggle="modal"
-									data-bs-target="#staticBackdrop"
-									class="btn btn-danger remove">
-									X
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<!-- =================== MODAL INSERT & UPDATE ======================== -->
-			<div
-				class="modal fade"
-				id="staticBackdrop"
-				data-bs-backdrop="static"
-				data-bs-keyboard="false"
-				tabindex="-1"
-				aria-labelledby="staticBackdropLabel"
-				aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-					<div class="modal-content">
-						<div
-							class="modal-header"
-							id="staticBackdropLabel">
-							<h1>Tambah Barang</h1>
+<span class="container-fluid d-block mx-0 my-3">
+	<div class="container-fluid mt-3">
+		<h3 class="h3 text-center">Master Barang</h3>
+		<button
+			class="btn btn-secondary"
+			data-bs-toggle="modal"
+			data-bs-target="#staticBackdrop"
+			id="btnAddBarang">
+			+
+		</button>
+	</div>
+	<div class="container-fluid">
+		<table
+			id="mytable"
+			class="table mt-3"
+			width="100%"
+			height="100"
+			align="0 auto">
+			<thead bgcolor="#345273">
+				<th style="width: 15%">Kode</th>
+				<th style="width: 15%">Golongan</th>
+				<th style="width: 40%">Nama</th>
+				<th style="width: 10%">Satuan</th>
+				<th style="width: 10%">Harga</th>
+				<th style="width: 40%">Action</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>M001</td>
+					<td>Komputer</td>
+					<td>VGA</td>
+					<td>pcs</td>
+					<td>4000</td>
+					<td class="action">
+						<button
+							type="submit"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop"
+							class="btn btn-info update">
+							U
+						</button>
+						<button
+							type="reset"
+							data-bs-toggle="modal"
+							data-bs-target="#removeDialog"
+							class="btn btn-danger remove">
+							X
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>M002</td>
+					<td>Komputer</td>
+					<td>RAM</td>
+					<td>pcs</td>
+					<td>800</td>
+					<td class="action">
+						<button
+							type="submit"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop"
+							class="btn btn-info update">
+							U
+						</button>
+						<button
+							type="reset"
+							data-bs-toggle="modal"
+							data-bs-target="#removeDialog"
+							class="btn btn-danger remove">
+							X
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>M003</td>
+					<td>Komputer</td>
+					<td>CPU</td>
+					<td>pcs</td>
+					<td>2000</td>
+					<td class="action">
+						<button
+							type="submit"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop"
+							class="btn btn-info update">
+							U
+						</button>
+						<button
+							type="reset"
+							data-bs-toggle="modal"
+							data-bs-target="#removeDialog"
+							class="btn btn-danger remove">
+							X
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>M004</td>
+					<td>Komputer</td>
+					<td>Monitor</td>
+					<td>pcs</td>
+					<td>1500</td>
+					<td class="action">
+						<button
+							type="submit"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop"
+							class="btn btn-info update">
+							U
+						</button>
+						<button
+							type="reset"
+							data-bs-toggle="modal"
+							data-bs-target="#removeDialog"
+							class="btn btn-danger remove">
+							X
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- =================== MODAL INSERT & UPDATE ======================== -->
+	<div
+		class="modal fade"
+		id="staticBackdrop"
+		data-bs-backdrop="static"
+		data-bs-keyboard="false"
+		tabindex="-1"
+		aria-labelledby="staticBackdropLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div
+					class="modal-header"
+					id="staticBackdropLabel">
+					<h1>Tambah Barang</h1>
+				</div>
+				<div class="modal-body">
+					<form
+						action="tugas1.html"
+						target="_blank"
+						method="post"
+						autocomplete="on">
+						<div class="mb-3">
+							<label
+								for="kode"
+								class="form-label input-group"
+								>Kode:
+							</label>
+							<input
+								type="text"
+								name="kode"
+								id="kode"
+								class="form-control input-group"
+								placeholder="1234" />
 						</div>
-						<div class="modal-body">
-							<form
-								action="tugas1.html"
-								target="_blank"
-								method="post"
-								autocomplete="on">
-								<div class="mb-3">
-									<label
-										for="kode"
-										class="form-label input-group"
-										>Kode:
-									</label>
-									<input
-										type="text"
-										name="kode"
-										id="kode"
-										class="form-control input-group"
-										placeholder="1234" />
-								</div>
-								<div class="mb-3">
-									<label
-										for="nama"
-										class="form-label input-group"
-										>Nama:
-									</label>
-									<input
-										type="text"
-										name="nama"
-										id="nama"
-										class="form-control input-group"
-										placeholder="Komputer" />
-								</div>
-								<div class="mb-3">
-									<label
-										for="gol"
-										class="form-label input-group"
-										>Golongan:
-									</label>
-									<select
-										class="select form-select input-group"
-										name="gol"
-										id="gol">
-										<option value="null">Pilih Golongan</option>
-										<option value="Komputer">Komputer</option>
-										<option value="Smartphone">Smartphone</option>
-										<option value="CPU">CPU</option>
-									</select>
-								</div>
-								<div class="mb-3">
-									<label
-										for="satuan"
-										class="form-label input-group"
-										>Satuan</label
-									>
-									<input
-										type="text"
-										name="satuan"
-										id="satuan"
-										class="form-control input-group"
-										placeholder="pcs" />
-								</div>
-								<div class="mb-3">
-									<label
-										for="harga"
-										class="form-label input-group"
-										>Harga</label
-									>
-									<input
-										type="text"
-										name="harga"
-										id="harga"
-										class="form-control input-group"
-										placeholder="1000" />
-								</div>
-							</form>
+						<div class="mb-3">
+							<label
+								for="nama"
+								class="form-label input-group"
+								>Nama:
+							</label>
+							<input
+								type="text"
+								name="nama"
+								id="nama"
+								class="form-control input-group"
+								placeholder="Komputer" />
 						</div>
-						<div class="modal-footer">
-							<button
-								type="button"
-								class="btn btn-secondary"
-								id="dismissBtn"
-								data-bs-dismiss="modal">
-								Close
-							</button>
-							<button
-								type="button"
-								id="btnSaveBarang"
-								class="btn btn-primary"
-								data-bs-dismiss="modal">
-								Save
-							</button>
+						<div class="mb-3">
+							<label
+								for="gol"
+								class="form-label input-group"
+								>Golongan:
+							</label>
+							<select
+								class="select form-select input-group"
+								name="gol"
+								id="gol">
+								<option value="null">Pilih Golongan</option>
+								<option value="Komputer">Komputer</option>
+								<option value="Smartphone">Smartphone</option>
+								<option value="CPU">CPU</option>
+							</select>
 						</div>
-					</div>
+						<div class="mb-3">
+							<label
+								for="satuan"
+								class="form-label input-group"
+								>Satuan</label
+							>
+							<input
+								type="text"
+								name="satuan"
+								id="satuan"
+								class="form-control input-group"
+								placeholder="pcs" />
+						</div>
+						<div class="mb-3">
+							<label
+								for="harga"
+								class="form-label input-group"
+								>Harga</label
+							>
+							<input
+								type="text"
+								name="harga"
+								id="harga"
+								class="form-control input-group"
+								placeholder="1000" />
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="dismissBtn"
+						data-bs-dismiss="modal">
+						Close
+					</button>
+					<button
+						type="button"
+						class="btn btn-primary"
+						id="btnUpdateBarang"
+						data-bs-dismiss="modal">
+						Update
+					</button>
+					<button
+						type="button"
+						class="btn btn-primary"
+						id="btnSaveBarang"
+						data-bs-dismiss="modal">
+						Save
+					</button>
 				</div>
 			</div>
-		</span>
-	</body>
-</html>
+		</div>
+	</div>
+
+	<!-- ===================== MODAL REMOVE ========================= -->
+	<!-- Modal -->
+	<div
+		class="modal fade"
+		id="removeDialog"
+		data-bs-backdrop="static"
+		data-bs-keyboard="false"
+		tabindex="-1"
+		aria-labelledby="staticBackdropLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1
+						class="modal-title fs-5"
+						id="staticBackdropLabel">
+						Remove Data
+					</h1>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">Yakin ingin hapus data?</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						data-bs-dismiss="modal">
+						Batal
+					</button>
+					<button
+						type="button"
+						data-bs-dismiss="modal"
+						id="removeBtn"
+						class="btn btn-primary">
+						Understood
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</span>
+
+<script>
+	$(document).ready(function () {
+		const myModal = $("#staticBackdrop");
+		let indexUpdate;
+
+		$("#btnAddBarang").click(function () {
+			myModal.find("h1").text("Tambah Barang");
+			$("#btnSaveBarang").show();
+			$("#btnUpdateBarang").hide();
+		});
+
+		$("#dismissBtn").click(function () {
+			$.fn.clearform();
+		});
+
+		$("#btnSaveBarang").click(function () {
+			// ambil value
+			let kode = $("#kode").val();
+			let nama = $("#nama").val();
+			let gol = $("#gol").val();
+			let satuan = $("#satuan").val();
+			let harga = $("#harga").val();
+
+			$("#mytable tbody").append(
+				`<tr><td>${kode}</td><td>${gol}</td><td>${nama}</td><td>${satuan}</td><td>${harga}</td><td class="action"><button type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-info update">U</button> <button type="reset" data-bs-toggle="modal" data-bs-target="#removeDialog"class="btn btn-danger remove">X</button></td></tr>`
+			);
+
+			$.fn.clearform();
+		});
+
+		$.fn.updateBarang = function () {
+			let el;
+			let elRow;
+			let elKode;
+			let elNama;
+			let elGol;
+			let elSat;
+			let elHrg;
+
+			$("#mytable tbody").on("click", ".update", function () {
+				myModal.find("h1").text("Update Barang");
+				$("#btnSaveBarang").hide();
+				$("#btnUpdateBarang").show();
+				indexUpdate = $(this).closest("tr").index();
+				// console.log(indexUpdate);
+
+				// cari tr
+				console.log(indexUpdate);
+				el = $("#mytable tbody").find("tr").eq(indexUpdate);
+				// console.log(el);
+				elRow = el.find("td");
+				// console.log(elRow);
+
+				// ambil semua value dari cell
+				const kode = elRow[0].innerHTML;
+				const gol = elRow[1].innerHTML;
+				const nama = elRow[2].innerHTML;
+				const sat = elRow[3].innerHTML;
+				const hrg = elRow[4].innerHTML;
+
+				// ambil modal
+				const modal = $("span #staticBackdrop");
+
+				// cari dan setting value dari form
+				elKode = modal.find("#kode");
+				elNama = modal.find("#nama");
+				elGol = modal.find("#gol");
+				elSat = modal.find("#satuan");
+				elHrg = modal.find("#harga");
+
+				elKode.val(kode);
+				elNama.val(nama);
+				elGol.val(gol);
+				elSat.val(sat);
+				elHrg.val(hrg);
+			});
+			$("#btnUpdateBarang").click(function () {
+				elRow[0].innerHTML = elKode.val();
+				elRow[1].innerHTML = elNama.val();
+				elRow[2].innerHTML = elGol.val();
+				elRow[3].innerHTML = elSat.val();
+				elRow[4].innerHTML = elHrg.val();
+
+				$.fn.clearform();
+			});
+		};
+
+		$.fn.updateBarang();
+
+		$.fn.clearform = function () {
+			$(`#kode`).val("");
+			$(`#nama`).val("");
+			$(`#satuan`).val("");
+			$(`#harga`).val("");
+			$(`#gol`).val("null");
+		};
+
+		$.fn.removeFunc = function () {
+			$("#mytable tbody").on("click", ".remove", function () {
+				indexUpdate = $(this).closest("tr").index();
+				console.log(indexUpdate);
+			});
+			$("#removeBtn").click(function () {
+				$("#mytable tbody").find("tr").eq(indexUpdate).remove();
+			});
+		};
+
+		$.fn.removeFunc();
+	});
+</script>

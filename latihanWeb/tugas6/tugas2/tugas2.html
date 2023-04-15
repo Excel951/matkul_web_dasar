@@ -1,109 +1,393 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			http-equiv="X-UA-Compatible"
-			content="IE=edge" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<title>Master Karyawan</title>
-	</head>
-	<body>
-		<span class="container-fluid d-block mx-0 my-3">
-			<div class="container-fluid mt-3">
-				<h3 class="h3 text-center">Master Karyawan</h3>
-				<button class="btn btn-secondary">+</button>
+<span class="container-fluid d-block mx-0 my-3">
+	<div class="container-fluid mt-3">
+		<h3 class="h3 text-center">Master Karyawan</h3>
+		<button
+			class="btn btn-secondary"
+			data-bs-toggle="modal"
+			data-bs-target="#staticBackdrop"
+			id="btnAddKaryawan">
+			+
+		</button>
+	</div>
+	<div class="container-fluid">
+		<table
+			id="mytable"
+			class="table mt-3"
+			width="100%"
+			height="100"
+			align="0 auto">
+			<thead bgcolor="#345273">
+				<th style="width: 15%">Kode</th>
+				<th style="width: 30%">Nama</th>
+				<th style="width: 15%">Jabatan</th>
+				<th style="width: 10%">Telp</th>
+				<th style="width: 10%">Email</th>
+				<th style="width: 10%">Password</th>
+				<th style="width: 40%">Action</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>K001</td>
+					<td>Dika</td>
+					<td>Operator</td>
+					<td>085382747638</td>
+					<td>dika@gmail.com</td>
+					<td>12345</td>
+					<td>
+						<button
+							type="submit"
+							class="btn btn-info update"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop">
+							U
+						</button>
+						<button
+							type="reset"
+							class="btn btn-danger remove"
+							data-bs-toggle="modal"
+							data-bs-target="#removeDialog">
+							X
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>K002</td>
+					<td>Santoso</td>
+					<td>Manager</td>
+					<td>089764278274</td>
+					<td>santoso@gmail.com</td>
+					<td>12345</td>
+					<td>
+						<button
+							type="submit"
+							class="btn btn-info update"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop">
+							U
+						</button>
+						<button
+							type="reset"
+							class="btn btn-danger remove"
+							data-bs-toggle="modal"
+							data-bs-target="#removeDialog">
+							X
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>K003</td>
+					<td>Aldi</td>
+					<td>Admin</td>
+					<td>089298472361</td>
+					<td>aldi@gmail.com</td>
+					<td>12345</td>
+					<td>
+						<button
+							type="submit"
+							class="btn btn-info update"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop">
+							U
+						</button>
+						<button
+							type="reset"
+							class="btn btn-danger remove"
+							data-bs-toggle="modal"
+							data-bs-target="#removeDialog">
+							X
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- =================== MODAL INSERT & UPDATE ======================== -->
+	<div
+		class="modal fade"
+		id="staticBackdrop"
+		data-bs-backdrop="static"
+		data-bs-keyboard="false"
+		tabindex="-1"
+		aria-labelledby="staticBackdropLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div
+					class="modal-header"
+					id="staticBackdropLabel">
+					<h1>Tambah Karyawan</h1>
+				</div>
+				<div class="modal-body">
+					<form
+						action="tugas1.html"
+						target="_blank"
+						method="post"
+						autocomplete="on">
+						<div class="mb-3">
+							<label
+								for="kode"
+								class="form-label input-group"
+								>Kode:
+							</label>
+							<input
+								type="text"
+								name="kode"
+								id="kode"
+								class="form-control input-group" />
+						</div>
+						<div class="mb-3">
+							<label
+								for="nama"
+								class="form-label input-group"
+								>Nama:
+							</label>
+							<input
+								type="text"
+								name="nama"
+								id="nama"
+								class="form-control input-group" />
+						</div>
+						<div class="mb-3">
+							<label
+								for="jabatan"
+								class="form-label input-group"
+								>Jabatan:
+							</label>
+							<select
+								class="select form-select input-group"
+								name="jabatan"
+								id="jabatan">
+								<option value="null">Pilih Jabatan</option>
+								<option value="Operator">Operator</option>
+								<option value="Manager">Manager</option>
+								<option value="Admin">Admin</option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label
+								for="telepon"
+								class="form-label input-group"
+								>Telepon:</label
+							>
+							<input
+								type="text"
+								name="telepon"
+								id="telepon"
+								class="form-control input-group" />
+						</div>
+						<div class="mb-3">
+							<label
+								for="email"
+								class="form-label input-group"
+								>Email:</label
+							>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								class="form-control input-group" />
+						</div>
+						<div class="mb-3">
+							<label
+								for="password"
+								class="form-label input-group"
+								>password:</label
+							>
+							<input
+								type="password"
+								name="password"
+								id="password"
+								class="form-control input-group" />
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="dismissBtn"
+						data-bs-dismiss="modal">
+						Close
+					</button>
+					<button
+						type="button"
+						class="btn btn-primary"
+						id="btnUpdateKaryawan"
+						data-bs-dismiss="modal">
+						Update
+					</button>
+					<button
+						type="button"
+						class="btn btn-primary"
+						id="btnSaveKaryawan"
+						data-bs-dismiss="modal">
+						Save
+					</button>
+				</div>
 			</div>
-			<div class="container-fluid">
-				<table
-					class="table mt-3"
-					width="100%"
-					height="100"
-					align="0 auto">
-					<thead>
-						<tr bgcolor="#345273">
-							<th style="width: 15%">Kode</th>
-							<th style="width: 30%">Nama</th>
-							<th style="width: 15%">Jabatan</th>
-							<th style="width: 10%">Telp</th>
-							<th style="width: 10%">Email</th>
-							<th style="width: 10%">Password</th>
-							<th style="width: 40%">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>K001</td>
-							<td>Dika</td>
-							<td>Operator</td>
-							<td>085382747638</td>
-							<td>dika@gmail.com</td>
-							<td>12345</td>
-							<td>
-								<button
-									type="submit"
-									class="btn btn-info"
-									id="btnUpdate1">
-									U
-								</button>
-								<button
-									type="reset"
-									class="btn btn-danger"
-									id="btnRemove1">
-									X
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>K002</td>
-							<td>Santoso</td>
-							<td>Manager</td>
-							<td>089764278274</td>
-							<td>santoso@gmail.com</td>
-							<td>12345</td>
-							<td>
-								<button
-									type="submit"
-									class="btn btn-info"
-									id="btnUpdate2">
-									U
-								</button>
-								<button
-									type="reset"
-									class="btn btn-danger"
-									id="btnRemove2">
-									X
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>K003</td>
-							<td>Aldi</td>
-							<td>Admin</td>
-							<td>089298472361</td>
-							<td>aldi@gmail.com</td>
-							<td>12345</td>
-							<td>
-								<button
-									type="submit"
-									class="btn btn-info"
-									id="btnUpdate3">
-									U
-								</button>
-								<button
-									type="reset"
-									class="btn btn-danger"
-									id="btnRemove3">
-									X
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+		</div>
+	</div>
+
+	<!-- ===================== MODAL REMOVE ========================= -->
+	<!-- Modal -->
+	<div
+		class="modal fade"
+		id="removeDialog"
+		data-bs-backdrop="static"
+		data-bs-keyboard="false"
+		tabindex="-1"
+		aria-labelledby="staticBackdropLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1
+						class="modal-title fs-5"
+						id="staticBackdropLabel">
+						Remove Data
+					</h1>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">Yakin ingin hapus data?</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						data-bs-dismiss="modal">
+						Batal
+					</button>
+					<button
+						type="button"
+						data-bs-dismiss="modal"
+						id="removeBtn"
+						class="btn btn-primary">
+						Understood
+					</button>
+				</div>
 			</div>
-		</span>
-		<footer>Ini Footer</footer>
-	</body>
-</html>
+		</div>
+	</div>
+</span>
+
+<script>
+	$(document).ready(function () {
+		const myModal = $("#staticBackdrop");
+		let indexUpdate;
+
+		$("#btnAddKaryawan").click(function () {
+			myModal.find("h1").text("Tambah Karyawan");
+			$("#btnSaveKaryawan").show();
+			$("#btnUpdateKaryawan").hide();
+		});
+
+		$("#dismissBtn").click(function () {
+			$.fn.clearform();
+		});
+
+		$("#btnSaveKaryawan").click(function () {
+			// ambil value
+			let kode = $("#kode").val();
+			let nama = $("#nama").val();
+			let jabatan = $("#jabatan").val();
+			let telepon = $("#telepon").val();
+			let email = $("#email").val();
+			let password = $("#password").val();
+
+			$("#mytable tbody").append(
+				`<tr><td>${kode}</td><td>${nama}</td><td>${jabatan}</td><td>${telepon}</td><td>${email}</td><td>${password}</td><td><button type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-info update">U</button> <button type="reset" data-bs-toggle="modal" data-bs-target="#removeDialog"class="btn btn-danger remove">X</button></td></tr>`
+			);
+
+			$.fn.clearform();
+		});
+
+		$.fn.updateBarang = function () {
+			let el;
+			let elRow;
+			let elKode;
+			let elNama;
+			let elJab;
+			let elTelp;
+			let elEmail;
+			let elPass;
+
+			$("#mytable tbody").on("click", ".update", function () {
+				myModal.find("h1").text("Update Karyawan");
+				$("#btnSaveKaryawan").hide();
+				$("#btnUpdateKaryawan").show();
+				indexUpdate = $(this).closest("tr").index();
+				// console.log(indexUpdate);
+
+				// cari tr
+				console.log(indexUpdate);
+				el = $("#mytable tbody").find("tr").eq(indexUpdate);
+				// console.log(el);
+				elRow = el.find("td");
+				// console.log(elRow);
+
+				// ambil semua value dari cell
+				const kode = elRow[0].innerHTML;
+				const nama = elRow[1].innerHTML;
+				const jabatan = elRow[2].innerHTML;
+				const telp = elRow[3].innerHTML;
+				const email = elRow[4].innerHTML;
+				const pass = elRow[5].innerHTML;
+
+				// ambil modal
+				const modal = $("span #staticBackdrop");
+
+				// cari dan setting value dari form
+				elKode = modal.find("#kode");
+				elNama = modal.find("#nama");
+				elJab = modal.find("#jabatan");
+				elTelp = modal.find("#telepon");
+				elEmail = modal.find("#email");
+				elPass = modal.find("#password");
+
+				elKode.val(kode);
+				elNama.val(nama);
+				elJab.val(jabatan);
+				elTelp.val(telp);
+				elEmail.val(email);
+				elPass.val(pass);
+			});
+			$("#btnUpdateKaryawan").click(function () {
+				elRow[0].innerHTML = elKode.val();
+				elRow[1].innerHTML = elNama.val();
+				elRow[2].innerHTML = elJab.val();
+				elRow[3].innerHTML = elTelp.val();
+				elRow[4].innerHTML = elEmail.val();
+				elRow[5].innerHTML = elPass.val();
+
+				$.fn.clearform();
+			});
+		};
+
+		$.fn.updateBarang();
+
+		$.fn.clearform = function () {
+			$(`#kode`).val("");
+			$(`#nama`).val("");
+			$(`#telepon`).val("");
+			$(`#email`).val("");
+			$(`#jabatan`).val("null");
+			$(`#password`).val("");
+		};
+
+		$.fn.removeFunc = function () {
+			$("#mytable tbody").on("click", ".remove", function () {
+				indexUpdate = $(this).closest("tr").index();
+				console.log(indexUpdate);
+			});
+			$("#removeBtn").click(function () {
+				$("#mytable tbody").find("tr").eq(indexUpdate).remove();
+			});
+		};
+
+		$.fn.removeFunc();
+	});
+</script>

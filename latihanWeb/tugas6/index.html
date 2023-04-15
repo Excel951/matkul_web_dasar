@@ -20,8 +20,8 @@
 		</style>
 		<title>Master Toko</title>
 	</head>
-	<body>
-		<header>
+	<body class="bg-body-subtle">
+		<header class="bg-warning-subtle">
 			<div class="container text-center">
 				<div class="row">
 					<div class="columns"></div>
@@ -31,7 +31,7 @@
 					<div class="columns"></div>
 				</div>
 			</div>
-			<nav class="navbar navbar-expand-lg bg-body-tertiary">
+			<nav class="navbar navbar-expand-lg bg-warning">
 				<div class="container-fluid">
 					<button
 						class="navbar-toggler"
@@ -153,151 +153,15 @@
 				$.fn.pindahHalamanIndex = function () {
 					$("header #navbarNavDropdown").click(function (event) {
 						if (event.target.id === "navBarang") {
-							$("main").load("./tugas1/tugas1.html span", function () {
-								// ketika tambah barang
-								$(document).on(
-									"shown.bs.modal",
-									"#staticBackdrop",
-									function (event) {
-										// ketika klik batal
-										$("#dismissBtn").click(function () {
-											elKode.val("");
-											elNama.val("");
-											elGol.val("null");
-											elSat.val("");
-											elHrg.val("");
-										});
-
-										// ketika klik save
-										$("#btnSaveBarang").click(function () {
-											// ambil value
-											const kode = $("#kode").val();
-											const nama = $("#nama").val();
-											const gol = $("#gol").val();
-											const satuan = $("#satuan").val();
-											const hrg = $("#harga").val();
-
-											console.log(kode, nama, gol, satuan, hrg);
-
-											const table = document.querySelector("#mytable tbody");
-											const row = table.insertRow(-1);
-											const cellKode = row.insertCell(0);
-											cellKode.appendChild(document.createTextNode(kode));
-											const cellGol = row.insertCell(1);
-											cellGol.appendChild(document.createTextNode(nama));
-											const cellNama = row.insertCell(2);
-											cellNama.appendChild(document.createTextNode(gol));
-											const cellSat = row.insertCell(3);
-											cellSat.appendChild(document.createTextNode(satuan));
-											const cellHrg = row.insertCell(4);
-											cellHrg.appendChild(document.createTextNode(hrg));
-											const cellAction = row.insertCell(5);
-
-											const btnUpdate = document.createElement("button");
-											btnUpdate.setAttribute("type", "submit");
-											btnUpdate.setAttribute("data-bs-toggle", "modal");
-											btnUpdate.setAttribute(
-												"data-bs-target",
-												"#staticBackdrop"
-											);
-											btnUpdate.setAttribute("class", "btn btn-info update");
-											btnUpdate.innerText = "U";
-											cellAction.appendChild(btnUpdate);
-
-											const btnRemove = document.createElement("button");
-											btnRemove.setAttribute("type", "reset");
-											btnRemove.setAttribute("data-bs-toggle", "modal");
-											btnRemove.setAttribute(
-												"data-bs-target",
-												"#staticBackdrop"
-											);
-											btnRemove.setAttribute("class", "btn btn-danger remove");
-											btnRemove.innerText = "X";
-											cellAction.appendChild(btnRemove);
-
-											$("#kode").val("");
-											$("#nama").val("");
-											$("#gol").val("null");
-											$("#satuan").val("");
-											$("#hrg").val("");
-										});
-									}
-								);
-
-								// Ketika klik tombol update
-								$("#mytable").on("click", ".update", function () {
-									// Ubah judul modal
-									$("#staticBackdrop .modal-content .modal-header")
-										.find("h1")
-										.text("Update Barang");
-
-									// cari tr
-									const el = $(this).closest("tr");
-									const elRowIndex = el.index();
-									const elRow = el.find("td");
-
-									// ambil semua value dari cell
-									const kode = elRow[0].innerHTML;
-									const gol = elRow[1].innerHTML;
-									const nama = elRow[2].innerHTML;
-									const sat = elRow[3].innerHTML;
-									const hrg = elRow[4].innerHTML;
-
-									// ambil modal
-									const modal = $("span #staticBackdrop");
-
-									// cari dan setting value dari form
-									const elKode = modal.find("#kode");
-									const elNama = modal.find("#nama");
-									const elGol = modal.find("#gol");
-									const elSat = modal.find("#satuan");
-									const elHrg = modal.find("#harga");
-
-									elKode.val(kode);
-									elNama.val(nama);
-									elGol.val(gol);
-									elSat.val(sat);
-									elHrg.val(hrg);
-
-									$("span #staticBackdrop").on(
-										"click",
-										"#btnSaveBarang",
-										function () {
-											elRow[0].innerHTML = elKode.val();
-											elRow[1].innerHTML = elGol.val();
-											elRow[2].innerHTML = elNama.val();
-											elRow[3].innerHTML = elSat.val();
-											elRow[4].innerHTML = elHrg.val();
-
-											elKode.val("");
-											elNama.val("");
-											elGol.val("null");
-											elSat.val("");
-											elHrg.val("");
-										}
-									);
-
-									$("span #staticBackdrop").on(
-										"click",
-										"#dismissBtn",
-										function () {
-											elKode.val("");
-											elNama.val("");
-											elGol.val("null");
-											elSat.val("");
-											elHrg.val("");
-										}
-									);
-								});
-							});
+							$("main").load("./tugas1/tugas1.html");
 						} else if (event.target.id === "navKaryawan") {
-							$("main").load("./tugas2/tugas2.html span", function () {});
+							$("main").load("./tugas2/tugas2.html");
 						} else if (event.target.id === "navSupplier") {
-							$("main").load("./tugas3/tugas3.html span", function () {});
+							$("main").load("./tugas3/tugas3.html");
 						} else if (event.target.id === "navPenjualan") {
-							$("main").load("./tugas4/penjualan1.html span", function () {});
+							$("main").load("./tugas4/penjualan1.html");
 						} else if (event.target.id === "navPembelian") {
-							$("main").load("./tugas5/pembelian.html span", function () {});
+							$("main").load("./tugas5/pembelian.html");
 						}
 					});
 				};

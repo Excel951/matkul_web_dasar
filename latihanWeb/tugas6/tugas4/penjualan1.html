@@ -1,175 +1,358 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			http-equiv="X-UA-Compatible"
-			content="IE=edge" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<link
-			href="../../../bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css"
-			rel="stylesheet" />
-		<script src="../../../bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
-		<title>Master Penjualan</title>
-	</head>
-	<body>
-		<span class="container-fluid d-block mx-0 my-3">
-			<div class="container-fluid mt-3">
-				<h3 class="h3 text-center">Master Penjualan</h3>
-				<button class="btn btn-secondary">+</button>
+<span class="container-fluid d-block mx-0 my-3">
+	<div class="container-fluid mt-3">
+		<h3 class="h3 text-center">Master Penjualan</h3>
+		<button
+			class="btn btn-secondary"
+			data-bs-toggle="modal"
+			data-bs-target="#staticBackdrop"
+			id="btnAddPenjualan">
+			+
+		</button>
+	</div>
+	<div class="container-fluid">
+		<table
+			class="table mt-3"
+			width="100%"
+			height="100"
+			align="0 auto"
+			id="mytable">
+			<thead bgcolor="#345273">
+				<th style="width: 15%">Kode</th>
+				<th style="width: 15%">Tanggal</th>
+				<th style="width: 30%">Konsumen</th>
+				<th style="width: 10%">Total</th>
+				<th style="width: 10%">Karyawan</th>
+				<th style="width: 40%">Action</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>20231201101010</td>
+					<td>01/12/2023</td>
+					<td>Habib</td>
+					<td>32000</td>
+					<td>Aldi</td>
+					<td align="right">
+						<a href="view.html">
+							<button
+								type="submit"
+								class="is-info">
+								V
+							</button>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>20231201101010</td>
+					<td>01/12/2023</td>
+					<td>Habib</td>
+					<td>32000</td>
+					<td>Aldi</td>
+					<td align="right">
+						<a href="view.html">
+							<button
+								type="submit"
+								class="is-info">
+								V
+							</button>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>20231201101010</td>
+					<td>01/12/2023</td>
+					<td>Habib</td>
+					<td>32000</td>
+					<td>Aldi</td>
+					<td align="right">
+						<a href="view.html">
+							<button
+								type="submit"
+								class="is-info">
+								V
+							</button>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<label for="total">Total: </label><label id="total">0</label>
+	</div>
+</span>
+<!-- =================== MODAL INSERT & UPDATE ======================== -->
+<div
+	class="modal fade"
+	id="staticBackdrop"
+	data-bs-backdrop="static"
+	data-bs-keyboard="false"
+	tabindex="-1"
+	aria-labelledby="staticBackdropLabel"
+	aria-hidden="true">
+	<div
+		class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+		<div class="modal-content">
+			<div
+				class="modal-header"
+				id="staticBackdropLabel">
+				<h1>Tambah Barang</h1>
 			</div>
-			<div class="container-fluid">
-				<table
-					class="table mt-3"
-					width="100%"
-					height="100"
-					align="0 auto"
-					id="mytable">
-					<thead>
-						<tr bgcolor="#345273">
-							<th style="width: 15%">Kode</th>
-							<th style="width: 15%">Tanggal</th>
-							<th style="width: 30%">Konsumen</th>
-							<th style="width: 10%">Total</th>
-							<th style="width: 10%">Karyawan</th>
-							<th style="width: 40%">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>20231201101010</td>
-							<td>01/12/2023</td>
-							<td>Habib</td>
-							<td>32000</td>
-							<td>Aldi</td>
-							<td align="right">
-								<!-- <a href="view.html">
-								<button
-									type="submit"
-									class="is-info">
-									V
-								</button>
-							</a>
-							<a href="update.html">
-								<button
-									type="submit"
-									class="is-info">
-									U
-								</button>
-							</a>
-							<button
-								type="reset"
-								class="is-danger">
-								X
-							</button> -->
-							</td>
-						</tr>
-						<tr>
-							<td>20231201101010</td>
-							<td>01/12/2023</td>
-							<td>Habib</td>
-							<td>32000</td>
-							<td>Aldi</td>
-							<td align="right">
-								<!-- <a href="view.html">
-								<button
-									type="submit"
-									class="is-info">
-									V
-								</button>
-							</a>
-							<a href="update.html">
-								<button
-									type="submit"
-									class="is-info">
-									U
-								</button>
-							</a>
-							<button
-								type="reset"
-								class="is-danger">
-								X
-							</button> -->
-							</td>
-						</tr>
-						<tr>
-							<td>20231201101010</td>
-							<td>01/12/2023</td>
-							<td>Habib</td>
-							<td>32000</td>
-							<td>Aldi</td>
-							<td align="right">
-								<!-- <a href="view.html">
-								<button
-									type="submit"
-									class="is-info">
-									V
-								</button>
-							</a>
-							<a href="update.html">
-								<button
-									type="submit"
-									class="is-info">
-									U
-								</button>
-							</a>
-							<button
-								type="reset"
-								class="is-danger">
-								X
-							</button> -->
-							</td>
-						</tr>
-						<tr>
-							<td>20241202111111</td>
-							<td>02/12/2024</td>
-							<td>Michael</td>
-							<td>20000</td>
-							<td>Dika</td>
-							<td align="right">
-								<!-- <a href="view.html">
-								<button
-									type="submit"
-									class="is-info">
-									V
-								</button>
-							</a>
-							<a href="update.html">
-								<button
-									type="submit"
-									class="is-info">
-									U
-								</button>
-							</a>
-							<button
-								type="reset"
-								class="is-danger">
-								X
-							</button> -->
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<label for="total">Total: </label><label id="total">0</label>
+			<div class="modal-body">
+				<form
+					action="tugas1.html"
+					target="_blank"
+					method="post"
+					autocomplete="on">
+					<div class="row">
+						<div class="col-md-4">
+							<label
+								for="kode"
+								class="form-label input-group"
+								>Kode:
+							</label>
+							<input
+								type="text"
+								name="kode"
+								id="kode"
+								class="form-control input-group" />
+						</div>
+						<div class="col-md-4 ms-auto">
+							<label
+								for="tanggal"
+								class="form-label input-group"
+								>Tanggal:
+							</label>
+							<input
+								type="text"
+								name="tanggal"
+								id="tanggal"
+								class="form-control input-group" />
+						</div>
+					</div>
+					<div class="mb-3">
+						<label
+							for="konsumen"
+							class="form-label input-group"
+							>Konsumen:
+						</label>
+						<input
+							type="text"
+							name="konsumen"
+							id="konsumen"
+							class="form-control input-group" />
+					</div>
+					<div class="mb-3">
+						<label
+							for="karyawan"
+							class="form-label input-group"
+							>Karyawan:
+						</label>
+						<select
+							class="select form-select input-group"
+							name="karyawan"
+							id="karyawan">
+							<option value="null">Pilih Karyawan</option>
+							<option value="Dika">Dika</option>
+							<option value="Santoso">Santoso</option>
+							<option value="Aldi">Aldi</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label
+							for="jabatan"
+							class="form-label input-group"
+							>Jabatan:
+						</label>
+						<select
+							class="select form-select input-group"
+							name="jabatan"
+							id="jabatan">
+							<option value="null">Pilih Jabatan</option>
+							<option value="Operator">Operator</option>
+							<option value="Manager">Manager</option>
+							<option value="Admin">Admin</option>
+						</select>
+					</div>
+					<div class="mb-3 row">
+						<div class="col-md-3">
+							<label
+								for="kodebrg"
+								class="form-label input-group"
+								>Kode Barang:
+							</label>
+							<select
+								class="select form-select input-group"
+								name="kodebrg"
+								id="kodebrg">
+								<option value="null">Pilih Jabatan</option>
+								<option value="Operator">Operator</option>
+								<option value="Manager">Manager</option>
+								<option value="Admin">Admin</option>
+							</select>
+						</div>
+					</div>
+					<div class="mb-3">
+						<label
+							for="harga"
+							class="form-label input-group"
+							>Harga</label
+						>
+						<input
+							type="text"
+							name="harga"
+							id="harga"
+							class="form-control input-group" />
+					</div>
+				</form>
 			</div>
-		</span>
-		<!-- <footer>Ini Footer</footer> -->
-		<script>
-			hitungtotal();
-			function hitungtotal() {
-				let table = document.querySelector(`#mytable`);
-				let panjang = table.rows.length;
-				let total = 0;
-				for (let i = 1; i < panjang; i++) {
-					let data = table.rows[i].cells[3];
-					data = parseInt(data.innerHTML);
-					total = total + data;
-				}
-				// console.log(total);
-				document.querySelector(`#total`).textContent = total;
-			}
-		</script>
-	</body>
-</html>
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-secondary"
+					id="dismissBtn"
+					data-bs-dismiss="modal">
+					Close
+				</button>
+				<button
+					type="button"
+					class="btn btn-primary"
+					id="btnSavePenjualan"
+					data-bs-dismiss="modal">
+					Save
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function hitungtotal() {
+		let table = document.querySelector(`#mytable`);
+		let panjang = table.rows.length;
+		let total = 0;
+		for (let i = 1; i < panjang; i++) {
+			let data = table.rows[i].cells[3];
+			data = parseInt(data.innerHTML);
+			total = total + data;
+		}
+		// console.log(total);
+		document.querySelector(`#total`).textContent = total;
+	}
+
+	hitungtotal();
+
+	// ambil tanggal untuk kode
+	let year = new Date().getFullYear();
+	let month = new Date().getMonth() + 1;
+	let date = new Date().getDate();
+	let hour = new Date().getHours();
+	let minute = new Date().getMinutes();
+	let seconds = new Date().getSeconds();
+
+	// ambil element untuk tempat kode dan tgl
+	let kodeInput = document.querySelector(`#kode`);
+	let tgl = document.querySelector(`#tgl`);
+
+	// susun kode
+	let kode = `${year}${month}${date}${hour}${minute}${seconds}`;
+
+	// ambil tanggal
+	let dates = new Date().toLocaleDateString();
+
+	kodeInput.value = kode;
+	tgl.value = dates;
+
+	function myfunction() {
+		let table = document.querySelector(`#mytable`);
+		let panjang = table.rows.length;
+		let row = table.insertRow(panjang);
+		let cell1 = row.insertCell(0);
+		let cell2 = row.insertCell(1);
+		let cell3 = row.insertCell(2);
+		let cell4 = row.insertCell(3);
+		let cell5 = row.insertCell(4);
+		let cell6 = row.insertCell(5);
+		let cell7 = row.insertCell(6);
+		row.setAttribute(`id`, `idrow${panjang}`);
+		row.setAttribute(`class`, `tr`);
+		cell1.innerHTML = document.querySelector(`#kodebrg`).value;
+		cell2.innerHTML = document.querySelector(`#nama`).value;
+		cell3.innerHTML = document.querySelector(`#satuan`).value;
+		cell4.innerHTML = document.querySelector(`#harga`).value;
+		cell5.innerHTML = document.querySelector(`#jumlah`).value;
+		let subtotal =
+			Number(document.querySelector(`#harga`).value) *
+			Number(document.querySelector(`#jumlah`).value);
+		cell6.innerHTML = subtotal;
+
+		let cancelBtn = document.createElement(`button`);
+		cancelBtn.textContent = `X`;
+		cancelBtn.setAttribute(`onclick`, `deleterow('idrow${panjang}')`);
+		cell7.insertAdjacentElement(`beforeend`, cancelBtn);
+		hitungtotal();
+	}
+
+	function deleterow(rowid) {
+		let row = document.querySelector(`#${rowid}`);
+		row.remove();
+		hitungtotal();
+	}
+
+	function hitungtotal() {
+		let table = document.querySelector(`#mytable`);
+		let panjang = table.rows.length;
+		let total = 0;
+		for (let i = 1; i < panjang; i++) {
+			let data = table.rows[i].cells[5];
+			data = parseInt(data.innerHTML);
+			total = total + data;
+		}
+		// console.log(total);
+		document.querySelector(`#total`).textContent = total;
+		clearform();
+	}
+
+	function pilihkodebrg(val) {
+		// data barang
+		const barang = {
+			M001: { nama: "VGA", satuan: `pcs`, harga: 4000 },
+			M002: { nama: "RAM", satuan: `pcs`, harga: 800 },
+			M003: { nama: "CPU", satuan: `pcs`, harga: 2000 },
+			M004: { nama: "Monitor", satuan: `pcs`, harga: 1500 },
+		};
+		console.log(val);
+		// console.log(barang[`${val}`]);
+
+		// ambil element yang akan diubah
+		const nama = document.querySelector(`#nama`);
+		const satuan = document.querySelector(`#satuan`);
+		const harga = document.querySelector(`#harga`);
+
+		// ubah element yang telah diambil dengan data yang ada
+		nama.value = barang[`${val}`].nama;
+		satuan.value = barang[`${val}`].satuan;
+		harga.value = barang[`${val}`].harga;
+	}
+
+	function clearform() {
+		const brg = {
+			0: document.querySelector(`#kodebrg`),
+			1: document.querySelector(`#nama`),
+			2: document.querySelector(`#satuan`),
+			3: document.querySelector(`#harga`),
+			4: document.querySelector(`#jumlah`),
+		};
+
+		for (let i = 0; i < 5; i++) {
+			brg[`${i}`].value = "";
+		}
+	}
+
+	function pilihkar(val) {
+		const jab = {
+			dika: "operator",
+			santoso: `manager`,
+			aldi: `admin`,
+		};
+
+		const elJab = document.querySelector(`#jabatan`);
+		elJab.value = jab[`${val}`];
+	}
+</script>

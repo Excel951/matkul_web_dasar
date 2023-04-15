@@ -1,102 +1,432 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			http-equiv="X-UA-Compatible"
-			content="IE=edge" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<link
-			href="../../../bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css"
-			rel="stylesheet" />
-		<script src="../../../bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js"></script>
-		<title>Master Supplier</title>
-	</head>
-	<body>
-		<span class="container-fluid d-block">
-			<div class="container-fluid mt-3">
-				<h3 class="h3 text-center">Master Supplier</h3>
-				<button class="btn btn-secondary">+</button>
+<span class="container-fluid d-block">
+	<div class="container-fluid mt-3">
+		<h3 class="h3 text-center">Master Supplier</h3>
+		<button
+			class="btn btn-secondary"
+			data-bs-toggle="modal"
+			data-bs-target="#staticBackdrop"
+			id="btnAddSupplier">
+			+
+		</button>
+	</div>
+	<div class="container-fluid">
+		<table
+			id="mytable"
+			class="table mt-3"
+			width="100%"
+			height="100"
+			align="0 auto">
+			<thead bgcolor="#345273">
+				<th style="width: 10%">Kode</th>
+				<th style="width: 10%">Nama</th>
+				<th style="width: 20%">Perusahaan</th>
+				<th style="width: 10%">Telp Sales</th>
+				<th style="width: 10%">Telp Kantor</th>
+				<th style="width: 10%">Email</th>
+				<th style="width: 20%">Action</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>S001</td>
+					<td>Zuzu</td>
+					<td>PT. Lenovo Indonesia</td>
+					<td>085382747638</td>
+					<td>085734852940</td>
+					<td>lenovo@gmail.com</td>
+					<td align="right">
+						<button
+							type="submit"
+							class="btn btn-info view"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop">
+							V
+						</button>
+						<button
+							type="submit"
+							class="btn btn-warning update"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop">
+							U
+						</button>
+						<button
+							type="reset"
+							class="btn btn-danger remove"
+							data-bs-toggle="modal"
+							data-bs-target="#removeDialog">
+							X
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<td>S002</td>
+					<td>Sosro</td>
+					<td>PT. PNY Indonesia</td>
+					<td>085382834238</td>
+					<td>085783453240</td>
+					<td>pny@gmail.com</td>
+					<td align="right">
+						<button
+							type="submit"
+							class="btn btn-info view"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop">
+							V
+						</button>
+						<button
+							type="submit"
+							class="btn btn-warning update"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop">
+							U
+						</button>
+						<button
+							type="reset"
+							class="btn btn-danger remove"
+							data-bs-toggle="modal"
+							data-bs-target="#removeDialog">
+							X
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- =================== MODAL INSERT & UPDATE ======================== -->
+	<div
+		class="modal fade"
+		id="staticBackdrop"
+		data-bs-backdrop="static"
+		data-bs-keyboard="false"
+		tabindex="-1"
+		aria-labelledby="staticBackdropLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div
+					class="modal-header"
+					id="staticBackdropLabel">
+					<h1>Tambah Supplier</h1>
+				</div>
+				<div class="modal-body">
+					<form
+						action="tugas1.html"
+						target="_blank"
+						method="post"
+						autocomplete="on">
+						<div class="mb-3">
+							<label
+								for="kode"
+								class="form-label input-group"
+								>Kode:
+							</label>
+							<input
+								type="text"
+								name="kode"
+								id="kode"
+								class="form-control input-group" />
+						</div>
+						<div class="mb-3">
+							<label
+								for="nama"
+								class="form-label input-group"
+								>Nama:
+							</label>
+							<input
+								type="text"
+								name="nama"
+								id="nama"
+								class="form-control input-group" />
+						</div>
+						<div class="mb-3">
+							<label
+								for="supplier"
+								class="form-label input-group"
+								>Supplier:
+							</label>
+							<input
+								type="text"
+								name="supplier"
+								id="supplier"
+								class="form-control input-group" />
+						</div>
+						<div class="mb-3">
+							<label
+								for="teleponsales"
+								class="form-label input-group"
+								>Telepon Sales:</label
+							>
+							<input
+								type="telp"
+								name="teleponsales"
+								id="teleponsales"
+								class="form-control input-group" />
+						</div>
+						<div class="mb-3">
+							<label
+								for="teleponkantor"
+								class="form-label input-group"
+								>Telepon Kantor:</label
+							>
+							<input
+								type="telp"
+								name="teleponkantor"
+								id="teleponkantor"
+								class="form-control input-group" />
+						</div>
+						<div class="mb-3">
+							<label
+								for="email"
+								class="form-label input-group"
+								>Email:</label
+							>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								class="form-control input-group" />
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="dismissBtn"
+						data-bs-dismiss="modal">
+						Close
+					</button>
+					<button
+						type="button"
+						class="btn btn-primary"
+						id="btnUpdateSupplier"
+						data-bs-dismiss="modal">
+						Update
+					</button>
+					<button
+						type="button"
+						class="btn btn-primary"
+						id="btnSaveSupplier"
+						data-bs-dismiss="modal">
+						Save
+					</button>
+				</div>
 			</div>
-			<div class="container-fluid">
-				<table
-					class="table mt-3"
-					width="100%"
-					height="100"
-					align="0 auto">
-					<thead>
-						<tr bgcolor="#345273">
-							<th style="width: 10%">Kode</th>
-							<th style="width: 10%">Nama</th>
-							<th style="width: 20%">Perusahaan</th>
-							<th style="width: 10%">Telp Sales</th>
-							<th style="width: 10%">Telp Kantor</th>
-							<th style="width: 10%">Email</th>
-							<th style="width: 20%">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>S001</td>
-							<td>Zuzu</td>
-							<td>PT. Lenovo Indonesia</td>
-							<td>085382747638</td>
-							<td>085734852940</td>
-							<td>lenovo@gmail.com</td>
-							<td align="right">
-								<button
-									type="submit"
-									class="btn btn-info"
-									id="btnView1">
-									V
-								</button>
-								<button
-									type="submit"
-									class="btn btn-warning"
-									id="btnUpdate1">
-									U
-								</button>
-								<button
-									type="reset"
-									class="btn btn-danger"
-									id="btnRemove1">
-									X
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td>S002</td>
-							<td>Sosro</td>
-							<td>PT. PNY Indonesia</td>
-							<td>085382834238</td>
-							<td>085783453240</td>
-							<td>pny@gmail.com</td>
-							<td align="right">
-								<button
-									type="submit"
-									class="btn btn-info"
-									id="btnView2">
-									V
-								</button>
-								<button
-									type="submit"
-									class="btn btn-warning"
-									id="btnUpdate2">
-									U
-								</button>
-								<button
-									type="reset"
-									class="btn btn-danger"
-									id="btnRemove2">
-									X
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+		</div>
+	</div>
+
+	<!-- ===================== MODAL REMOVE ========================= -->
+	<!-- Modal -->
+	<div
+		class="modal fade"
+		id="removeDialog"
+		data-bs-backdrop="static"
+		data-bs-keyboard="false"
+		tabindex="-1"
+		aria-labelledby="staticBackdropLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1
+						class="modal-title fs-5"
+						id="staticBackdropLabel">
+						Remove Data
+					</h1>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">Yakin ingin hapus data?</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						data-bs-dismiss="modal">
+						Batal
+					</button>
+					<button
+						type="button"
+						data-bs-dismiss="modal"
+						id="removeBtn"
+						class="btn btn-primary">
+						Understood
+					</button>
+				</div>
 			</div>
-		</span>
-	</body>
-</html>
+		</div>
+	</div>
+</span>
+
+<script>
+	$(document).ready(function () {
+		const myModal = $("#staticBackdrop");
+		let indexUpdate;
+
+		$("#btnAddSupplier").click(function () {
+			myModal.find("h1").text("Tambah Supplier");
+			$("#btnSaveSupplier").show();
+			$("#btnUpdateSupplier").hide();
+		});
+
+		$("#dismissBtn").click(function () {
+			$.fn.clearform();
+		});
+
+		$("#btnSaveSupplier").click(function () {
+			// ambil value
+			let kode = $("#kode").val();
+			let nama = $("#nama").val();
+			let supplier = $("#supplier").val();
+			let tlpSales = $("#teleponsales").val();
+			let tlpKantor = $("#teleponkantor").val();
+			let email = $("#email").val();
+
+			$("#mytable tbody").append(
+				`<tr><td>${kode}</td><td>${nama}</td><td>${supplier}</td><td>${tlpSales}</td><td>${tlpKantor}</td><td>${email}</td><td><button type="submit" class="btn btn-info view" data-bs-toggle="modal" data-bs-target="#staticBackdrop">V</button> <button type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-info warning update">U</button> <button type="reset" data-bs-toggle="modal" data-bs-target="#removeDialog"class="btn btn-danger remove">X</button></td></tr>`
+			);
+
+			$.fn.clearform();
+		});
+
+		$.fn.updateSupp = function () {
+			let el;
+			let elRow;
+			let elKode;
+			let elNama;
+			let elSupplier;
+			let elSales;
+			let elKantor;
+			let elEmail;
+
+			$("#mytable tbody").on("click", ".update", function () {
+				myModal.find("h1").text("Update Supplier");
+				$("#btnSaveSupplier").hide();
+				$("#btnUpdateSupplier").show();
+				indexUpdate = $(this).closest("tr").index();
+				// console.log(indexUpdate);
+
+				// cari tr
+				console.log(indexUpdate);
+				el = $("#mytable tbody").find("tr").eq(indexUpdate);
+				// console.log(el);
+				elRow = el.find("td");
+				// console.log(elRow);
+
+				// ambil semua value dari cell
+				const kode = elRow[0].innerHTML;
+				const nama = elRow[1].innerHTML;
+				const supplier = elRow[2].innerHTML;
+				const telpSales = elRow[3].innerHTML;
+				const telpKantor = elRow[4].innerHTML;
+				const email = elRow[5].innerHTML;
+
+				// ambil modal
+				const modal = $("span #staticBackdrop");
+
+				// cari dan setting value dari form
+				elKode = modal.find("#kode");
+				elNama = modal.find("#nama");
+				elSupplier = modal.find("#supplier");
+				elSales = modal.find("#teleponsales");
+				elKantor = modal.find("#teleponkantor");
+				elEmail = modal.find("#email");
+
+				elKode.val(kode);
+				elNama.val(nama);
+				elSupplier.val(supplier);
+				elSales.val(telpSales);
+				elKantor.val(telpKantor);
+				elEmail.val(email);
+			});
+			$("#btnUpdateSupplier").click(function () {
+				elRow[0].innerHTML = elKode.val();
+				elRow[1].innerHTML = elNama.val();
+				elRow[2].innerHTML = elSupplier.val();
+				elRow[3].innerHTML = elSales.val();
+				elRow[4].innerHTML = elKantor.val();
+				elRow[5].innerHTML = elEmail.val();
+
+				$.fn.clearform();
+			});
+		};
+
+		$.fn.updateSupp();
+
+		$.fn.clearform = function () {
+			$(`#kode`).val("");
+			$(`#nama`).val("");
+			$(`#supplier`).val("");
+			$(`#teleponsales`).val("");
+			$(`#teleponkantor`).val("");
+			$(`#email`).val("");
+		};
+
+		$.fn.removeFunc = function () {
+			$("#mytable tbody").on("click", ".remove", function () {
+				indexUpdate = $(this).closest("tr").index();
+				console.log(indexUpdate);
+			});
+			$("#removeBtn").click(function () {
+				$("#mytable tbody").find("tr").eq(indexUpdate).remove();
+			});
+		};
+
+		$.fn.removeFunc();
+
+		$.fn.viewSupp = function () {
+			let el;
+			let elRow;
+			let elKode;
+			let elNama;
+			let elSupplier;
+			let elSales;
+			let elKantor;
+			let elEmail;
+
+			$("#mytable tbody").on("click", ".view", function () {
+				myModal.find("h1").text("View Supplier");
+				$("#btnSaveSupplier").hide();
+				$("#btnUpdateSupplier").hide();
+				indexUpdate = $(this).closest("tr").index();
+				// console.log(indexUpdate);
+
+				// cari tr
+				console.log(indexUpdate);
+				el = $("#mytable tbody").find("tr").eq(indexUpdate);
+				// console.log(el);
+				elRow = el.find("td");
+				// console.log(elRow);
+
+				// ambil semua value dari cell
+				const kode = elRow[0].innerHTML;
+				const nama = elRow[1].innerHTML;
+				const supplier = elRow[2].innerHTML;
+				const telpSales = elRow[3].innerHTML;
+				const telpKantor = elRow[4].innerHTML;
+				const email = elRow[5].innerHTML;
+
+				// ambil modal
+				const modal = $("span #staticBackdrop");
+
+				// cari dan setting value dari form
+				elKode = modal.find("#kode");
+				elNama = modal.find("#nama");
+				elSupplier = modal.find("#supplier");
+				elSales = modal.find("#teleponsales");
+				elKantor = modal.find("#teleponkantor");
+				elEmail = modal.find("#email");
+
+				elKode.val(kode).prop("disabled", "true");
+				elNama.val(nama).prop("disabled", "true");
+				elSupplier.val(supplier).prop("disabled", "true");
+				elSales.val(telpSales).prop("disabled", "true");
+				elKantor.val(telpKantor).prop("disabled", "true");
+				elEmail.val(email).prop("disabled", "true");
+			});
+		};
+
+		$.fn.viewSupp();
+	});
+</script>
