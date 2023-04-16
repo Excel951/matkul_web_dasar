@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Kode -->
+
+
+    <!-- Table -->
+    <div id="tabelBarang">
+        <button type="button" id="btnTambahBarang" class="btn btn-warning mt-4 mb-4" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
+            Tambah +
+        </button>
+
+        <table id="myTable" class="table table-light table-striped w-100">
+            <tr>
+                <th>Kode</th>
+                <th>Supplier</th>
+                <th>Karyawan</th>
+                <th>Jumlah</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+            <tbody id="tbody">
+                <tr>
+                    <td class="kode">20230304165103</td>
+                    <td>PT.Aksara</td>
+                    <td>Oky</td>
+                    <td class="jumlah">5</td>
+                    <td class="harga">5000</td>
+                    <td> <button type="button" class="btn btn-warning mt-4 mb-4" data-bs-toggle="modal"
+                            data-bs-target="#modalText">
+                            V
+                        </button>
+                        <button class="btn btn-warning remove" data-bs-toggle='modal' data-bs-target='#deleteModal'
+                            id="id1">X</button></td>
+                </tr>
+                <tr>
+                    <td class="kode">20230304165110</td>
+                    <td>PT.Aksara</td>
+                    <td class="jumlah">Oky</td>
+                    <td>6</td>
+                    <td class="harga">12000</td>
+                    <td> <button type="button" class="btn btn-warning mt-4 mb-4" data-bs-toggle="modal"
+                            data-bs-target="#modalText">
+                            V
+                        </button>
+                        <button class="btn btn-warning remove" data-bs-toggle='modal' data-bs-target='#deleteModal'
+                            id="id2">X</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <h1>Total : <span id="total"></span></h1>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"><span id="modalTitle">Tambah
+                                Pembelian</span>
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body w-100">
+                        <div class="input-group">
+                            <div class=" mb-3 row">
+                                <div class="col-lg-6 col-12">
+                                    <label for="kodeb">Kode</label>
+                                    <input type="text" class="form-control" id="kode" placeholder="Kode..."
+                                        aria-label="kode" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <label for="yy">Supplier</label>
+                                    <select class="form-select" id="yy" aria-label="Default select example">
+                                        <option selected>-</option>
+                                        <option value="PT.Aksara">PT.Aksara</option>
+                                        <option value="PT.Tulis">PT.Tulis</option>
+                                        <option value="PT.Marwana">PT.Marwana</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="xx">Karyawan</label>
+                                    <select class="form-select" id="xx" aria-label="Default select example">
+                                        <option selected>-</option>
+                                        <option value="Sulis">Sulis</option>
+                                        <option value="Oky">Oky</option>
+                                        <option value="Agus">Agus</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <label for="jumlah">Jumlah</label>
+                                    <input type="text" class="form-control" id="jumlah" placeholder="Jumlah..."
+                                        aria-label="jumlah" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <label for="harga">Harga</label>
+                                    <input type="text" class="form-control" id="harga" placeholder="harga..."
+                                        aria-label="harga" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="save" class="btn btn-warning">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Text -->
+        <!-- Modal -->
+        <div class="modal fade" id="modalText" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"><span id="modalTitle">View</span>
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body w-100">
+                        Kode : 20230304165110
+                        <br>
+                        Supplier : PT.Aksara
+                        <br>
+                        Karyawan : Oky
+                        <br>
+                        Jumlah : 6
+                        <br>
+                        Total : 12000
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"><span id="modalTitle">Tambah Barang</span>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body w-100">
+                    Delete row?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="deleteBtn" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var total = 0;
+            //ambil tanngal//
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var hour = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+
+            var indexSekarang = 0;
+            var x = document.querySelectorAll('.remove');
+            var row = document.querySelectorAll('tr');
+            //var kode dan tanggal//
+            $('#kode').val(year + "" + month + "" + day + "" + hour + "" + minute + "" + second);
+            $('#tanggal').val(day + "-" + month + "-" + year);
+            console.log(day);
+            //if else supp untuk munculkan telp dan alamat//
+
+            //if else karyawan untuk munculkan jabatan//
+            // $("#yy").change(function () {
+            //     console.log("Hello!");
+            // });
+            $('#tbody tr').each(function () {
+                var currentRow = $(this);
+                total = total + Number(currentRow.find("td:eq(4)").text());
+            });
+            $("#total").text(total);
+
+            //logika tombol simpan untuk masukkan ke table//
+            $("#save").click(function () {
+                total = 0;
+                var panjang = $('tbody tr').length;
+                var kode = $('#kode').val();
+                var yy = $('#yy').val();
+                // console.log($('#supplier').val());
+                var xx = $('#xx').val();
+                // console.log($('#karyawan').val());
+                var jumlah = $('#jumlah').val();
+                var harga = $('#harga').val();
+                var totalhrg = harga * jumlah;
+                $('#tbody').append("<tr> <td> " + kode + " </td> <td> " + yy + " </td> <td > " +
+                    xx + " </td> <td > " + jumlah + "</td> <td class='harga'> " + harga +
+                    " </td> <td><button class='btn btn-warning'>V</button> <button id = \"id" +
+                    panjang +
+                    "\" class=\"remove btn btn-warning\" data-bs-toggle='modal' data-bs-target='#deleteModal'>X</td ></tr>"
+                )
+                console.log(panjang);
+                $('#tbody tr').each(function () {
+                    var currentRow = $(this);
+                    total = total + Number(currentRow.find("td:eq(4)").text());
+                });
+                $("#total").text(total);
+                $.fn.clearform();
+                checkRow();
+            });
+            //menghilangkan value//
+            $.fn.clearform = function () {
+                $('#kodeb').val("");
+                $('#nama').val("")
+                $('#satuan').val("");
+                $('#harga').val("");
+                $('#jumlah').val("");
+                console.log("a");
+            };
+            //logika tombol untuk hapus baris//
+            // $("tbody").on('click', '.remove', function () {
+            //     if (confirm('Deletes row?')) {
+            //         total = 0;
+            //         var id = $(this).attr('id');
+            //         console.log(id);
+            //         $(this).closest('tr').remove();
+            //         $('#tbody tr').each(function () {
+            //             var currentRow = $(this);
+            //             total = total + Number(currentRow.find("td:eq(4)").text());
+            //         });
+            //         $("#total").text(total);
+            //     } else {
+
+            //     }
+            // });
+            checkRow();
+
+            function checkRow() {
+                x = document.querySelectorAll('.remove');
+                x.forEach(function (e, i) {
+                    // console.log(index);
+                    console.log(i);
+                    e.addEventListener("click", function () {
+                        // console.log(v);
+                        indexSekarang = i + 1;
+                        console.log(i);
+                        console.log(indexSekarang);
+
+                    });
+                });
+                row = document.querySelectorAll('tr');
+                console.log(row);
+            }
+
+
+            $('#deleteBtn').click(function () {
+                row[indexSekarang].remove();
+                checkRow();
+                var harga = document.querySelectorAll('.harga');
+                total = 0;
+                console.log(harga);
+                harga.forEach(function (e) {
+                    total += +e.innerHTML;
+                });
+                $("#total").text(total);
+            });
+        });
+    </script>
+</body>
+
+</html>

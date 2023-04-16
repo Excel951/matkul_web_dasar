@@ -1,237 +1,214 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			http-equiv="X-UA-Compatible"
-			content="IE=edge" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<title>Master Pembelian</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-	</head>
-	<body>
-		<main>
-			<div id="navPembelian">
-				<button
-					class="is-primary"
-					id="btnRekap">
-					Rekap
-				</button>
-				<button
-					class="is-primary"
-					id="btnDetail">
-					Detail
-				</button>
-				<button
-					class="is-primary"
-					id="btnPlus">
-					+
-				</button>
-			</div>
-			<div id="main"></div>
-		</main>
-		<footer>Ini Footer</footer>
-		<script>
-			$(document).ready(function () {
-				// object
-				const barang = {
-					1: { nama: "", satuan: ``, harga: "" },
-					M001: { nama: "VGA", satuan: `pcs`, harga: 4000 },
-					M002: { nama: "RAM", satuan: `pcs`, harga: 800 },
-					M003: { nama: "CPU", satuan: `pcs`, harga: 2000 },
-					M004: { nama: "Monitor", satuan: `pcs`, harga: 1500 },
-				};
-				const supp = {
-					pny: { telp: "085783453240", alamat: "Surabaya" },
-					lenovo: { telp: "085734852940", alamat: "Jakarta" },
-				};
+<span class="container-fluid d-block mx-0 my-3">
+	<div
+		id="navPembelian1"
+		class="container-fluid mt-3 mb-3">
+		<h3 class="h3 text-center">Master Pembelian</h3>
+		<button
+			class="btn btn-primary"
+			id="btnRekap">
+			Rekap
+		</button>
+		<button
+			class="btn btn-primary"
+			id="btnDetail">
+			Detail
+		</button>
+		<button
+			class="btn btn-primary"
+			id="btnPlus">
+			+
+		</button>
+	</div>
+	<div
+		id="main"
+		class="container-fluid"></div>
+</span>
 
-				// fungsi untuk berpindah halaman
-				$.fn.pindahHalaman = function () {
-					$("main").click(function (event) {
-						if (event.target.id === "btnPlus") {
-							$("#main").load("./pembelian3.html", function () {
-								$.fn.getJabatan();
-								$.fn.getBarang();
-								$.fn.removeBarang();
-								$.fn.ambilWaktu();
-								$("#save").click(function () {
-									$.fn.saveBarang();
-								});
-								$.fn.getSupplier();
-							});
-						} else if (event.target.id === "btnRekap") {
-							$("#main").load("./pembelian1.html", function () {
-								// hitung total barang
-								$.fn.hitungTotal("pembelian1", 3);
-								// hitung total harga
-								$.fn.hitungTotal("pembelian1", 4);
-							});
-						} else if (event.target.id === "btnDetail") {
-							$("#main").load("./pembelian2.html", function () {
-								// hitung total barang
-								$.fn.hitungTotal("pembelian2", 1);
-								// hitung total harga
-								$.fn.hitungTotal("pembelian2", 2);
-							});
-						} else if (event.target.className === "view is-info") {
-							$("#main").load("./pembelian4.html", function () {
-								$.fn.ambilWaktu();
-								$.fn.getJabatan();
-								$.fn.getSupplier();
-							});
-						}
+<script>
+	$(document).ready(function () {
+		// fungsi untuk berpindah halaman
+		$.fn.pindahHalaman = function () {
+			$("#navPembelian1").click(function (event) {
+				if (event.target.id === "btnPlus") {
+					console.log("test");
+					$("#main").load("./tugas5/pembelian3.html", function () {
+						$.fn.getJabatan();
+						$.fn.getBarang();
+						$.fn.removeBarang();
+						$.fn.ambilWaktu();
+						$("#save").click(function () {
+							$.fn.saveBarang();
+						});
+						$.fn.getSupplier();
 					});
-				};
-
-				// menghitung total dari total barang dan harga
-				$.fn.hitungTotal = function (file, kolom) {
-					let total = 0;
-					let panjang = $("#mytable tbody tr").length;
-					$("#mytable tbody tr").each(function () {
-						let currentRow = $(this);
-						let value = currentRow.find("td").eq(kolom).text();
-						total = total + Number(value);
+				} else if (event.target.id === "btnRekap") {
+					$("#main").load("./tugas5/pembelian1.html", function () {
+						// hitung total barang
+						$.fn.hitungTotal("pembelian1", 3);
+						// hitung total harga
+						$.fn.hitungTotal("pembelian1", 4);
 					});
-					if (file === "pembelian1") {
-						if (kolom === 3) {
-							$("#totalbrg").text(total);
-						} else if (kolom === 4) {
-							$("#totalhrg").text(total);
-						}
-					} else if (file === "pembelian2") {
-						if (kolom === 1) {
-							$("#totalbrg").text(total);
-						} else if (kolom === 2) {
-							$("#totalhrg").text(total);
-						}
-					} else if (file === "pembelian3") {
-						$("#total").text(total);
-					} else if (file === "pembelian4") {
-					}
-				};
-
-				// fungsi pada halaman pembelian4 (detail)
-				$.fn.getSupplier = function () {
-					// const supp = {
-					// 	pny: { telp: "085783453240", alamat: "Surabaya" },
-					// 	lenovo: { telp: "085734852940", alamat: "Jakarta" },
-					// };
-
-					$("#main #formPembelian #supplier").change(function () {
-						let currentSelect = $(this);
-						let valueOption = currentSelect.val();
-						$("#telp").val(supp[`${valueOption}`].telp);
-						$("#alamat").val(supp[`${valueOption}`].alamat);
+				} else if (event.target.id === "btnDetail") {
+					$("#main").load("./tugas5/pembelian2.html", function () {
+						// hitung total barang
+						$.fn.hitungTotal("pembelian2", 1);
+						// hitung total harga
+						$.fn.hitungTotal("pembelian2", 2);
 					});
-				};
-
-				// fungsi pada halaman pembelian3 (form pembelian)
-				// ambil waktu untuk kode pembelian dan tanggal
-				$.fn.ambilWaktu = function () {
-					let dates = new Date();
-					let year = dates.getFullYear();
-					let month = dates.getMonth() + 1;
-					let date = dates.getDate();
-					let hour = dates.getHours();
-					let minute = dates.getMinutes();
-					let seconds = dates.getSeconds();
-
-					$("#formPembelian #kode").val(
-						`${year}${month}${date}${hour}${minute}${seconds}`
-					);
-					$("#formPembelian #tgl").val(dates.toLocaleDateString());
-				};
-
-				// fungsi membersihkan form
-				$.fn.clearform = function () {
-					$(`#main #formBarang #kodebrg`).val("1");
-					$(`#main #formBarang #nama`).val("");
-					$(`#main #formBarang #satuan`).val("");
-					$(`#main #formBarang #harga`).val("");
-					$(`#main #formBarang #jumlah`).val("");
-				};
-
-				// fungsi untuk remove barang
-				$.fn.removeBarang = function () {
-					let total = 0;
-					$("#mytable tbody").on("click", ".remove", function () {
-						// let id = $(this).attr("id");
-
-						$(this).closest("tr").remove();
-						$.fn.hitungTotal("pembelian3", 5);
+				} else if (event.target.className === "view is-info") {
+					$("#main").load("./tugas5/pembelian4.html", function () {
+						$.fn.ambilWaktu();
+						$.fn.getJabatan();
+						$.fn.getSupplier();
 					});
-				};
-
-				// click untuk simpan barang
-				$.fn.saveBarang = function () {
-					if ($("#kodebrg").val() != 1) {
-						// ambil panjang dari tabel
-						let panjang = $("#mytable").length;
-
-						// ambil value dari form barang
-						let kode = $(`#kodebrg`).val();
-						let nama = $(`#nama`).val();
-						let harga = $(`#harga`).val();
-						let satuan = $(`#satuan`).val();
-						let jumlah = $(`#jumlah`).val();
-						let totalhrg = harga * jumlah;
-
-						$(`#mytable tbody`).append(
-							`<tr><td>${kode}</td><td>${nama}</td><td>${satuan}</td><td>${harga}</td><td>${jumlah}</td><td>${totalhrg}</td><td><button id="id${panjang}" class="remove is-danger">X</button></td></tr>`
-						);
-
-						$.fn.hitungTotal("pembelian3", 5);
-						$.fn.clearform();
-					} else {
-						alert("Barang masih kosong");
-					}
-				};
-
-				// munculkan data barang
-				$.fn.getBarang = function () {
-					// const barang = {
-					// 	1: { nama: "", satuan: ``, harga: "" },
-					// 	M001: { nama: "VGA", satuan: `pcs`, harga: 4000 },
-					// 	M002: { nama: "RAM", satuan: `pcs`, harga: 800 },
-					// 	M003: { nama: "CPU", satuan: `pcs`, harga: 2000 },
-					// 	M004: { nama: "Monitor", satuan: `pcs`, harga: 1500 },
-					// };
-
-					$("#main #formBarang #kodebrg").change(function () {
-						// ambil value (id) dari select
-						let currentSelect = $(this);
-						let id = currentSelect.val();
-
-						$("#nama").val(barang[`${id}`].nama);
-						$("#satuan").val(barang[`${id}`].satuan);
-						$("#harga").val(barang[`${id}`].harga);
-					});
-				};
-
-				// munculkan karyawan dan jabatan
-				$.fn.getJabatan = function () {
-					const jab = {
-						dika: "Operator",
-						santoso: `Manager`,
-						aldi: `Admin`,
-					};
-
-					$("#main #formPembelian #karyawan").change(function () {
-						let currentSelect = $(this);
-						let valueOption = currentSelect.val();
-						$("#jabatan").val(jab[`${valueOption}`]);
-					});
-				};
-
-				// ambil tanggal dari sistem
-				$.fn.getDate = function () {};
-
-				// panggil function pindah halaman
-				$.fn.pindahHalaman();
+				}
 			});
-		</script>
-	</body>
-</html>
+		};
+
+		// menghitung total dari total barang dan harga
+		$.fn.hitungTotal = function (file, kolom) {
+			let total = 0;
+			let panjang = $("#mytable tbody tr").length;
+			$("#mytable tbody tr").each(function () {
+				let currentRow = $(this);
+				let value = currentRow.find("td").eq(kolom).text();
+				total = total + Number(value);
+			});
+			if (file === "pembelian1") {
+				if (kolom === 3) {
+					$("#totalbrg").text(total);
+				} else if (kolom === 4) {
+					$("#totalhrg").text(total);
+				}
+			} else if (file === "pembelian2") {
+				if (kolom === 1) {
+					$("#totalbrg").text(total);
+				} else if (kolom === 2) {
+					$("#totalhrg").text(total);
+				}
+			} else if (file === "pembelian3") {
+				$("#total").text(total);
+			} else if (file === "pembelian4") {
+			}
+		};
+
+		// fungsi pada halaman pembelian4 (detail)
+		$.fn.getSupplier = function () {
+			const supp = {
+				pny: { telp: "085783453240", alamat: "Surabaya" },
+				lenovo: { telp: "085734852940", alamat: "Jakarta" },
+			};
+
+			$("#main #formPembelian #supplier").change(function () {
+				let currentSelect = $(this);
+				let valueOption = currentSelect.val();
+				$("#telp").val(supp[`${valueOption}`].telp);
+				$("#alamat").val(supp[`${valueOption}`].alamat);
+			});
+		};
+
+		// fungsi pada halaman pembelian3 (form pembelian)
+		// ambil waktu untuk kode pembelian dan tanggal
+		$.fn.ambilWaktu = function () {
+			let dates = new Date();
+			let year = dates.getFullYear();
+			let month = dates.getMonth() + 1;
+			let date = dates.getDate();
+			let hour = dates.getHours();
+			let minute = dates.getMinutes();
+			let seconds = dates.getSeconds();
+
+			$("#formPembelian #kode").val(
+				`${year}${month}${date}${hour}${minute}${seconds}`
+			);
+			$("#formPembelian #tgl").val(dates.toLocaleDateString());
+		};
+
+		// fungsi membersihkan form
+		$.fn.clearform = function () {
+			$(`#main #formBarang #kodebrg`).val("1");
+			$(`#main #formBarang #nama`).val("");
+			$(`#main #formBarang #satuan`).val("");
+			$(`#main #formBarang #harga`).val("");
+			$(`#main #formBarang #jumlah`).val("");
+		};
+
+		// fungsi untuk remove barang
+		$.fn.removeBarang = function () {
+			let total = 0;
+			$("#mytable tbody").on("click", ".remove", function () {
+				// let id = $(this).attr("id");
+
+				$(this).closest("tr").remove();
+				$.fn.hitungTotal("pembelian3", 5);
+			});
+		};
+
+		// click untuk simpan barang
+		$.fn.saveBarang = function () {
+			if ($("#kodebrg").val() != 1) {
+				// ambil panjang dari tabel
+				let panjang = $("#mytable").length;
+
+				// ambil value dari form barang
+				let kode = $(`#kodebrg`).val();
+				let nama = $(`#nama`).val();
+				let harga = $(`#harga`).val();
+				let satuan = $(`#satuan`).val();
+				let jumlah = $(`#jumlah`).val();
+				let totalhrg = harga * jumlah;
+
+				$(`#mytable tbody`).append(
+					`<tr><td>${kode}</td><td>${nama}</td><td>${satuan}</td><td>${harga}</td><td>${jumlah}</td><td>${totalhrg}</td><td><button id="id${panjang}" class="remove is-danger">X</button></td></tr>`
+				);
+
+				$.fn.hitungTotal("pembelian3", 5);
+				$.fn.clearform();
+			} else {
+				alert("Barang masih kosong");
+			}
+		};
+
+		// munculkan data barang
+		$.fn.getBarang = function () {
+			const barang = {
+				1: { nama: "", satuan: ``, harga: "" },
+				M001: { nama: "VGA", satuan: `pcs`, harga: 4000 },
+				M002: { nama: "RAM", satuan: `pcs`, harga: 800 },
+				M003: { nama: "CPU", satuan: `pcs`, harga: 2000 },
+				M004: { nama: "Monitor", satuan: `pcs`, harga: 1500 },
+			};
+
+			$("#main #formBarang #kodebrg").change(function () {
+				// ambil value (id) dari select
+				let currentSelect = $(this);
+				let id = currentSelect.val();
+
+				$("#nama").val(barang[`${id}`].nama);
+				$("#satuan").val(barang[`${id}`].satuan);
+				$("#harga").val(barang[`${id}`].harga);
+			});
+		};
+
+		// munculkan karyawan dan jabatan
+		$.fn.getJabatan = function () {
+			const jab = {
+				dika: "Operator",
+				santoso: `Manager`,
+				aldi: `Admin`,
+			};
+
+			$("#main #formPembelian #karyawan").change(function () {
+				let currentSelect = $(this);
+				let valueOption = currentSelect.val();
+				$("#jabatan").val(jab[`${valueOption}`]);
+			});
+		};
+
+		// ambil tanggal dari sistem
+		$.fn.getDate = function () {};
+
+		// panggil function pindah halaman
+		$.fn.pindahHalaman();
+	});
+</script>

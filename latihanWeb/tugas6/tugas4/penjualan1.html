@@ -97,7 +97,6 @@
 			</div>
 			<div class="modal-body">
 				<form
-					action="tugas1.html"
 					target="_blank"
 					method="post"
 					autocomplete="on">
@@ -170,82 +169,106 @@
 							class="form-control input-group"
 							readonly />
 					</div>
-					<div class="mb-3 row">
-						<div class="col-md-2">
-							<label
-								for="kodebrg"
-								class="form-label input-group"
-								>Kode Barang:
-							</label>
-							<select
-								class="select form-select input-group"
-								name="kodebrg"
-								id="kodebrg">
-								<option value="null">Pilih Kode Barang:</option>
-								<option value="M001">M001</option>
-								<option value="M002">M002</option>
-								<option value="M003">M003</option>
-								<option value="M004">M004</option>
-							</select>
-						</div>
-						<div class="col-md-2">
-							<label
-								for="nama"
-								class="form-label input-group"
-								>Nama:</label
-							>
-							<input
-								type="text"
-								name="nama"
-								id="nama"
-								class="form-control input-group"
-								readonly />
-						</div>
-						<div class="col-md-2">
-							<label
-								for="satuan"
-								class="form-label input-group"
-								>Satuan:</label
-							>
-							<input
-								type="text"
-								name="satuan"
-								id="satuan"
-								class="form-control input-group"
-								readonly />
-						</div>
-						<div class="col-md-2">
-							<label
-								for="harga"
-								class="form-label input-group"
-								>Harga:</label
-							>
-							<input
-								type="text"
-								name="harga"
-								id="harga"
-								class="form-control input-group"
-								readonly />
-						</div>
-						<div class="col-md-2">
-							<label
-								for="jumlah"
-								class="form-label input-group"
-								>Jumlah:</label
-							>
-							<input
-								type="text"
-								name="jumlah"
-								id="jumlah"
-								class="form-control input-group" />
-						</div>
-						<div class="col-md-auto d-block">
-							<button class="mx-auto btn btn-primary saveItemBuyed text-center">
-								Save
-							</button>
-						</div>
-					</div>
 				</form>
+				<div class="mb-3 row">
+					<div class="col-md-2">
+						<label
+							for="kodebrg"
+							class="form-label input-group"
+							>Kode Barang:
+						</label>
+						<select
+							class="select form-select input-group"
+							name="kodebrg"
+							id="kodebrg">
+							<option value="null">Pilih Kode Barang:</option>
+							<option value="M001">M001</option>
+							<option value="M002">M002</option>
+							<option value="M003">M003</option>
+							<option value="M004">M004</option>
+						</select>
+					</div>
+					<div class="col-md-2">
+						<label
+							for="nama"
+							class="form-label input-group"
+							>Nama:</label
+						>
+						<input
+							type="text"
+							name="nama"
+							id="nama"
+							class="form-control input-group"
+							readonly />
+					</div>
+					<div class="col-md-2">
+						<label
+							for="satuan"
+							class="form-label input-group"
+							>Satuan:</label
+						>
+						<input
+							type="text"
+							name="satuan"
+							id="satuan"
+							class="form-control input-group"
+							readonly />
+					</div>
+					<div class="col-md-2">
+						<label
+							for="harga"
+							class="form-label input-group"
+							>Harga:</label
+						>
+						<input
+							type="text"
+							name="harga"
+							id="harga"
+							class="form-control input-group"
+							readonly />
+					</div>
+					<div class="col-md-2">
+						<label
+							for="jumlah"
+							class="form-label input-group"
+							>Jumlah:</label
+						>
+						<input
+							type="text"
+							name="jumlah"
+							id="jumlah"
+							class="form-control input-group" />
+					</div>
+					<div class="col-md-auto d-block">
+						<button
+							class="mx-auto btn btn-primary text-center"
+							id="saveItemBuyed">
+							Save
+						</button>
+					</div>
+				</div>
+				<div class="">
+					<table
+						class="table"
+						id="myTable"
+						border="1">
+						<thead style="background-color: #485fc7">
+							<tr>
+								<th>Kode</th>
+								<th>Nama</th>
+								<th>Satuan</th>
+								<th>Harga</th>
+								<th>Jumlah</th>
+								<th>Total</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+					<br />
+					<label for="total">Total: </label>
+					<label id="total">0</label>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button
@@ -263,24 +286,51 @@
 					Save
 				</button>
 			</div>
-			<div class="">
-				<table
-					class="table"
-					id="mytable"
-					border="1">
-					<tr style="background-color: #485fc7">
-						<th>Kode</th>
-						<th>Nama</th>
-						<th>Satuan</th>
-						<th>Harga</th>
-						<th>Jumlah</th>
-						<th>Total</th>
-						<th>Action</th>
-					</tr>
-				</table>
-				<br />
-				<label for="total">Total: </label>
-				<label id="total">0</label>
+		</div>
+	</div>
+</div>
+<!-- ==================== MODAL REMOVE ===================== -->
+<div
+	class="modal fade"
+	id="removeDialog"
+	data-bs-backdrop="static"
+	data-bs-keyboard="false"
+	tabindex="-1"
+	aria-labelledby="staticBackdropLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1
+					class="modal-title fs-5"
+					id="staticBackdropLabel">
+					Remove Data
+				</h1>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">Yakin ingin hapus item?</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					data-bs-toggle="modal"
+					data-bs-target="#staticBackdrop"
+					class="btn btn-secondary"
+					data-bs-dismiss="modal">
+					Batal
+				</button>
+				<button
+					type="button"
+					data-bs-dismiss="modal"
+					data-bs-toggle="modal"
+					data-bs-target="#staticBackdrop"
+					id="removeBtn"
+					class="btn btn-primary">
+					Understood
+				</button>
 			</div>
 		</div>
 	</div>
@@ -298,80 +348,148 @@
 		// console.log(total);
 		document.querySelector(`#totalMaster`).textContent = total;
 	}
-
 	hitungtotalMaster();
 
-	// ambil tanggal untuk kode
-	let year = new Date().getFullYear();
-	let month = new Date().getMonth() + 1;
-	let date = new Date().getDate();
-	let hour = new Date().getHours();
-	let minute = new Date().getMinutes();
-	let seconds = new Date().getSeconds();
+	// klik tambah penjualan
+	actTambahPenjualan();
+	function actTambahPenjualan() {
+		document.querySelector("#btnAddPenjualan").addEventListener("click", () => {
+			functAddPenjualan();
+		});
+	}
+	function functAddPenjualan() {
+		// ambil tanggal untuk kode
+		let year = new Date().getFullYear();
+		let month = new Date().getMonth() + 1;
+		let date = new Date().getDate();
+		let hour = new Date().getHours();
+		let minute = new Date().getMinutes();
+		let seconds = new Date().getSeconds();
 
-	// ambil element untuk tempat kode dan tgl
-	let kodeInput = document.querySelector(`#kode`);
-	let tgl = document.querySelector(`#tanggal`);
+		// ambil element untuk tempat kode dan tgl
+		let kodeInput = document.querySelector(`#kode`);
+		let tgl = document.querySelector(`#tanggal`);
 
-	// susun kode
-	let kode = `${year}${month}${date}${hour}${minute}${seconds}`;
+		// susun kode
+		let kode = `${year}${month}${date}${hour}${minute}${seconds}`;
 
-	// ambil tanggal
-	let dates = new Date().toLocaleDateString();
+		// ambil tanggal
+		let dates = new Date().toLocaleDateString();
 
-	kodeInput.value = kode;
-	tgl.value = dates;
+		// set kode dan tanggal
+		kodeInput.value = kode;
+		tgl.value = dates;
+	}
 
-	function myfunction() {
-		let table = document.querySelector(`#myTable`);
-		let panjang = table.rows.length;
-		let row = table.insertRow(panjang);
-		let cell1 = row.insertCell(0);
-		let cell2 = row.insertCell(1);
-		let cell3 = row.insertCell(2);
-		let cell4 = row.insertCell(3);
-		let cell5 = row.insertCell(4);
-		let cell6 = row.insertCell(5);
-		let cell7 = row.insertCell(6);
-		row.setAttribute(`id`, `idrow${panjang}`);
-		row.setAttribute(`class`, `tr`);
-		cell1.innerHTML = document.querySelector(`#kodebrg`).value;
-		cell2.innerHTML = document.querySelector(`#nama`).value;
-		cell3.innerHTML = document.querySelector(`#satuan`).value;
-		cell4.innerHTML = document.querySelector(`#harga`).value;
-		cell5.innerHTML = document.querySelector(`#jumlah`).value;
-		let subtotal =
-			Number(document.querySelector(`#harga`).value) *
-			Number(document.querySelector(`#jumlah`).value);
-		cell6.innerHTML = subtotal;
+	// klik save barang
+	actionSaveItemBuyed();
+	function actionSaveItemBuyed() {
+		let btnSaveItem = document.querySelector("#saveItemBuyed");
+		btnSaveItem.addEventListener("click", (e) => {
+			let panjang;
+			myfunction(checkItem());
+		});
+	}
+	function checkItem() {
+		let tbody = document.querySelector("#myTable tbody");
+		panjang = tbody.rows.length;
+		let kodebrg = document.querySelector(`#kodebrg`).value;
+		let datas = [];
+		for (let i = 0; i < panjang; i++) {
+			let data = tbody.rows[i].cells[0];
+			data = data.innerHTML;
+			console.log(data);
+			datas.push(data);
+		}
+		if (datas.includes(kodebrg)) {
+			return (panjang = datas.indexOf(kodebrg));
+		} else {
+			return panjang;
+		}
+	}
+	function myfunction(panjang) {
+		let table = document.querySelector(`#myTable tbody`);
+		let currentRow = table.rows.length;
+		if (currentRow == panjang) {
+			let row = table.insertRow(panjang);
+			let cell1 = row.insertCell(0);
+			let cell2 = row.insertCell(1);
+			let cell3 = row.insertCell(2);
+			let cell4 = row.insertCell(3);
+			let cell5 = row.insertCell(4);
+			let cell6 = row.insertCell(5);
+			let cell7 = row.insertCell(6);
+			row.setAttribute(`id`, `idrow${panjang}`);
+			row.setAttribute(`class`, `tr`);
+			cell1.innerHTML = document.querySelector(`#kodebrg`).value;
+			cell2.innerHTML = document.querySelector(`#nama`).value;
+			cell3.innerHTML = document.querySelector(`#satuan`).value;
+			cell4.innerHTML = document.querySelector(`#harga`).value;
+			cell5.innerHTML = document.querySelector(`#jumlah`).value;
+			let subtotal =
+				Number(document.querySelector(`#harga`).value) *
+				Number(document.querySelector(`#jumlah`).value);
+			cell6.innerHTML = subtotal;
 
-		let cancelBtn = document.createElement(`button`);
-		cancelBtn.textContent = `X`;
-		cancelBtn.setAttribute(`onclick`, `deleterow('idrow${panjang}')`);
-		cell7.insertAdjacentElement(`beforeend`, cancelBtn);
+			let cancelBtn = document.createElement(`button`);
+			cancelBtn.textContent = `X`;
+			cancelBtn.setAttribute(`class`, `btn btn-danger removeItem`);
+			cancelBtn.setAttribute(`data-bs-toggle`, `modal`);
+			cancelBtn.setAttribute(`data-bs-target`, `#removeDialog`);
+			cell7.insertAdjacentElement(`beforeend`, cancelBtn);
+		} else {
+			let row = table.rows[panjang];
+			let cell = row.cells[4];
+			let newQty =
+				Number(cell.innerHTML) +
+				Number(document.querySelector(`#jumlah`).value);
+			cell.innerHTML = newQty;
+			let subtotal = Number(document.querySelector(`#harga`).value) * newQty;
+			cell = row.cells[5];
+			cell.innerHTML = subtotal;
+		}
 		hitungtotal();
 	}
 
-	function deleterow(rowid) {
-		let row = document.querySelector(`#${rowid}`);
-		row.remove();
+	// fungsi klik remove
+	$.fn.removeFunc = function () {
+		let indexUpdate;
+		$("#myTable tbody").on("click", ".removeItem", function () {
+			indexUpdate = $(this).closest("tr").index();
+			console.log(indexUpdate);
+		});
+		$("#removeBtn").click(function () {
+			$("#myTable tbody").find("tr").eq(indexUpdate).remove();
+			console.log("total");
+			hitungtotal();
+		});
+		console.log("total");
 		hitungtotal();
-	}
+	};
+	$.fn.removeFunc();
 
 	function hitungtotal() {
-		let table = document.querySelector(`#myTable`);
+		let table = document.querySelector(`#myTable tbody`);
 		let panjang = table.rows.length;
 		let total = 0;
-		for (let i = 1; i < panjang; i++) {
+		for (let i = 0; i < panjang; i++) {
 			let data = table.rows[i].cells[5];
 			data = parseInt(data.innerHTML);
 			total = total + data;
 		}
-		// console.log(total);
+		console.log(total + "testt11");
 		document.querySelector(`#total`).textContent = total;
-		clearform();
+		clearformBarang();
 	}
 
+	// action tombol pilih kode barang
+	actionPilihBrg();
+	function actionPilihBrg() {
+		let kodebrg = document.querySelector("#kodebrg");
+		kodebrg.addEventListener("change", () => {
+			pilihkodebrg(kodebrg.value);
+		});
+	}
 	function pilihkodebrg(val) {
 		// data barang
 		const barang = {
@@ -394,7 +512,7 @@
 		harga.value = barang[`${val}`].harga;
 	}
 
-	function clearform() {
+	function clearformBarang() {
 		const brg = {
 			0: document.querySelector(`#kodebrg`),
 			1: document.querySelector(`#nama`),
@@ -408,14 +526,124 @@
 		}
 	}
 
+	// action pilih karyawan
+	actionPilihKaryawan();
+	function actionPilihKaryawan() {
+		let selectKary = document.querySelector("#karyawan");
+		selectKary.addEventListener("change", () => {
+			pilihkar(selectKary.value);
+		});
+	}
 	function pilihkar(val) {
 		const jab = {
-			dika: "operator",
-			santoso: `manager`,
-			aldi: `admin`,
+			null: "",
+			Dika: "Operator",
+			Santoso: `Manager`,
+			Aldi: `Admin`,
 		};
 
 		const elJab = document.querySelector(`#jabatan`);
 		elJab.value = jab[`${val}`];
+	}
+
+	// action button dismiss modal form penjualan
+	actionDismisFormPenjualan();
+	function actionDismisFormPenjualan() {
+		let dismissFormPenjualan = document.querySelector("#dismissBtn");
+		dismissFormPenjualan.addEventListener("click", () => {
+			$.fn.actFuncDismiss();
+		});
+	}
+	$.fn.actFuncDismiss = function () {
+		$("#kode").val("");
+		$("#tanggal").val("");
+		$("#konsumen").val("");
+		$("#karyawan").val("null");
+		$("#jabatan").val("");
+
+		$("#kodebrg").val("null");
+		$("#nama").val("");
+		$("#satuan").val("");
+		$("#harga").val("");
+		$("#jumlah").val("");
+
+		$("#myTable tbody tr").remove();
+	};
+
+	// const barang = {
+	// 	M001: { nama: "VGA", satuan: `pcs`, harga: 4000 },
+	// 	M002: { nama: "RAM", satuan: `pcs`, harga: 800 },
+	// 	M003: { nama: "CPU", satuan: `pcs`, harga: 2000 },
+	// 	M004: { nama: "Monitor", satuan: `pcs`, harga: 1500 },
+	// };
+	// klik tambah penjualan
+	// let datasSale = {};
+	addSale();
+	function addSale() {
+		document
+			.querySelector("#btnSavePenjualan")
+			.addEventListener("click", () => {
+				functSaveSale();
+				$.fn.actFuncDismiss();
+			});
+	}
+	function functSaveSale() {
+		// kode	tanggal	konsumen	total	karyawan
+		let tableMaster = document.querySelector("#mytable tbody");
+		let panjang = tableMaster.rows.length;
+		let row = tableMaster.insertRow(panjang);
+		let cell1 = row.insertCell(0);
+		let cell2 = row.insertCell(1);
+		let cell3 = row.insertCell(2);
+		let cell4 = row.insertCell(3);
+		let cell5 = row.insertCell(4);
+		let cell6 = row.insertCell(5);
+		let kode = document.querySelector("#kode").value;
+		cell1.innerHTML = kode;
+		cell2.innerHTML = document.querySelector("#tanggal").value;
+		cell3.innerHTML = document.querySelector("#konsumen").value;
+		cell4.innerHTML = document.querySelector("#total").textContent;
+		cell5.innerHTML = document.querySelector("#karyawan").value;
+
+		let viewBtn = document.createElement(`button`);
+		viewBtn.textContent = `V`;
+		viewBtn.setAttribute(`class`, `btn btn-info view`);
+		viewBtn.setAttribute(`data-bs-toggle`, `modal`);
+		viewBtn.setAttribute(`data-bs-target`, `#staticBackdrop`);
+		cell6.insertAdjacentElement(`beforeend`, viewBtn);
+
+		hitungtotalMaster();
+	}
+
+	// klik view penjualan
+	actView();
+	function actView() {
+		$("#mytable tbody").on("click", ".view", function () {
+			let currentRow = $(this).closest("tr");
+			let cells = currentRow.find("td");
+			let cellKode = cells.eq(0).text();
+			let cellTanggal = cells.eq(1).text();
+			let cellKonsumen = cells.eq(2).text();
+			let cellTotal = cells.eq(3).text();
+			let cellKaryawan = cells.eq(4).text();
+
+			const jab = {
+				null: "",
+				Dika: "Operator",
+				Santoso: `Manager`,
+				Aldi: `Admin`,
+			};
+
+			document.querySelector("#konsumen").readOnly = true;
+			document.querySelector("#karyawan").setAttribute("disabled", true);
+			document.querySelector("#jabatan").readOnly = true;
+
+			document.querySelector("#kode").value = cellKode;
+			document.querySelector("#tanggal").value = cellTanggal;
+			document.querySelector("#konsumen").value = cellKonsumen;
+			document.querySelector("#karyawan").value = cellKaryawan;
+			document.querySelector("#total").textContent = cellTotal;
+			document.querySelector("#jabatan").value = jab[`${cellKaryawan}`];
+		});
 	}
 </script>
