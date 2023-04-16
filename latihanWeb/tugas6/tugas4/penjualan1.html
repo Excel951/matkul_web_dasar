@@ -31,14 +31,14 @@
 					<td>Habib</td>
 					<td>32000</td>
 					<td>Aldi</td>
-					<td align="right">
-						<a href="view.html">
-							<button
-								type="submit"
-								class="is-info">
-								V
-							</button>
-						</a>
+					<td>
+						<button
+							type="submit"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop"
+							class="btn btn-info view">
+							V
+						</button>
 					</td>
 				</tr>
 				<tr>
@@ -47,14 +47,14 @@
 					<td>Habib</td>
 					<td>32000</td>
 					<td>Aldi</td>
-					<td align="right">
-						<a href="view.html">
-							<button
-								type="submit"
-								class="is-info">
-								V
-							</button>
-						</a>
+					<td>
+						<button
+							type="submit"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop"
+							class="btn btn-info view">
+							V
+						</button>
 					</td>
 				</tr>
 				<tr>
@@ -63,19 +63,19 @@
 					<td>Habib</td>
 					<td>32000</td>
 					<td>Aldi</td>
-					<td align="right">
-						<a href="view.html">
-							<button
-								type="submit"
-								class="is-info">
-								V
-							</button>
-						</a>
+					<td>
+						<button
+							type="submit"
+							data-bs-toggle="modal"
+							data-bs-target="#staticBackdrop"
+							class="btn btn-info view">
+							V
+						</button>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<label for="total">Total: </label><label id="total">0</label>
+		<label for="totalMaster">Total: </label><label id="totalMaster">0</label>
 	</div>
 </span>
 <!-- =================== MODAL INSERT & UPDATE ======================== -->
@@ -93,7 +93,7 @@
 			<div
 				class="modal-header"
 				id="staticBackdropLabel">
-				<h1>Tambah Barang</h1>
+				<h1>Tambah Penjualan</h1>
 			</div>
 			<div class="modal-body">
 				<form
@@ -101,7 +101,7 @@
 					target="_blank"
 					method="post"
 					autocomplete="on">
-					<div class="row">
+					<div class="row mb-3">
 						<div class="col-md-4">
 							<label
 								for="kode"
@@ -112,7 +112,8 @@
 								type="text"
 								name="kode"
 								id="kode"
-								class="form-control input-group" />
+								class="form-control input-group"
+								readonly />
 						</div>
 						<div class="col-md-4 ms-auto">
 							<label
@@ -124,10 +125,11 @@
 								type="text"
 								name="tanggal"
 								id="tanggal"
-								class="form-control input-group" />
+								class="form-control input-group"
+								readonly />
 						</div>
 					</div>
-					<div class="mb-3">
+					<div class="mb-3 col-md-6">
 						<label
 							for="konsumen"
 							class="form-label input-group"
@@ -139,7 +141,7 @@
 							id="konsumen"
 							class="form-control input-group" />
 					</div>
-					<div class="mb-3">
+					<div class="mb-3 col-md-6">
 						<label
 							for="karyawan"
 							class="form-label input-group"
@@ -155,24 +157,21 @@
 							<option value="Aldi">Aldi</option>
 						</select>
 					</div>
-					<div class="mb-3">
+					<div class="mb-3 col-md-6">
 						<label
 							for="jabatan"
 							class="form-label input-group"
 							>Jabatan:
 						</label>
-						<select
-							class="select form-select input-group"
+						<input
+							type="text"
 							name="jabatan"
-							id="jabatan">
-							<option value="null">Pilih Jabatan</option>
-							<option value="Operator">Operator</option>
-							<option value="Manager">Manager</option>
-							<option value="Admin">Admin</option>
-						</select>
+							id="jabatan"
+							class="form-control input-group"
+							readonly />
 					</div>
 					<div class="mb-3 row">
-						<div class="col-md-3">
+						<div class="col-md-2">
 							<label
 								for="kodebrg"
 								class="form-label input-group"
@@ -182,24 +181,69 @@
 								class="select form-select input-group"
 								name="kodebrg"
 								id="kodebrg">
-								<option value="null">Pilih Jabatan</option>
-								<option value="Operator">Operator</option>
-								<option value="Manager">Manager</option>
-								<option value="Admin">Admin</option>
+								<option value="null">Pilih Kode Barang:</option>
+								<option value="M001">M001</option>
+								<option value="M002">M002</option>
+								<option value="M003">M003</option>
+								<option value="M004">M004</option>
 							</select>
 						</div>
-					</div>
-					<div class="mb-3">
-						<label
-							for="harga"
-							class="form-label input-group"
-							>Harga</label
-						>
-						<input
-							type="text"
-							name="harga"
-							id="harga"
-							class="form-control input-group" />
+						<div class="col-md-2">
+							<label
+								for="nama"
+								class="form-label input-group"
+								>Nama:</label
+							>
+							<input
+								type="text"
+								name="nama"
+								id="nama"
+								class="form-control input-group"
+								readonly />
+						</div>
+						<div class="col-md-2">
+							<label
+								for="satuan"
+								class="form-label input-group"
+								>Satuan:</label
+							>
+							<input
+								type="text"
+								name="satuan"
+								id="satuan"
+								class="form-control input-group"
+								readonly />
+						</div>
+						<div class="col-md-2">
+							<label
+								for="harga"
+								class="form-label input-group"
+								>Harga:</label
+							>
+							<input
+								type="text"
+								name="harga"
+								id="harga"
+								class="form-control input-group"
+								readonly />
+						</div>
+						<div class="col-md-2">
+							<label
+								for="jumlah"
+								class="form-label input-group"
+								>Jumlah:</label
+							>
+							<input
+								type="text"
+								name="jumlah"
+								id="jumlah"
+								class="form-control input-group" />
+						</div>
+						<div class="col-md-auto d-block">
+							<button class="mx-auto btn btn-primary saveItemBuyed text-center">
+								Save
+							</button>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -219,11 +263,30 @@
 					Save
 				</button>
 			</div>
+			<div class="">
+				<table
+					class="table"
+					id="mytable"
+					border="1">
+					<tr style="background-color: #485fc7">
+						<th>Kode</th>
+						<th>Nama</th>
+						<th>Satuan</th>
+						<th>Harga</th>
+						<th>Jumlah</th>
+						<th>Total</th>
+						<th>Action</th>
+					</tr>
+				</table>
+				<br />
+				<label for="total">Total: </label>
+				<label id="total">0</label>
+			</div>
 		</div>
 	</div>
 </div>
 <script>
-	function hitungtotal() {
+	function hitungtotalMaster() {
 		let table = document.querySelector(`#mytable`);
 		let panjang = table.rows.length;
 		let total = 0;
@@ -233,10 +296,10 @@
 			total = total + data;
 		}
 		// console.log(total);
-		document.querySelector(`#total`).textContent = total;
+		document.querySelector(`#totalMaster`).textContent = total;
 	}
 
-	hitungtotal();
+	hitungtotalMaster();
 
 	// ambil tanggal untuk kode
 	let year = new Date().getFullYear();
@@ -248,7 +311,7 @@
 
 	// ambil element untuk tempat kode dan tgl
 	let kodeInput = document.querySelector(`#kode`);
-	let tgl = document.querySelector(`#tgl`);
+	let tgl = document.querySelector(`#tanggal`);
 
 	// susun kode
 	let kode = `${year}${month}${date}${hour}${minute}${seconds}`;
@@ -260,7 +323,7 @@
 	tgl.value = dates;
 
 	function myfunction() {
-		let table = document.querySelector(`#mytable`);
+		let table = document.querySelector(`#myTable`);
 		let panjang = table.rows.length;
 		let row = table.insertRow(panjang);
 		let cell1 = row.insertCell(0);
@@ -296,7 +359,7 @@
 	}
 
 	function hitungtotal() {
-		let table = document.querySelector(`#mytable`);
+		let table = document.querySelector(`#myTable`);
 		let panjang = table.rows.length;
 		let total = 0;
 		for (let i = 1; i < panjang; i++) {
