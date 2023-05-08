@@ -1,0 +1,163 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+	<h1
+		class="h3 mb-0 text-gray-800"
+		id="headingIndex">
+		View Permintaan
+	</h1>
+</div>
+
+<div class="modal-body">
+	<form
+		target="_blank"
+		method="post"
+		autocomplete="on">
+		<div class="row">
+			<div class="col-md-6">
+				<label for="">Kode : P005</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="mb-3">
+					<label
+						for="tanggal"
+						class="form-label input-group"
+						>Tanggal : 1-1-2023
+					</label>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="mb-3">
+					<label
+						for="kode"
+						class="form-label input-group"
+						>Konsumen : Ali
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="mb-3">
+					<label
+						for="supplier"
+						class="form-label input-group"
+						>Karyawan : Ani
+					</label>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="mb-3">
+					<label
+						for="telpSupplier"
+						class="form-label input-group"
+						>Telepon : 0812318236
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="mb-3">
+			<label
+				for="alamatSupplier"
+				class="form-label input-group"
+				>Alamat : Jl. Dinamika 98 Sby
+			</label>
+		</div>
+		<div class="mb-3">
+			<label
+				for="telpSupplier"
+				class="form-label input-group"
+				>Keterangan : Kirim dengan Gojek
+			</label>
+		</div>
+		<div class="mb-3 col-md-6"></div>
+	</form>
+	<div>
+		<table
+			class="table table-hover"
+			id="myTable"
+			border="1">
+			<thead class="bg-gradient-success">
+				<tr>
+					<th class="text-gray-900">Kode</th>
+					<th class="text-gray-900">Nama</th>
+					<th class="text-gray-900">Satuan</th>
+					<th class="text-gray-900">Harga</th>
+					<th class="text-gray-900">Jumlah</th>
+					<th class="text-gray-900">Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>A01</td>
+					<td>RAM1</td>
+					<td>pcs</td>
+					<td>1000</td>
+					<td>100</td>
+					<td>100000</td>
+				</tr>
+				<tr>
+					<td>B01</td>
+					<td>CPU1</td>
+					<td>pcs</td>
+					<td>2000</td>
+					<td>50</td>
+					<td>100000</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th
+						rowspan="1"
+						colspan="4">
+						Total
+					</th>
+					<th
+						id="totalItem"
+						rowspan="1"
+						colspan="1">
+						Item
+					</th>
+					<th
+						id="totalHarga"
+						rowspan="1"
+						colspan="1">
+						Total
+					</th>
+					<th
+						rowspan="1"
+						colspan="1"></th>
+				</tr>
+			</tfoot>
+		</table>
+		<br />
+		<label for="total">Total: </label>
+		<label id="total">0</label>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function () {
+		hitungtotal();
+		function hitungtotal() {
+			let table = document.querySelector(`#dataTable tbody`);
+			let panjang = table.rows.length;
+			let total = 0;
+			for (let i = 0; i < panjang; i++) {
+				let data = table.rows[i].cells[4];
+				data = parseInt(data.innerHTML);
+				total = total + data;
+			}
+			console.log(total + "testt11");
+			document.querySelector(`#totalItem`).innerHTML = total;
+			total = 0;
+			for (let i = 0; i < panjang; i++) {
+				let data = table.rows[i].cells[5];
+				data = parseInt(data.innerHTML);
+				total = total + data;
+			}
+			console.log(total + "testt11");
+			document.querySelector(`#totalHarga`).innerHTML = total;
+		}
+	});
+</script>
