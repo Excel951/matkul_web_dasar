@@ -25,9 +25,10 @@
 
     <?php
     include './kumpulanfungsi.php';
-
-    $nilai1 = (int) htmlspecialchars($_POST['nilai1']);
-    $nilai2 = (int) htmlspecialchars($_POST['nilai2']);
+    if (isset($_POST['nilai1']) && isset($_POST['nilai2'])) {
+        $nilai1 = (int) htmlspecialchars($_POST['nilai1']);
+        $nilai2 = (int) htmlspecialchars($_POST['nilai2']);
+    }
 
     if (isset($_POST['plus'])) {
         $nilaiAkhir = tambah($nilai1, $nilai2);

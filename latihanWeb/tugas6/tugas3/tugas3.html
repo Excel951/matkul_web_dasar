@@ -12,7 +12,7 @@
 	<div class="container-fluid">
 		<table
 			id="mytable"
-			class="table mt-3"
+			class="table mt-3 table-hover"
 			width="100%"
 			height="100"
 			align="0 auto">
@@ -33,7 +33,7 @@
 					<td>085382747638</td>
 					<td>085734852940</td>
 					<td>lenovo@gmail.com</td>
-					<td align="right">
+					<td>
 						<button
 							type="submit"
 							class="btn btn-info view"
@@ -64,7 +64,7 @@
 					<td>085382834238</td>
 					<td>085783453240</td>
 					<td>pny@gmail.com</td>
-					<td align="right">
+					<td>
 						<button
 							type="submit"
 							class="btn btn-info view"
@@ -268,6 +268,7 @@
 			myModal.find("h1").text("Tambah Supplier");
 			$("#btnSaveSupplier").show();
 			$("#btnUpdateSupplier").hide();
+			$.fn.clearDisabled();
 		});
 
 		$("#dismissBtn").click(function () {
@@ -289,6 +290,22 @@
 
 			$.fn.clearform();
 		});
+
+		$.fn.clearDisabled = function () {
+			elKode = $("#kode");
+			elNama = $("#nama");
+			elSupplier = $("#supplier");
+			elSales = $("#teleponsales");
+			elKantor = $("#teleponkantor");
+			elEmail = $("#email");
+
+			elKode.removeAttr("disabled");
+			elNama.removeAttr("disabled");
+			elSupplier.removeAttr("disabled");
+			elSales.removeAttr("disabled");
+			elKantor.removeAttr("disabled");
+			elEmail.removeAttr("disabled");
+		};
 
 		$.fn.updateSupp = function () {
 			let el;
@@ -332,6 +349,8 @@
 				elSales = modal.find("#teleponsales");
 				elKantor = modal.find("#teleponkantor");
 				elEmail = modal.find("#email");
+
+				$.fn.clearDisabled();
 
 				elKode.val(kode);
 				elNama.val(nama);
