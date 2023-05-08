@@ -15,7 +15,9 @@
 		</button>
 		<button
 			class="btn btn-primary"
-			id="btnPlus">
+			id="btnPlus"
+			data-bs-toggle="modal"
+			data-bs-target="#staticBackdrop">
 			+
 		</button>
 	</div>
@@ -23,25 +25,485 @@
 		id="main"
 		class="container-fluid"></div>
 </span>
-
+<!-- =================== MODAL INSERT & UPDATE ======================== -->
+<div
+	class="modal fade"
+	id="staticBackdrop"
+	data-bs-backdrop="static"
+	data-bs-keyboard="false"
+	tabindex="-1"
+	aria-labelledby="staticBackdropLabel"
+	aria-hidden="true">
+	<div
+		class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+		<div class="modal-content">
+			<div
+				class="modal-header"
+				id="staticBackdropLabel">
+				<h1>Tambah Pembelian</h1>
+			</div>
+			<div class="modal-body">
+				<form
+					target="_blank"
+					method="post"
+					autocomplete="on">
+					<div class="mb-3">
+						<label
+							for="kode"
+							class="form-label input-group"
+							>Kode:
+						</label>
+						<input
+							type="text"
+							name="kode"
+							id="kode"
+							class="form-control input-group"
+							readonly />
+					</div>
+					<div class="mb-3">
+						<label
+							for="tanggal"
+							class="form-label input-group"
+							>Tanggal:
+						</label>
+						<input
+							type="text"
+							name="tanggal"
+							id="tanggal"
+							class="form-control input-group"
+							readonly />
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="mb-3">
+								<label
+									for="supplier"
+									class="form-label input-group"
+									>Supplier:
+								</label>
+								<select
+									class="select form-select input-group"
+									name="supplier"
+									id="supplier">
+									<option value="null">Pilih Supplier</option>
+									<option value="Lenovo">Lenovo</option>
+									<option value="PNY">PNY</option>
+								</select>
+							</div>
+							<div class="mb-3">
+								<label
+									for="alamatSupplier"
+									class="form-label input-group"
+									>Alamat Supplier:
+								</label>
+								<input
+									type="text"
+									name="alamatSupplier"
+									id="alamatSupplier"
+									class="form-control input-group"
+									readonly />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="mb-3">
+								<label
+									for="karyawan"
+									class="form-label input-group"
+									>Karyawan:
+								</label>
+								<select
+									class="select form-select input-group"
+									name="karyawan"
+									id="karyawan">
+									<option value="null">Pilih Karyawan</option>
+									<option value="Dika">Dika</option>
+									<option value="Santoso">Santoso</option>
+									<option value="Aldi">Aldi</option>
+								</select>
+							</div>
+							<div class="mb-3">
+								<label
+									for="jabatan"
+									class="form-label input-group"
+									>Jabatan:
+								</label>
+								<input
+									type="text"
+									name="jabatan"
+									id="jabatan"
+									class="form-control input-group"
+									readonly />
+							</div>
+						</div>
+					</div>
+					<div class="mb-3 col-md-6">
+						<label
+							for="telpSupplier"
+							class="form-label input-group"
+							>Telepon Supplier:
+						</label>
+						<input
+							type="text"
+							name="telpSupplier"
+							id="telpSupplier"
+							class="form-control input-group"
+							readonly />
+					</div>
+				</form>
+				<div
+					class="mb-3 row"
+					id="tableAddItem">
+					<div class="col-md-2">
+						<label
+							for="kodebrg"
+							class="form-label input-group"
+							>Kode Barang:
+						</label>
+						<select
+							class="select form-select input-group"
+							name="kodebrg"
+							id="kodebrg">
+							<option value="null">Pilih Kode Barang:</option>
+							<option value="M001">M001</option>
+							<option value="M002">M002</option>
+							<option value="M003">M003</option>
+							<option value="M004">M004</option>
+						</select>
+					</div>
+					<div class="col-md-2">
+						<label
+							for="nama"
+							class="form-label input-group"
+							>Nama:</label
+						>
+						<input
+							type="text"
+							name="nama"
+							id="nama"
+							class="form-control input-group"
+							readonly />
+					</div>
+					<div class="col-md-2">
+						<label
+							for="satuan"
+							class="form-label input-group"
+							>Satuan:</label
+						>
+						<input
+							type="text"
+							name="satuan"
+							id="satuan"
+							class="form-control input-group"
+							readonly />
+					</div>
+					<div class="col-md-2">
+						<label
+							for="harga"
+							class="form-label input-group"
+							>Harga:</label
+						>
+						<input
+							type="text"
+							name="harga"
+							id="harga"
+							class="form-control input-group"
+							readonly />
+					</div>
+					<div class="col-md-2">
+						<label
+							for="jumlah"
+							class="form-label input-group"
+							>Jumlah:</label
+						>
+						<input
+							type="text"
+							name="jumlah"
+							id="jumlah"
+							class="form-control input-group" />
+					</div>
+					<div class="col-md-auto d-block">
+						<button
+							class="mx-auto btn btn-primary text-center"
+							id="saveItemBuyed">
+							Save
+						</button>
+					</div>
+				</div>
+				<div class="">
+					<table
+						class="table table-hover"
+						id="myTable"
+						border="1">
+						<thead style="background-color: #485fc7">
+							<tr>
+								<th>Kode</th>
+								<th>Nama</th>
+								<th>Satuan</th>
+								<th>Harga</th>
+								<th>Jumlah</th>
+								<th>Total</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+					<br />
+					<label for="total">Total: </label>
+					<label id="total">0</label>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-secondary"
+					id="dismissBtn"
+					data-bs-dismiss="modal">
+					Close
+				</button>
+				<button
+					type="button"
+					class="btn btn-primary"
+					id="btnSavePenjualan"
+					data-bs-dismiss="modal">
+					Save
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ======================================== MODAL FORM DETAIL ================================ -->
+<div
+	class="modal fade"
+	id="modalFormDetail"
+	data-bs-backdrop="static"
+	data-bs-keyboard="false"
+	tabindex="-1"
+	aria-labelledby="staticBackdropLabel"
+	aria-hidden="true">
+	<div
+		class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+		<div class="modal-content">
+			<div
+				class="modal-header"
+				id="staticBackdropLabel">
+				<h1>Form Detail</h1>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="mb-3">
+						<label
+							class="form-label input-group"
+							for="kode"
+							>Kode:</label
+						>
+						<input
+							class="form-control input-group"
+							type="text"
+							id="kode"
+							readonly />
+					</div>
+					<div class="mb-3">
+						<label
+							class="form-label input-group"
+							for="tgl"
+							>Tanggal:</label
+						>
+						<input
+							class="form-control input-group"
+							type="text"
+							id="tgl"
+							readonly />
+					</div>
+					<div class="mb-3">
+						<label
+							class="form-label input-group"
+							for="supplier"
+							>Supplier:</label
+						>
+						<input
+							type="text"
+							name="supplier"
+							id="supplier"
+							class="form-control input-group"
+							readonly />
+					</div>
+					<div class="mb-3">
+						<label
+							class="form-label input-group"
+							for="telp"
+							>Telepon:</label
+						>
+						<input
+							class="form-control input-group"
+							type="text"
+							name="telp"
+							id="telp"
+							readonly />
+					</div>
+					<div class="mb-3">
+						<label
+							class="form-label input-group"
+							for="alamat"
+							>Alamat:</label
+						>
+						<input
+							class="form-control input-group"
+							type="text"
+							name="alamat"
+							id="alamat"
+							readonly />
+					</div>
+					<br />
+					<table
+						class="table table-hover"
+						id="mytable"
+						border="1">
+						<thead>
+							<tr style="background-color: #485fc7">
+								<th>Kode</th>
+								<th>Nama</th>
+								<th>Satuan</th>
+								<th>Harga</th>
+								<th>Jumlah</th>
+								<th>Total</th>
+								<!-- <th>Action</th> -->
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+					<table>
+						<tr>
+							<td width="5%">
+								<div id="ketSales">
+									<p id="ketNama">Nama</p>
+									<hr />
+									<p id="ketJab">Jabatan</p>
+								</div>
+							</td>
+							<td width="85%"></td>
+							<td width="5%">
+								<div id="ketTotal">
+									<p>Total</p>
+									<hr />
+									<div id="total">0</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-secondary"
+					id="dismissBtn"
+					data-bs-dismiss="modal">
+					Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ==================== MODAL REMOVE ===================== -->
+<div
+	class="modal fade"
+	id="removeItemPembelian"
+	data-bs-backdrop="static"
+	data-bs-keyboard="false"
+	tabindex="-1"
+	aria-labelledby="staticBackdropLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1
+					class="modal-title fs-5"
+					id="staticBackdropLabel">
+					Remove Data
+				</h1>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">Yakin ingin hapus barang pembelian?</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					data-bs-toggle="modal"
+					data-bs-target="#staticBackdrop"
+					class="btn btn-secondary"
+					data-bs-dismiss="modal">
+					Batal
+				</button>
+				<button
+					type="button"
+					data-bs-dismiss="modal"
+					data-bs-toggle="modal"
+					data-bs-target="#staticBackdrop"
+					id="removeBtn"
+					class="btn btn-primary">
+					Understood
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ==================== MODAL REMOVE ITEM DETAIL ===================== -->
+<div
+	class="modal fade"
+	id="removeItemDetail"
+	data-bs-backdrop="static"
+	data-bs-keyboard="false"
+	tabindex="-1"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1
+					class="modal-title fs-5"
+					id="staticBackdropLabel">
+					Remove Data
+				</h1>
+				<button
+					type="button"
+					class="btn-close"
+					data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">Yakin ingin hapus barang pembelian?</div>
+			<div class="modal-footer">
+				<button
+					type="button"
+					class="btn btn-secondary"
+					data-bs-dismiss="modal">
+					Batal
+				</button>
+				<button
+					type="button"
+					data-bs-dismiss="modal"
+					id="removeBtn"
+					class="btn btn-primary">
+					Understood
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
 <script>
 	$(document).ready(function () {
+		const jab = {
+			null: "",
+			Dika: "Operator",
+			Santoso: `Manager`,
+			Aldi: `Admin`,
+		};
+
 		// fungsi untuk berpindah halaman
 		$.fn.pindahHalaman = function () {
 			$("#navPembelian1").click(function (event) {
-				if (event.target.id === "btnPlus") {
-					console.log("test");
-					$("#main").load("./tugas5/pembelian3.html", function () {
-						$.fn.getJabatan();
-						$.fn.getBarang();
-						$.fn.removeBarang();
-						$.fn.ambilWaktu();
-						$("#save").click(function () {
-							$.fn.saveBarang();
-						});
-						$.fn.getSupplier();
-					});
-				} else if (event.target.id === "btnRekap") {
+				if (event.target.id === "btnRekap") {
 					$("#main").load("./tugas5/pembelian1.html", function () {
 						// hitung total barang
 						$.fn.hitungTotal("pembelian1", 3);
@@ -55,12 +517,11 @@
 						// hitung total harga
 						$.fn.hitungTotal("pembelian2", 2);
 					});
-				} else if (event.target.className === "view is-info") {
-					$("#main").load("./tugas5/pembelian4.html", function () {
-						$.fn.ambilWaktu();
-						$.fn.getJabatan();
-						$.fn.getSupplier();
-					});
+				} else if (event.target.no === "view btn btn-info") {
+					console.log("test");
+					$.fn.ambilWaktu();
+					$.fn.getJabatan();
+					$.fn.getSupplier();
 				}
 			});
 		};

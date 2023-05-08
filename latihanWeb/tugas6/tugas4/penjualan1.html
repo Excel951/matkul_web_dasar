@@ -11,7 +11,7 @@
 	</div>
 	<div class="container-fluid">
 		<table
-			class="table mt-3"
+			class="table mt-3 table-hover"
 			width="100%"
 			height="100"
 			align="0 auto"
@@ -170,7 +170,9 @@
 							readonly />
 					</div>
 				</form>
-				<div class="mb-3 row">
+				<div
+					class="mb-3 row"
+					id="tableAddItem">
 					<div class="col-md-2">
 						<label
 							for="kodebrg"
@@ -249,7 +251,7 @@
 				</div>
 				<div class="">
 					<table
-						class="table"
+						class="table table-hover"
 						id="myTable"
 						border="1">
 						<thead style="background-color: #485fc7">
@@ -365,6 +367,14 @@
 		let hour = new Date().getHours();
 		let minute = new Date().getMinutes();
 		let seconds = new Date().getSeconds();
+
+		document.querySelector("#staticBackdropLabel h1").textContent =
+			"Tambah Penjualan";
+		$("#btnSavePenjualan").show();
+		$("#tableAddItem").show();
+
+		document.querySelector("#konsumen").readOnly = false;
+		$("#karyawan").removeAttr("disabled");
 
 		// ambil element untuk tempat kode dan tgl
 		let kodeInput = document.querySelector(`#kode`);
@@ -570,14 +580,6 @@
 		$("#myTable tbody tr").remove();
 	};
 
-	// const barang = {
-	// 	M001: { nama: "VGA", satuan: `pcs`, harga: 4000 },
-	// 	M002: { nama: "RAM", satuan: `pcs`, harga: 800 },
-	// 	M003: { nama: "CPU", satuan: `pcs`, harga: 2000 },
-	// 	M004: { nama: "Monitor", satuan: `pcs`, harga: 1500 },
-	// };
-	// klik tambah penjualan
-	// let datasSale = {};
 	addSale();
 	function addSale() {
 		document
@@ -627,6 +629,10 @@
 			let cellTotal = cells.eq(3).text();
 			let cellKaryawan = cells.eq(4).text();
 
+			document.querySelector("#staticBackdropLabel h1").textContent =
+				"View Penjualan";
+			$("#btnSavePenjualan").hide();
+
 			const jab = {
 				null: "",
 				Dika: "Operator",
@@ -634,9 +640,7 @@
 				Aldi: `Admin`,
 			};
 
-			document.querySelector("#konsumen").readOnly = true;
-			document.querySelector("#karyawan").setAttribute("disabled", true);
-			document.querySelector("#jabatan").readOnly = true;
+			$("#tableAddItem").hide();
 
 			document.querySelector("#kode").value = cellKode;
 			document.querySelector("#tanggal").value = cellTanggal;
@@ -644,6 +648,9 @@
 			document.querySelector("#karyawan").value = cellKaryawan;
 			document.querySelector("#total").textContent = cellTotal;
 			document.querySelector("#jabatan").value = jab[`${cellKaryawan}`];
+
+			document.querySelector("#konsumen").readOnly = true;
+			$("#karyawan").attr("disabled", "true");
 		});
 	}
 </script>
