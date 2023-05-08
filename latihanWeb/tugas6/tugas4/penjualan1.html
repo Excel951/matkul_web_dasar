@@ -239,7 +239,7 @@
 							id="jumlah"
 							class="form-control input-group" />
 					</div>
-					<div class="col-md-auto d-block">
+					<div class="col-md-3">
 						<button
 							class="mx-auto btn btn-primary text-center"
 							id="saveItemBuyed">
@@ -328,8 +328,8 @@
 					data-bs-toggle="modal"
 					data-bs-target="#staticBackdrop"
 					id="removeBtn"
-					class="btn btn-primary">
-					Understood
+					class="btn btn-danger">
+					Hapus
 				</button>
 			</div>
 		</div>
@@ -637,6 +637,9 @@
 			document.querySelector("#konsumen").readOnly = true;
 			document.querySelector("#karyawan").setAttribute("disabled", true);
 			document.querySelector("#jabatan").readOnly = true;
+			document.querySelector("#kodebrg").setAttribute("disabled", true);
+			$("#saveItemBuyed").hide();
+			$("#btnSavePenjualan").hide();
 
 			document.querySelector("#kode").value = cellKode;
 			document.querySelector("#tanggal").value = cellTanggal;
