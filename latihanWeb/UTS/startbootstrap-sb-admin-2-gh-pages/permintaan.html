@@ -16,206 +16,95 @@
 </div>
 
 <!-- Page Content -->
-<div class="table-responsive">
-	<div
-		id="dataTable_wrapper"
-		class="dataTables_wrapper dt-bootstrap5">
-		<div class="row">
-			<div class="col-sm-12 col-md-6">
-				<div
-					class="dataTables_length"
-					id="dataTable_length">
-					<label
-						>Show
-						<select
-							name="dataTable_length"
-							aria-controls="dataTable"
-							class="custom-select custom-select-sm form-control form-control-sm">
-							<option value="10">10</option>
-							<option value="25">25</option>
-							<option value="50">50</option>
-							<option value="100">100</option></select
-						>entries</label
-					>
+<div class="card shadow mb-4">
+	<div class="card-body">
+		<div class="table-responsive">
+			<div
+				id="dataTable_wrapper"
+				class="dataTables_wrapper dt-bootstrap5">
+				<div class="table-responsive">
+					<table
+						class="table table-bordered"
+						id="dataTable"
+						width="100%"
+						cellspacing="0">
+						<thead>
+							<tr>
+								<th>Kode</th>
+								<th>Tanggal</th>
+								<th>Konsumen</th>
+								<th>Karyawan</th>
+								<th>Item</th>
+								<th>Total</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<th colspan="4">Total</th>
+								<th id="totalItem">Item</th>
+								<th
+									id="totalHarga"
+									colspan="2">
+									Total
+								</th>
+							</tr>
+						</tfoot>
+						<tbody>
+							<tr>
+								<td>P005</td>
+								<td>1-1-2023</td>
+								<td>Ali</td>
+								<td>Ani</td>
+								<td>3</td>
+								<td>200000</td>
+								<td>
+									<button
+										type="submit"
+										class="btn btn-info update btnViewPermintaan"
+										data-bs-toggle="modal"
+										data-bs-target="#modalViewPermintaan">
+										V
+									</button>
+								</td>
+							</tr>
+							<tr>
+								<td>P007</td>
+								<td>2-1-2023</td>
+								<td>Budi</td>
+								<td>Ani</td>
+								<td>4</td>
+								<td>300000</td>
+								<td>
+									<button
+										type="submit"
+										class="btn btn-info update btnViewPermintaan"
+										data-bs-toggle="modal"
+										data-bs-target="#modalViewPermintaan">
+										V
+									</button>
+								</td>
+							</tr>
+							<tr>
+								<td>P009</td>
+								<td>3-1-2023</td>
+								<td>Cindi</td>
+								<td>Ani</td>
+								<td>5</td>
+								<td>500000</td>
+								<td>
+									<button
+										type="submit"
+										class="btn btn-info update btnViewPermintaan"
+										data-bs-toggle="modal"
+										data-bs-target="#modalViewPermintaan">
+										V
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-			</div>
-			<div class="col-sm-12 col-md-6">
-				<div
-					id="dataTable_filter"
-					class="dataTables_filter">
-					<label
-						>Search:<input
-							type="search"
-							class="form-control form-control-sm"
-							placeholder=""
-							aria-controls="dataTable"
-					/></label>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<table
-					class="table table-bordered dataTable"
-					id="dataTable"
-					width="100%"
-					cellspacing="0"
-					role="grid"
-					aria-describedby="dataTable_info"
-					style="width: 100%">
-					<thead>
-						<tr role="row">
-							<th
-								class="sorting sorting_asc"
-								tabindex="0"
-								aria-controls="dataTable"
-								rowspan="1"
-								colspan="1"
-								aria-sort="ascending"
-								aria-label="Name: activate to sort column descending"
-								style="width: 146.562px">
-								Kode
-							</th>
-							<th
-								class="sorting"
-								tabindex="0"
-								aria-controls="dataTable"
-								rowspan="1"
-								colspan="1"
-								aria-label="Position: activate to sort column ascending"
-								style="width: 242.953px">
-								Tanggal
-							</th>
-							<th
-								class="sorting"
-								tabindex="0"
-								aria-controls="dataTable"
-								rowspan="1"
-								colspan="1"
-								aria-label="Office: activate to sort column ascending"
-								style="width: 103.203px">
-								Konsumen
-							</th>
-							<th
-								class="sorting"
-								tabindex="0"
-								aria-controls="dataTable"
-								rowspan="1"
-								colspan="1"
-								aria-label="Age: activate to sort column ascending"
-								style="width: 43.75px">
-								Karyawan
-							</th>
-							<th
-								class="sorting"
-								tabindex="0"
-								aria-controls="dataTable"
-								rowspan="1"
-								colspan="1"
-								aria-label="Age: activate to sort column ascending"
-								style="width: 43.75px">
-								Item
-							</th>
-							<th
-								class="sorting"
-								tabindex="0"
-								aria-controls="dataTable"
-								rowspan="1"
-								colspan="1"
-								aria-label="Age: activate to sort column ascending"
-								style="width: 43.75px">
-								Total
-							</th>
-							<th
-								class="sorting"
-								tabindex="0"
-								aria-controls="dataTable"
-								rowspan="1"
-								colspan="1"
-								aria-label="Start date: activate to sort column ascending"
-								style="width: 97.125px">
-								Action
-							</th>
-						</tr>
-					</thead>
-					<tfoot>
-						<tr>
-							<th
-								rowspan="1"
-								colspan="4">
-								Total
-							</th>
-							<th
-								id="totalItem"
-								rowspan="1"
-								colspan="1">
-								Item
-							</th>
-							<th
-								id="totalHarga"
-								rowspan="1"
-								colspan="1">
-								Total
-							</th>
-							<th
-								rowspan="1"
-								colspan="1"></th>
-						</tr>
-					</tfoot>
-					<tbody>
-						<tr class="odd">
-							<td class="sorting_1">P005</td>
-							<td>1-1-2023</td>
-							<td>Ali</td>
-							<td>Ani</td>
-							<td>3</td>
-							<td>200000</td>
-							<td>
-								<button
-									type="submit"
-									class="btn btn-info update btnViewPermintaan"
-									data-bs-toggle="modal"
-									data-bs-target="#modalViewPermintaan">
-									V
-								</button>
-							</td>
-						</tr>
-						<tr class="even">
-							<td class="sorting_1">P007</td>
-							<td>2-1-2023</td>
-							<td>Budi</td>
-							<td>Ani</td>
-							<td>4</td>
-							<td>300000</td>
-							<td>
-								<button
-									type="submit"
-									class="btn btn-info update btnViewPermintaan"
-									data-bs-toggle="modal"
-									data-bs-target="#modalViewPermintaan">
-									V
-								</button>
-							</td>
-						</tr>
-						<tr class="odd">
-							<td class="sorting_1">P009</td>
-							<td>3-1-2023</td>
-							<td>Cindi</td>
-							<td>Ani</td>
-							<td>5</td>
-							<td>500000</td>
-							<td>
-								<button
-									type="submit"
-									class="btn btn-info update btnViewPermintaan"
-									data-bs-toggle="modal"
-									data-bs-target="#modalViewPermintaan">
-									V
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
 			</div>
 		</div>
 	</div>
@@ -373,56 +262,63 @@
 		</div>
 	</div>
 </div>
-	<script>
-		$(document).ready(function () {
-			$("#btnAddPermintaan").click(function () {
-				$("#content #isi").load("./permintaantambah.html");
-			});
-			$(".btnViewPermintaan").click(function () {
-				hitungtotalmodal();
-			});
-			function hitungtotalmodal() {
-				let table = document.querySelector(`#myTable tbody`);
-				let panjang = table.rows.length;
-				let total = 0;
-				for (let i = 0; i < panjang; i++) {
-					let data = table.rows[i].cells[4];
-					data = parseInt(data.innerHTML);
-					total = total + data;
-				}
-				console.log(total + "testt11");
-				document.querySelector(`#myTable #totalItem`).innerHTML = total;
-				total = 0;
-				for (let i = 0; i < panjang; i++) {
-					let data = table.rows[i].cells[5];
-					data = parseInt(data.innerHTML);
-					total = total + data;
-				}
-				console.log(total + "testt11");
-				document.querySelector(`#myTable #totalHarga`).innerHTML = total;
-			}
 
-			hitungtotalMain();
-			function hitungtotalMain() {
-				let table = document.querySelector(`#dataTable tbody`);
-				let panjang = table.rows.length;
-				let total = 0;
-				for (let i = 0; i < panjang; i++) {
-					let data = table.rows[i].cells[4];
-					data = parseInt(data.innerHTML);
-					total = total + data;
-				}
-				console.log(total + "testt11");
-				document.querySelector(`#totalItem`).innerHTML = total;
-				total = 0;
-				for (let i = 0; i < panjang; i++) {
-					let data = table.rows[i].cells[5];
-					data = parseInt(data.innerHTML);
-					total = total + data;
-				}
-				console.log(total + "testt11");
-				document.querySelector(`#totalHarga`).innerHTML = total;
-			}
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
+
+<script>
+	$(document).ready(function () {
+		$("#btnAddPermintaan").click(function () {
+			$("#content #isi").load("./permintaantambah.html");
 		});
-	</script>
-</div>
+		$(".btnViewPermintaan").click(function () {
+			hitungtotalmodal();
+		});
+		function hitungtotalmodal() {
+			let table = document.querySelector(`#myTable tbody`);
+			let panjang = table.rows.length;
+			let total = 0;
+			for (let i = 0; i < panjang; i++) {
+				let data = table.rows[i].cells[4];
+				data = parseInt(data.innerHTML);
+				total = total + data;
+			}
+			console.log(total + "testt11");
+			document.querySelector(`#myTable #totalItem`).innerHTML = total;
+			total = 0;
+			for (let i = 0; i < panjang; i++) {
+				let data = table.rows[i].cells[5];
+				data = parseInt(data.innerHTML);
+				total = total + data;
+			}
+			console.log(total + "testt11");
+			document.querySelector(`#myTable #totalHarga`).innerHTML = total;
+		}
+
+		hitungtotalMain();
+		function hitungtotalMain() {
+			let table = document.querySelector(`#dataTable tbody`);
+			let panjang = table.rows.length;
+			let total = 0;
+			for (let i = 0; i < panjang; i++) {
+				let data = table.rows[i].cells[4];
+				data = parseInt(data.innerHTML);
+				total = total + data;
+			}
+			console.log(total + "testt11");
+			document.querySelector(`#totalItem`).innerHTML = total;
+			total = 0;
+			for (let i = 0; i < panjang; i++) {
+				let data = table.rows[i].cells[5];
+				data = parseInt(data.innerHTML);
+				total = total + data;
+			}
+			console.log(total + "testt11");
+			document.querySelector(`#totalHarga`).innerHTML = total;
+		}
+	});
+</script>

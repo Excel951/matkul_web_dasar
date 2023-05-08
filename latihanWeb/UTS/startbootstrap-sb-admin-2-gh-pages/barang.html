@@ -18,172 +18,92 @@
 </div>
 
 <!-- Page Content -->
-<div class="table-responsive">
-	<div
-		id="dataTable_wrapper"
-		class="dataTables_wrapper dt-bootstrap5">
-		<div class="row">
-			<div class="col-sm-12 col-md-6">
-				<div
-					class="dataTables_length"
-					id="dataTable_length">
-					<label
-						>Show
-						<select
-							name="dataTable_length"
-							aria-controls="dataTable"
-							class="custom-select custom-select-sm form-control form-control-sm">
-							<option value="10">10</option>
-							<option value="25">25</option>
-							<option value="50">50</option>
-							<option value="100">100</option></select
-						>entries</label
-					>
+<div class="card shadow mb-4">
+	<div class="card-body">
+		<div class="table-responsive">
+			<div
+				id="dataTable_wrapper"
+				class="dataTables_wrapper dt-bootstrap5">
+				<div class="table-responsive">
+					<table
+						class="table table-bordered"
+						id="dataTable"
+						width="100%"
+						cellspacing="0">
+						<thead>
+							<tr>
+								<th>Kode</th>
+								<th>Nama</th>
+								<th>Satuan</th>
+								<th>Harga</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tfoot></tfoot>
+						<tbody>
+							<tr>
+								<td>A01</td>
+								<td>RAM1</td>
+								<td>pcs</td>
+								<td>1000</td>
+								<td>
+									<button
+										type="submit"
+										data-bs-toggle="modal"
+										data-bs-target="#modalTambahBarang"
+										class="btn btn-info update">
+										U
+									</button>
+								</td>
+							</tr>
+							<tr>
+								<td>A02</td>
+								<td>RAM2</td>
+								<td>pcs</td>
+								<td>1500</td>
+								<td>
+									<button
+										type="submit"
+										data-bs-toggle="modal"
+										data-bs-target="#modalTambahBarang"
+										class="btn btn-info update">
+										U
+									</button>
+								</td>
+							</tr>
+							<tr>
+								<td>B01</td>
+								<td>CPU1</td>
+								<td>pcs</td>
+								<td>2000</td>
+								<td>
+									<button
+										type="submit"
+										data-bs-toggle="modal"
+										data-bs-target="#modalTambahBarang"
+										class="btn btn-info update">
+										U
+									</button>
+								</td>
+							</tr>
+							<tr>
+								<td>B02</td>
+								<td>CPU2</td>
+								<td>pcs</td>
+								<td>3000</td>
+								<td>
+									<button
+										type="submit"
+										data-bs-toggle="modal"
+										data-bs-target="#modalTambahBarang"
+										class="btn btn-info update">
+										U
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-			</div>
-			<div class="col-sm-12 col-md-6">
-				<div
-					id="dataTable_filter"
-					class="dataTables_filter">
-					<label
-						>Search:<input
-							type="search"
-							class="form-control form-control-sm"
-							placeholder=""
-							aria-controls="dataTable"
-					/></label>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<table
-					class="table table-bordered dataTable"
-					id="dataTable"
-					width="100%"
-					cellspacing="0"
-					role="grid"
-					aria-describedby="dataTable_info"
-					style="width: 100%">
-					<thead>
-						<tr role="row">
-							<th
-								class="sorting sorting_asc"
-								tabindex="0"
-								aria-controls="dataTable"
-								rowspan="1"
-								colspan="1"
-								aria-sort="ascending"
-								aria-label="Name: activate to sort column descending"
-								style="width: 146.562px">
-								Kode
-							</th>
-							<th
-								class="sorting"
-								tabindex="0"
-								aria-controls="dataTable"
-								rowspan="1"
-								colspan="1"
-								aria-label="Position: activate to sort column ascending"
-								style="width: 242.953px">
-								Nama
-							</th>
-							<th
-								class="sorting"
-								tabindex="0"
-								aria-controls="dataTable"
-								rowspan="1"
-								colspan="1"
-								aria-label="Office: activate to sort column ascending"
-								style="width: 103.203px">
-								Satuan
-							</th>
-							<th
-								class="sorting"
-								tabindex="0"
-								aria-controls="dataTable"
-								rowspan="1"
-								colspan="1"
-								aria-label="Age: activate to sort column ascending"
-								style="width: 43.75px">
-								Harga
-							</th>
-							<th
-								class="sorting"
-								tabindex="0"
-								aria-controls="dataTable"
-								rowspan="1"
-								colspan="1"
-								aria-label="Start date: activate to sort column ascending"
-								style="width: 97.125px">
-								Action
-							</th>
-						</tr>
-					</thead>
-					<tfoot></tfoot>
-					<tbody>
-						<tr class="odd">
-							<td class="sorting_1">A01</td>
-							<td>RAM1</td>
-							<td>pcs</td>
-							<td>1000</td>
-							<td>
-								<button
-									type="submit"
-									data-bs-toggle="modal"
-									data-bs-target="#modalTambahBarang"
-									class="btn btn-info update">
-									U
-								</button>
-							</td>
-						</tr>
-						<tr class="even">
-							<td class="sorting_1">A02</td>
-							<td>RAM2</td>
-							<td>pcs</td>
-							<td>1500</td>
-							<td>
-								<button
-									type="submit"
-									data-bs-toggle="modal"
-									data-bs-target="#modalTambahBarang"
-									class="btn btn-info update">
-									U
-								</button>
-							</td>
-						</tr>
-						<tr class="odd">
-							<td class="sorting_1">B01</td>
-							<td>CPU1</td>
-							<td>pcs</td>
-							<td>2000</td>
-							<td>
-								<button
-									type="submit"
-									data-bs-toggle="modal"
-									data-bs-target="#modalTambahBarang"
-									class="btn btn-info update">
-									U
-								</button>
-							</td>
-						</tr>
-						<tr class="even">
-							<td class="sorting_1">B02</td>
-							<td>CPU2</td>
-							<td>pcs</td>
-							<td>3000</td>
-							<td>
-								<button
-									type="submit"
-									data-bs-toggle="modal"
-									data-bs-target="#modalTambahBarang"
-									class="btn btn-info update">
-									U
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
 			</div>
 		</div>
 	</div>
@@ -297,6 +217,13 @@
 		</div>
 	</div>
 </div>
+
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="js/demo/datatables-demo.js"></script>
 
 <script>
 	$(document).ready(function () {
