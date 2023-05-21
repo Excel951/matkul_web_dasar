@@ -9,7 +9,7 @@ $hasil = mysqli_query($conn, $sql);
 // cara akses tabel
 echo '<a href="./latihanphp15.php"><button>Tambah</button></a>';
 echo "<table border=1>";
-echo "<thead><tr><td>Kode Barang</td><td>Nama Barang</td><td>Satuan</td><td>Harga</td><td>Harga Jual</td><td>Action</td></tr><thead>";
+echo "<thead><tr><td>Kode Barang</td><td>Nama Barang</td><td>Satuan</td><td>Harga</td><td>Harga Jual</td><td>Action</td></tr></thead>";
 echo "<tbody>";
 
 if (mysqli_num_rows($hasil) > 0) {
@@ -31,8 +31,8 @@ if (mysqli_num_rows($hasil) > 0) {
         echo $isi["harga_jual"];
         echo "</td>";
         echo "<td>";
-        echo '<a href="./latihanphp16.php?kode_barang=' . $isi["kode_barang"] . '"><button>U</button></az>';
-        echo '<a href="./latihanphp17.php?kode_barang=' . $isi["kode_barang"] . '"><button>-</button></az>';
+        echo '<a href="./latihanphp16.php?kode_barang=' . $isi["kode_barang"] . '"><button>U</button></a>';
+        echo '<a href="./latihanphp17.php?kode_barang=' . $isi["kode_barang"] . '"><button>-</button></a>';
         echo "</td>";
         echo "</tr>";
     }
