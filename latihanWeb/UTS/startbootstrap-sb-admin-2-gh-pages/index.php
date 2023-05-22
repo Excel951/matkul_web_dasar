@@ -75,6 +75,7 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Master:</h6>
 						<a class="collapse-item" id="navbarBarang">Barang</a>
+						<a class="collapse-item" id="navbarKaryawan">Karyawan</a>
 					</div>
 				</div>
 			</li>
@@ -168,6 +169,8 @@
 						$("#content #isi").load("./barang.php");
 					} else if (event.target.id === "navbarPermintaan") {
 						$("#content #isi").load("./permintaan.html");
+					} else if (event.target.id==='navbarKaryawan'){
+						$('#content #isi').load('./karyawan.php');
 					}
 				});
 			};

@@ -142,21 +142,9 @@ $hasil = mysqli_query($conn, $querySQL);
 			$("#kode").removeAttr("disabled");
 		});
 
-		// $("#dataTable tbody").on("click", ".update", function() {
-		// 	myModal.find("h1").text("Update Barang");
-		// 	$("#btnSaveBarang").hide();
-		// 	$("#btnUpdateBarang").show();
-		// 	$("#btnDeleteBarang").show();
-		// 	$("#kode").attr("disabled", true);
-		// });
-
-		// $("#dismissBtn").click(function () {
-		// 	$.fn.clearform();
-		// });
-
 		$("#btnSaveBarang").click(function(e) {
 			e.preventDefault();
-			console.log("tes");
+
 			// ambil value
 			let kode = $("#kode").val();
 			let nama = $("#nama").val();
@@ -164,11 +152,6 @@ $hasil = mysqli_query($conn, $querySQL);
 			let hargabeli = $("#hargabeli").val();
 			let hargajual = $("#hargajual").val();
 
-			console.log(kode, nama, satuan, hargabeli, hargajual);
-			// console.log(state);
-			// $("#mytable tbody").append(
-			// 	`<tr><td>${kode}</td><td>${gol}</td><td>${nama}</td><td>${satuan}</td><td>${harga}</td><td class="action"><button type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-info update">U</button> <button type="reset" data-bs-toggle="modal" data-bs-target="#removeDialog" class="btn btn-danger remove">X</button></td></tr>`
-			// );
 			$.post("./simpanBarang.php", {
 				kode: kode,
 				nama: nama,
@@ -177,6 +160,7 @@ $hasil = mysqli_query($conn, $querySQL);
 				hargajual: hargajual
 			}, function(data, status) {
 				alert("Data barang berhasil dimasukkan");
+				// code dibawah digunakan untuk mendebug jika terjadi permasalahan
 				// alert(data + " : " + status);
 				$("#isi").load('./barang.php');
 			});
