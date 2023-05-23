@@ -80,56 +80,56 @@ $hasil = mysqli_query($conn, $querySQL);
 			<div class="modal-header" id="staticBackdropLabel">
 				<h1>Tambah Karyawan</h1>
 			</div>
-			<form action="" method="post" autocomplete="on">
-				<div class="modal-body">
-					<div class="mb-3">
-						<label for="kode" class="form-label input-group">Kode Barang:
-						</label>
-						<input type="text" name="kode" id="kode" class="form-control input-group" placeholder="1234" />
-					</div>
-					<div class="mb-3">
-						<label for="nama" class="form-label input-group">Nama Karyawan:
-						</label>
-						<input type="text" name="nama" id="nama" class="form-control input-group" placeholder="Komputer" />
-					</div>
-					<div class="mb-3">
-						<label for="jabatan" class="form-label input-group">Jabatan:</label>
-						<!-- <input type="text" name="jabatan" id="jabatan" class="form-control input-group" placeholder="pcs" /> -->
-						<select name="jabatan" id="jabatan" class="form-select animated--grow-in">
-							<option value="null">Pilih Jabatan</option>
-							<option value="Operator">Operator</option>
-							<option value="Manajer">Manajer</option>
-							<option value="Admin">Admin</option>
-						</select>
-					</div>
-					<div class="mb-3">
-						<label for="telepon" class="form-label input-group">Telepon:</label>
-						<input type="tel" name="telepon" id="telepon" class="form-control input-group" placeholder="1000" />
-					</div>
-					<div class="mb-3">
-						<label for="email" class="form-label input-group">Email:</label>
-						<input type="text" name="email" id="email" class="form-control input-group" placeholder="1000" />
-					</div>
-					<div class="mb-3">
-						<label for="password" class="form-label input-group">Password:</label>
-						<input type="text" name="password" id="password" class="form-control input-group" placeholder="1000" />
-					</div>
+			<!-- <form action="" method="post" autocomplete="on"> -->
+			<div class="modal-body">
+				<div class="mb-3">
+					<label for="kode" class="form-label input-group">Kode Barang:
+					</label>
+					<input type="text" name="kode" id="kode" class="form-control input-group" placeholder="1234" />
 				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning" id="btnUpdateKaryawan" name="btnUpdateKaryawan" data-bs-dismiss="modal">
-						Update
-					</button>
-					<button type="submit" class="btn btn-danger" id="btnDeleteKaryawan" name="btnDeleteKaryawan" data-bs-dismiss="modal">
-						Delete
-					</button>
-					<button type="submit" class="btn btn-primary" id="btnSaveKaryawan" name="btnSaveKaryawan" value="btnSaveKaryawan" data-bs-dismiss="modal">
-						Save
-					</button>
-					<button type="button" class="btn btn-secondary" id="dismissBtn" data-bs-dismiss="modal">
-						Cancel
-					</button>
+				<div class="mb-3">
+					<label for="nama" class="form-label input-group">Nama Karyawan:
+					</label>
+					<input type="text" name="nama" id="nama" class="form-control input-group" placeholder="Komputer" />
 				</div>
-			</form>
+				<div class="mb-3">
+					<label for="jabatan" class="form-label input-group">Jabatan:</label>
+					<!-- <input type="text" name="jabatan" id="jabatan" class="form-control input-group" placeholder="pcs" /> -->
+					<select name="jabatan" id="jabatan" class="form-select animated--grow-in">
+						<option value="null">Pilih Jabatan</option>
+						<option value="Operator">Operator</option>
+						<option value="Manajer">Manajer</option>
+						<option value="Admin">Admin</option>
+					</select>
+				</div>
+				<div class="mb-3">
+					<label for="telepon" class="form-label input-group">Telepon:</label>
+					<input type="tel" name="telepon" id="telepon" class="form-control input-group" placeholder="1000" />
+				</div>
+				<div class="mb-3">
+					<label for="email" class="form-label input-group">Email:</label>
+					<input type="text" name="email" id="email" class="form-control input-group" placeholder="1000" />
+				</div>
+				<div class="mb-3">
+					<label for="password" class="form-label input-group">Password:</label>
+					<input type="text" name="password" id="password" class="form-control input-group" placeholder="1000" />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-warning" id="btnUpdateKaryawan" name="btnUpdateKaryawan" data-bs-dismiss="modal">
+					Update
+				</button>
+				<button type="submit" class="btn btn-danger" id="btnDeleteKaryawan" name="btnDeleteKaryawan" data-bs-dismiss="modal">
+					Delete
+				</button>
+				<button type="submit" class="btn btn-primary" id="btnSaveKaryawan" name="btnSaveKaryawan" value="btnSaveKaryawan" data-bs-dismiss="modal">
+					Save
+				</button>
+				<button type="button" class="btn btn-secondary" id="dismissBtn" data-bs-dismiss="modal">
+					Cancel
+				</button>
+			</div>
+			<!-- </form> -->
 
 		</div>
 	</div>
@@ -203,9 +203,9 @@ $hasil = mysqli_query($conn, $querySQL);
 				let kode, nama, jabatan, telepon, email, password;
 
 				myModal.find('h1').text('Update Karyawan');
-				$("#btnSaveBarang").hide();
-				$("#btnUpdateBarang").show();
-				$("btnDeleteBarang").show();
+				$("#btnSaveKaryawan").hide();
+				$("#btnUpdateKaryawan").show();
+				$("btnDeleteKaryawan").show();
 				$("#kode").attr("disabled", true);
 
 				let currentRow = $(this).closest('tr').find('td');
@@ -213,47 +213,34 @@ $hasil = mysqli_query($conn, $querySQL);
 				// ambil value dari tabel yang dipilih
 				kode = currentRow[0].innerHTML;
 				console.log(kode);
-				// $.ajax({
-				// 	url: './searchKaryawan.php',
-				// 	type: "GET",
-				// 	dataType: "html",
-				// 	data: {
-				// 		kode: kode
-				// 	},
-				// 	success: function(data, response) {
-				// 		alert("Success" + response);
-				// 		let parseData = JSON.stringify(data);
-				// 		alert(data);
-				// 		// console.log(data);
-				// 		// console.log(parseData);
-				// 	},
-				// 	error: function(data, response) {
-				// 		alert("Error: " + response);
-				// 		alert(data);
-				// 		// console.log(data);
-				// 	}
-				// })
 
-				// fetch('./searchKaryawan.php')
-				// 	.then((res) => res.json())
-				// 	.then((data) => {
-				// 		// let result = JSON.stringify(data)
-				// 		console.log(data);
-				// 	})
-
-				const coba = async () => {
-					const config = {
-						headers: {
-							Accept: 'application/json'
-						},
+				$.ajax({
+					url: './searchKaryawan.php',
+					type: "GET",
+					dataType: "json",
+					data: {
 						kode: kode
+					},
+					success: function(data, response) {
+						data = data[0];
+						$("#kode").val(data.kode_karyawan);
+						$("#nama").val(data.nama);
+						$("#jabatan").val(data.jabatan);
+						$("#telepon").val(data.telepon);
+						$("#email").val(data.email);
+						$("#password").val(data.password);
+						// console.log(parseData);
+					},
+					error: function(data, response) {
+						alert("Error: " + response);
+						alert(data);
 					}
-					let coba1 = await axios.get('./searchKaryawan.php', config)
-					return coba1
-				}
-				// const coba2 = async()=>{const coba3 =await coba}
-				console.log(coba());
+				})
 			});
+
+			$("#btnUpdateKaryawan").click(function(){
+				
+			})
 		}
 	});
 </script>
