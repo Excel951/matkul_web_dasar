@@ -197,15 +197,15 @@ $hasil = mysqli_query($conn, $querySQL);
 		editKaryawan();
 
 		function editKaryawan() {
+			let kode, nama, jabatan, telepon, email, password;
+
 			$('#dataTable tbody').on('click', '.update', function(e) {
 				e.preventDefault();
-
-				let kode, nama, jabatan, telepon, email, password;
 
 				myModal.find('h1').text('Update Karyawan');
 				$("#btnSaveKaryawan").hide();
 				$("#btnUpdateKaryawan").show();
-				$("btnDeleteKaryawan").show();
+				$("#btnDeleteKaryawan").show();
 				$("#kode").attr("disabled", true);
 
 				let currentRow = $(this).closest('tr').find('td');
@@ -238,9 +238,60 @@ $hasil = mysqli_query($conn, $querySQL);
 				})
 			});
 
-			$("#btnUpdateKaryawan").click(function(){
-				
+			$("#btnUpdateKaryawan").click(function(e) {
+				e.preventDefault();
+
+				kode = $("#kode").val();
+				nama = $("#nama").val();
+				jabatan = $("#jabatan").val();
+				telepon = $("#telepon").val();
+				email = $("#email").val();
+				password = $("#password").val();
+
+				$.ajax({
+					url: './updateKaryawan.php',
+					type: 'POST',
+					data: {
+						kode: kode,
+						nama: nama,
+						jabatan: jabatan,
+						telepon: telepon,
+						email: email,
+						password: password
+					},
+					success: function(data, response) {
+						console.log(response + " : " + data);
+						$('#isi').load('./karyawan.php');
+					},
+					error: function(data, response) {
+						console.log(response + " : " + data);
+					}
+				})
+
+				$.fn.clearform();
 			})
+
+			$("#btnDeleteKaryawan").click(function(e) {
+				e.preventDefault();
+
+				$.ajax({
+					url: './deleteKaryawan.php',
+					type: 'POST',
+					data: {
+						kode: kode
+					},
+					success: function(data, response) {
+						console.log(response + " : " + data);
+						$('#isi').load('./karyawan.php');
+					},
+					error: function(data, response) {
+						console.log(response + " : " + data);
+					}
+				})
+
+				$.fn.clearform();
+			})
+
 		}
 	});
 </script>
