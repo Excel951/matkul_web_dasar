@@ -10,6 +10,9 @@
 
 	<title>Admin Database Toko</title>
 
+	<!-- AXIOS -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 	<!-- JQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
@@ -360,7 +363,7 @@
 					if (event.target.id === "navbarBarang") {
 						$("#content #isi").load("./barang.php");
 					} else if (event.target.id === "navbarPermintaan") {
-						$("#content #isi").load("./permintaan.html");
+						$("#content #isi").load("./permintaan.php");
 					} else if (event.target.id === 'navbarKaryawan') {
 						$('#content #isi').load('./karyawan.php');
 					}

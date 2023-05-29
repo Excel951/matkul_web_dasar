@@ -13,7 +13,7 @@ $password = $_POST['password'];
 // mysqli_query($conn, $querySQL);
 
 // using prepare statement
-$querySQL = "insert into karyawan values (?,?,?,?,?,?)";
+$querySQL = "insert into karyawan (`kode_karyawan`, `nama`, `jabatan`, `telepon`, `email`, `password`) values (?,?,?,?,?,?)";
 $stmt = $conn->prepare($querySQL);
 $stmt->bind_param('ssssss', $kode, $nama, $jabatan, $telepon, $email, $password);
 $stmt->execute();

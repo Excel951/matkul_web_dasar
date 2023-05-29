@@ -1,33 +1,19 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-	<h1
-		class="h3 mb-0 text-gray-800"
-		id="headingIndex">
+	<h1 class="h3 mb-0 text-gray-800" id="headingIndex">
 		Permintaan
 	</h1>
-	<a
-		class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"
-		id="btnAddPermintaan"
-		><i
-			class="fa fa-plus"
-			aria-hidden="true"></i>
-		Tambah Permintaan</a
-	>
+	<a class="d-none d-sm-inline-block btn btn-md btn-success shadow-sm" id="btnAddPermintaan"><i class="fa fa-plus" aria-hidden="true"></i>
+		Tambah Permintaan</a>
 </div>
 
 <!-- Page Content -->
 <div class="card shadow mb-4">
 	<div class="card-body">
 		<div class="table-responsive">
-			<div
-				id="dataTable_wrapper"
-				class="dataTables_wrapper dt-bootstrap5">
+			<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap5">
 				<div class="table-responsive">
-					<table
-						class="table table-bordered"
-						id="dataTable"
-						width="100%"
-						cellspacing="0">
+					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 						<thead>
 							<tr>
 								<th>Kode</th>
@@ -43,9 +29,7 @@
 							<tr>
 								<th colspan="4">Total</th>
 								<th id="totalItem">Item</th>
-								<th
-									id="totalHarga"
-									colspan="2">
+								<th id="totalHarga" colspan="2">
 									Total
 								</th>
 							</tr>
@@ -59,11 +43,7 @@
 								<td>3</td>
 								<td>200000</td>
 								<td>
-									<button
-										type="submit"
-										class="btn btn-info update btnViewPermintaan"
-										data-bs-toggle="modal"
-										data-bs-target="#modalViewPermintaan">
+									<button type="submit" class="btn btn-info update btnViewPermintaan" data-bs-toggle="modal" data-bs-target="#modalViewPermintaan">
 										V
 									</button>
 								</td>
@@ -76,11 +56,7 @@
 								<td>4</td>
 								<td>300000</td>
 								<td>
-									<button
-										type="submit"
-										class="btn btn-info update btnViewPermintaan"
-										data-bs-toggle="modal"
-										data-bs-target="#modalViewPermintaan">
+									<button type="submit" class="btn btn-info update btnViewPermintaan" data-bs-toggle="modal" data-bs-target="#modalViewPermintaan">
 										V
 									</button>
 								</td>
@@ -93,11 +69,7 @@
 								<td>5</td>
 								<td>500000</td>
 								<td>
-									<button
-										type="submit"
-										class="btn btn-info update btnViewPermintaan"
-										data-bs-toggle="modal"
-										data-bs-target="#modalViewPermintaan">
+									<button type="submit" class="btn btn-info update btnViewPermintaan" data-bs-toggle="modal" data-bs-target="#modalViewPermintaan">
 										V
 									</button>
 								</td>
@@ -111,26 +83,14 @@
 </div>
 
 <!-- Modal View -->
-<div
-	class="modal fade"
-	id="modalViewPermintaan"
-	data-bs-backdrop="static"
-	data-bs-keyboard="false"
-	tabindex="-1"
-	aria-labelledby="staticBackdropLabel"
-	aria-hidden="true">
+<div class="modal fade" id="modalViewPermintaan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 		<div class="modal-content">
-			<div
-				class="modal-header"
-				id="staticBackdropLabel">
+			<div class="modal-header" id="staticBackdropLabel">
 				<h1>Tambah Barang</h1>
 			</div>
 			<div class="modal-body">
-				<form
-					target="_blank"
-					method="post"
-					autocomplete="on">
+				<form target="_blank" method="post" autocomplete="on">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="mb-3">
@@ -139,10 +99,7 @@
 						</div>
 						<div class="col-md-6">
 							<div class="mb-3">
-								<label
-									for="tanggal"
-									class="form-label input-group"
-									>Tanggal : 1-1-2023
+								<label for="tanggal" class="form-label input-group">Tanggal : 1-1-2023
 								</label>
 							</div>
 						</div>
@@ -150,51 +107,33 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="mb-3">
-								<label
-									for="supplier"
-									class="form-label input-group"
-									>Karyawan : Ani
+								<label for="supplier" class="form-label input-group">Karyawan : Ani
 								</label>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="mb-3">
-								<label
-									for="kode"
-									class="form-label input-group"
-									>Konsumen : Ali
+								<label for="kode" class="form-label input-group">Konsumen : Ali
 								</label>
 							</div>
 						</div>
 					</div>
 					<div class="mb-3">
-						<label
-							for="telpSupplier"
-							class="form-label input-group"
-							>Telepon : 0812318236
+						<label for="telpSupplier" class="form-label input-group">Telepon : 0812318236
 						</label>
 					</div>
 					<div class="mb-3">
-						<label
-							for="alamatSupplier"
-							class="form-label input-group"
-							>Alamat : Jl. Dinamika 98 Sby
+						<label for="alamatSupplier" class="form-label input-group">Alamat : Jl. Dinamika 98 Sby
 						</label>
 					</div>
 					<div class="mb-3">
-						<label
-							for="telpSupplier"
-							class="form-label input-group"
-							>Keterangan : Kirim dengan Gojek
+						<label for="telpSupplier" class="form-label input-group">Keterangan : Kirim dengan Gojek
 						</label>
 					</div>
 					<div class="mb-3 col-md-6"></div>
 				</form>
 				<div>
-					<table
-						class="table table-hover"
-						id="myTable"
-						border="1">
+					<table class="table table-hover" id="myTable" border="1">
 						<thead class="bg-gradient-success">
 							<tr>
 								<th class="text-gray-900">Kode</th>
@@ -225,21 +164,13 @@
 						</tbody>
 						<tfoot>
 							<tr>
-								<th
-									rowspan="1"
-									colspan="3">
+								<th rowspan="1" colspan="4">
 									Total
 								</th>
-								<th
-									id="totalItem"
-									rowspan="1"
-									colspan="1">
+								<th id="totalItem" rowspan="1" colspan="1">
 									Item
 								</th>
-								<th
-									id="totalHarga"
-									rowspan="1"
-									colspan="1">
+								<th id="totalHarga" rowspan="1" colspan="1">
 									Total
 								</th>
 							</tr>
@@ -248,11 +179,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button
-					type="button"
-					class="btn btn-secondary"
-					id="dismissBtn"
-					data-bs-dismiss="modal">
+				<button type="button" class="btn btn-secondary" id="dismissBtn" data-bs-dismiss="modal">
 					Close
 				</button>
 			</div>
@@ -268,13 +195,14 @@
 <script src="js/demo/datatables-demo.js"></script>
 
 <script>
-	$(document).ready(function () {
-		$("#btnAddPermintaan").click(function () {
-			$("#content #isi").load("./permintaantambah.html");
+	$(document).ready(function() {
+		$("#btnAddPermintaan").click(function() {
+			$("#content #isi").load("./permintaantambah.php");
 		});
-		$(".btnViewPermintaan").click(function () {
+		$(".btnViewPermintaan").click(function() {
 			hitungtotalmodal();
 		});
+
 		function hitungtotalmodal() {
 			let table = document.querySelector(`#myTable tbody`);
 			let panjang = table.rows.length;
@@ -284,7 +212,7 @@
 				data = parseInt(data.innerHTML);
 				total = total + data;
 			}
-			console.log(total + "testt11");
+			// console.log(total + "testt11");
 			document.querySelector(`#myTable #totalItem`).innerHTML = total;
 			total = 0;
 			for (let i = 0; i < panjang; i++) {
@@ -292,11 +220,12 @@
 				data = parseInt(data.innerHTML);
 				total = total + data;
 			}
-			console.log(total + "testt11");
+			// console.log(total + "testt11");
 			document.querySelector(`#myTable #totalHarga`).innerHTML = total;
 		}
 
 		hitungtotalMain();
+
 		function hitungtotalMain() {
 			let table = document.querySelector(`#dataTable tbody`);
 			let panjang = table.rows.length;
@@ -306,7 +235,7 @@
 				data = parseInt(data.innerHTML);
 				total = total + data;
 			}
-			console.log(total + "testt11");
+			// console.log(total + "testt11");
 			document.querySelector(`#totalItem`).innerHTML = total;
 			total = 0;
 			for (let i = 0; i < panjang; i++) {
@@ -314,7 +243,7 @@
 				data = parseInt(data.innerHTML);
 				total = total + data;
 			}
-			console.log(total + "testt11");
+			// console.log(total + "testt11");
 			document.querySelector(`#totalHarga`).innerHTML = total;
 		}
 	});
