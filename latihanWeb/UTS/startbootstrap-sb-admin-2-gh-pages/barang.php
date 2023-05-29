@@ -11,7 +11,7 @@ $hasil = mysqli_query($conn, $querySQL);
 	<h1 class="h3 mb-0 text-gray-800" id="headingIndex">
 		Barang
 	</h1>
-	<button id="btnAddBarang" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" data-bs-toggle="modal" data-bs-target="#modalTambahBarang">
+	<button id="btnAddBarang" class="d-none d-md-inline-block btn btn-md btn-success shadow-md" data-bs-toggle="modal" data-bs-target="#modalTambahBarang">
 		<i class="fa fa-plus" aria-hidden="true"></i>
 		Tambah Barang
 	</button>
@@ -34,7 +34,8 @@ $hasil = mysqli_query($conn, $querySQL);
 								<th>Action</th>
 							</tr>
 						</thead>
-						<tfoot></tfoot>
+						<tfoot>
+						</tfoot>
 						<tbody>
 							<?php
 							if (mysqli_num_rows($hasil) > 0) {
@@ -56,7 +57,7 @@ $hasil = mysqli_query($conn, $querySQL);
 									echo $isi["harga_jual"];
 									echo "</td>";
 									echo "<td>";
-									echo '<button class="btn btn-info update" data-bs-toggle="modal" data-bs-target="#modalTambahBarang">U</button>';
+									echo '<button class="btn btn-info update" data-bs-toggle="modal" data-bs-target="#modalTambahBarang"><i class="fa-solid fa-pencil">U</i></button>';
 									// echo '<button class="btn btn-danger update" data-bs-toggle="modal" data-bs-target="#modalTambahBarang">-</button>';
 									echo "</td>";
 									echo "</tr>";
@@ -159,7 +160,7 @@ $hasil = mysqli_query($conn, $querySQL);
 				hargabeli: hargabeli,
 				hargajual: hargajual
 			}, function(data, status) {
-				alert("Data barang berhasil dimasukkan");
+				// alert("Data barang berhasil dimasukkan");
 				// code dibawah digunakan untuk mendebug jika terjadi permasalahan
 				// alert(data + " : " + status);
 				$("#isi").load('./barang.php');
@@ -241,7 +242,7 @@ $hasil = mysqli_query($conn, $querySQL);
 					hargajual: hrgjual
 				}, function(data, status) {
 					// alert(data + ": " + status);
-					alert("Data barang berhasil diubah");
+					// alert("Data barang berhasil diubah");
 					$("#isi").load('./barang.php');
 				});
 
@@ -256,7 +257,7 @@ $hasil = mysqli_query($conn, $querySQL);
 					kode: kode
 				}, function(data, status) {
 					// alert(data + " : " + status);
-					alert("Data barang berhasil dihapus");
+					// alert("Data barang berhasil dihapus");
 					$("#isi").load('./barang.php');
 				})
 			});

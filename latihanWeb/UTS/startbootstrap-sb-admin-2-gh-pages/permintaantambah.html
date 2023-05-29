@@ -20,11 +20,10 @@
 						>Tanggal:
 					</label>
 					<input
-						type="text"
+						type="date"
 						name="tanggal"
 						id="tanggal"
-						class="form-control input-group"
-						readonly />
+						class="form-control input-group" />
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -581,7 +580,7 @@
 			let nama = closestTR.eq(1).text();
 			let satuan = closestTR.eq(2).text();
 			let harga = closestTR.eq(3).text();
-			
+
 			$("#kodebrg").val(kodebrg);
 			console.log($("#kodebrg").val());
 

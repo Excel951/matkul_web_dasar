@@ -8,5 +8,12 @@ $telepon = $_POST['telepon'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$querySQL = "insert into karyawan values ('$kode','$nama','$jabatan','$telepon','$email','$password')";
-mysqli_query($conn, $querySQL);
+// without using prepared statement
+// $querySQL = "insert into karyawan values ('$kode','$nama','$jabatan','$telepon','$email','$password')";
+// mysqli_query($conn, $querySQL);
+
+// using prepare statement
+$querySQL = "insert into karyawan values (?,?,?,?,?,?)";
+$stmt = $conn->prepare($querySQL);
+$stmt->bind_param('ssssss', $kode, $nama, $jabatan, $telepon, $email, $password);
+$stmt->execute();

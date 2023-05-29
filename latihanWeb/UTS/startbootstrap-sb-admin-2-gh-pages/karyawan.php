@@ -14,7 +14,7 @@ $hasil = mysqli_query($conn, $querySQL);
 	<h1 class="h3 mb-0 text-gray-800" id="headingIndex">
 		Karyawan
 	</h1>
-	<button id="btnAddKaryawan" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" data-bs-toggle="modal" data-bs-target="#modalTambahBarang">
+	<button id="btnAddKaryawan" class="d-none d-md-inline-block btn btn-md btn-success shadow-md" data-bs-toggle="modal" data-bs-target="#modalTambahBarang">
 		<i class="fa fa-plus" aria-hidden="true"></i>
 		Tambah Karyawan
 	</button>
@@ -83,7 +83,7 @@ $hasil = mysqli_query($conn, $querySQL);
 			<!-- <form action="" method="post" autocomplete="on"> -->
 			<div class="modal-body">
 				<div class="mb-3">
-					<label for="kode" class="form-label input-group">Kode Barang:
+					<label for="kode" class="form-label input-group">Kode Karyawan:
 					</label>
 					<input type="text" name="kode" id="kode" class="form-control input-group" placeholder="1234" />
 				</div>
@@ -183,7 +183,7 @@ $hasil = mysqli_query($conn, $querySQL);
 				email: email,
 				password: password
 			}, function(data, status) {
-				alert('Data karyawan berhasil ditambahkan');
+				// alert('Data karyawan berhasil ditambahkan');
 
 				// untuk melakukan debuging jika terjadi masalah ketika post
 				// alert(`${data} : ${status}`);
