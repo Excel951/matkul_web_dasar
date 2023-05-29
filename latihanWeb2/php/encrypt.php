@@ -10,22 +10,49 @@
 
 <body>
     <form action="" method="post">
-        <label for="input">Input:</label>
-        <input type="text" name="input" id="input">
-        <br>
+        <table>
+            <tr>
+                <td>
+                    <label for="input">Password</label>
+                </td>
+                <td>:</td>
+                <td>
+                    <input type="text" name="input" id="input">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="input2">Masukkan lagi password</label>
+                </td>
+                <td>:</td>
+                <td>
+                    <input type="text" name="input2" id="input2">
+                </td>
+            </tr>
+        </table>
         <button id="btn" type="submit" name="kirim">Input</button>
     </form>
     <br>
     <h4 id="hasil"></h4>
 
     <?php
+    $inputan;
+    $coba;
+    $verify;
     if (isset($_POST["kirim"])) {
         $inputan = htmlspecialchars($_POST["input"]);
         $coba = crypt($inputan, "st");
-        $coba1 = password_hash;
+        $inputan2 = htmlspecialchars($_POST["input2"]);
+        $verify = password_verify($inputan2, $coba);
+
+        if ($verify != 0) {
+            echo "Password sesuai";
+        } else {
+            echo "Password tidak sesuai";
+        }
     }
-    echo "Encrypt $coba <br>";
-    echo "Decrypt $coba1";
+    // echo "Encrypt $coba <br>";
+    // echo "Decrypt $verify";
     ?>
     <!-- <script>
         let btn=document.querySelector("#btn")
