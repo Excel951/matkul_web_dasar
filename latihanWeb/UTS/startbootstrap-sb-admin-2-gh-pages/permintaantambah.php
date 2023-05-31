@@ -17,9 +17,9 @@
 				</div>
 				<div class="col-md-6">
 					<div class="mb-3">
-						<label for="kode" class="form-label input-group">Konsumen:
+						<label for="konsumen" class="form-label input-group">Konsumen:
 						</label>
-						<input type="text" name="kode" id="kode" class="form-control input-group" />
+						<input type="text" name="konsumen" id="konsumen" class="form-control input-group" />
 					</div>
 				</div>
 			</div>
@@ -56,25 +56,9 @@
 			<div class="col-md-2">
 				<label for="kodebrg" class="form-label input-group">Kode Barang:
 				</label>
-				<select class="select form-select input-group" name="kodebrg" id="kodebrg">
-					<!-- <option value="null">Pilih Kode Barang:</option>
-					<option value="A01">A01</option>
-					<option value="A02">A02</option>
-					<option value="B01">B01</option>
-					<option value="B02">B02</option> -->
-				</select>
-				<a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" id="btnAddPermintaan" data-bs-toggle="modal" data-bs-target="#modalBeliBarang"><i class="fa fa-plus" aria-hidden="true"></i>
+				<input type="text" name="kodebrg" id="kodebrg">
+				<a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" id="btnAddBarang" data-bs-toggle="modal" data-bs-target="#modalBeliBarang"><i class="fa fa-plus" aria-hidden="true"></i>
 					Tambah Barang</a>
-				<!-- <select
-				class="select form-select input-group"
-				name="kodebrg"
-				id="kodebrg">
-				<option value="null">Pilih Kode Barang:</option>
-				<option value="A01">A01</option>
-				<option value="A02">A02</option>
-				<option value="B01">B01</option>
-				<option value="B02">B02</option>
-			</select> -->
 			</div>
 			<div class="col-md-2">
 				<label for="nama" class="form-label input-group">Nama:</label>
@@ -167,8 +151,8 @@
 						</thead>
 						<tfoot></tfoot>
 						<tbody>
-							<tr class="odd">
-								<td class="sorting_1">A01</td>
+							<tr>
+								<td>A01</td>
 								<td>RAM1</td>
 								<td>pcs</td>
 								<td>1000</td>
@@ -178,8 +162,8 @@
 									</button>
 								</td>
 							</tr>
-							<tr class="even">
-								<td class="sorting_1">A02</td>
+							<tr>
+								<td>A02</td>
 								<td>RAM2</td>
 								<td>pcs</td>
 								<td>1500</td>
@@ -189,8 +173,8 @@
 									</button>
 								</td>
 							</tr>
-							<tr class="odd">
-								<td class="sorting_1">B01</td>
+							<tr>
+								<td>B01</td>
 								<td>CPU1</td>
 								<td>pcs</td>
 								<td>2000</td>
@@ -200,8 +184,8 @@
 									</button>
 								</td>
 							</tr>
-							<tr class="even">
-								<td class="sorting_1">B02</td>
+							<tr>
+								<td>B02</td>
 								<td>CPU2</td>
 								<td>pcs</td>
 								<td>3000</td>
@@ -226,13 +210,6 @@
 
 <script>
 	$(document).ready(function() {
-		const jab = {
-			null: "",
-			Dika: "Operator",
-			Santoso: `Manager`,
-			Aldi: `Admin`,
-		};
-
 		$("#kodebrg").hide();
 
 		// menghitung total dari total barang dan harga
@@ -312,9 +289,6 @@
 			let minute = dates.getMinutes();
 			let seconds = dates.getSeconds();
 
-			// $("#formPembelian #kode").val(
-			// 	`${year}${month}${date}${hour}${minute}${seconds}`
-			// );
 			$("#tanggal").val(dates.toLocaleDateString());
 		};
 
@@ -331,8 +305,6 @@
 		$.fn.removeBarang = function() {
 			let total = 0;
 			$("#myTable tbody").on("click", ".remove", function() {
-				// let id = $(this).attr("id");
-
 				$(this).closest("tr").remove();
 				$.fn.hitungTotal("pembelian3", 4);
 			});
@@ -363,49 +335,105 @@
 			}
 		};
 
-		function renderSelectBarang() {
-			const datas = getDataBarang();
+		renderSelectBarang();
 
-			let selectBarangEl = document.querySelector('#kodebrg');
+		async function renderSelectBarang() {
+			const datas = await getDataBarang();
 
-			// HAPUS DATA BARANG SEBELUMNYA
-			// cek apakah select memiliki child node
-			while (selectBarangEl.hasChildNodes) {
-				// hapus child dimulai dari child pertama
-				selectBarangEl.removeChild(selectBarangEl.firstChild);
+			// ambil elemen dari table di modal view
+			const table = document.querySelector('#dataTable tbody');
+			// bersihkan child elemen yang sudah ada
+			while (table.hasChildNodes()) {
+				table.removeChild(table.firstChild);
 			}
 
-			datas.forEach(x => {
-				x.kode
-			})
+			for (let index = 0; index < datas.length; index++) {
+				// ambil data
+				let valkode = datas[index].kode_barang
+				let valnama = datas[index].nama_barang
+				let valsatuan = datas[index].satuan
+				let valhrgjual = datas[index].harga_jual
+
+				// add row
+				let rows = table.insertRow(index);
+
+				// add cells
+				let cellkode = rows.insertCell(0);
+				let cellnama = rows.insertCell(1);
+				let cellsatuan = rows.insertCell(2);
+				let cellharga = rows.insertCell(3);
+				let cellact = rows.insertCell(4);
+
+				// create button for cellact
+				const btnAct = document.createElement('button');
+				btnAct.innerHTML = 'Pilih';
+				btnAct.setAttribute('data-bs-dismiss', 'modal');
+				btnAct.setAttribute('class', 'btn btn-info check');
+
+				// add value of the cell
+				cellkode.innerHTML = valkode;
+				cellnama.innerHTML = valnama;
+				cellsatuan.innerHTML = valsatuan;
+				cellharga.innerHTML = valhrgjual;
+				cellact.appendChild(btnAct);
+			}
+
 		}
 
-		getDataBarang();
+		$('#btnAddBarang').on('click', function() {
+			pilihBarang();
+		});
+
 		async function getDataBarang() {
 			const response = await axios.get('./getBarang.php');
-			console.log(response.data);
-			// return response.data;
+			return response.data;
 		}
 
 		$.fn.removeBarang();
-		// $.fn.getBarang();
-		$(".check").click(function() {
-			let closestTR = $(this).closest("tr").children(0);
-			let kodebrg = closestTR.eq(0).text();
-			let nama = closestTR.eq(1).text();
-			let satuan = closestTR.eq(2).text();
-			let harga = closestTR.eq(3).text();
 
-			$("#kodebrg").val(kodebrg);
-			console.log($("#kodebrg").val());
+		function pilihBarang() {
+			$(".check").click(function() {
+				let closestTR = $(this).closest("tr").children(0);
+				let kodebrg = closestTR.eq(0).text();
+				let nama = closestTR.eq(1).text();
+				let satuan = closestTR.eq(2).text();
+				let harga = closestTR.eq(3).text();
 
-			// ambil value (id) dari select
-			let currentSelect = $(this);
-			let id = currentSelect.val();
+				$("#kodebrg").val(kodebrg);
+				console.log($("#kodebrg").val());
 
-			$("#nama").val(nama);
-			$("#satuan").val(satuan);
-			$("#harga").val(harga);
+				// ambil value (id) dari select
+				let currentSelect = $(this);
+				let id = currentSelect.val();
+
+				$("#nama").val(nama);
+				$("#satuan").val(satuan);
+				$("#harga").val(harga);
+			});
+		}
+
+		$('#btnAddPermintaan').on('click', function() {
+			let kode = $('#konsumen').val()
+			let tanggal = $('#tanggal').val()
+			let konsumen = $('#konsumen').val()
+			let karyawan = $('#karyawan').val()
+			let telepon = $('#telpKonsumen').val()
+			let alamat = $('#alamatKaryawan').val()
+			let ket = $('#ketPermintaan').val()
+
+			axios.post('./adddbpermintaan.php', {
+				kode: kode,
+				tanggal: tanggal,
+				konsumen: konsumen,
+				karyawan: karyawan,
+				telepon: telepon,
+				alamat: alamat,
+				keterangan: ket
+			}, 'json');
+		})
+
+		$('#btnCancelPermintaan').on('click', function() {
+			$('#isi').load('./permintaan.php');
 		});
 
 		$("#saveItemBuyed").click(function() {
