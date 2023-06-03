@@ -214,7 +214,9 @@
 			}
 			// console.log(total + "testt11");
 			document.querySelector(`#myTable #totalItem`).innerHTML = total;
+
 			total = 0;
+
 			for (let i = 0; i < panjang; i++) {
 				let data = table.rows[i].cells[5];
 				data = parseInt(data.innerHTML);

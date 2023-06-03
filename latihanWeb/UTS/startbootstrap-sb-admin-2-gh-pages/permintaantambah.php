@@ -131,20 +131,20 @@
 				<div>
 					<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%">
 						<thead>
-							<tr role="row">
-								<th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 146.562px">
+							<tr>
+								<th>
 									Kode
 								</th>
-								<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 242.953px">
+								<th>
 									Nama
 								</th>
-								<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 103.203px">
+								<th>
 									Satuan
 								</th>
-								<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 43.75px">
+								<th>
 									Harga
 								</th>
-								<th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 97.125px">
+								<th>
 									Action
 								</th>
 							</tr>
@@ -208,10 +208,19 @@
 	</div>
 </div>
 
+<!-- Page level plugins -->
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
 <script>
 	$(document).ready(function() {
 		$("#kodebrg").hide();
 
+		// $('#btnAddBarang').on('click', function() {
+		// })
+		const datatablemyTable = $('#myTable').DataTable();
+
+		// ==================================================
 		// menghitung total dari total barang dan harga
 		$.fn.hitungTotal = function(file, kolom) {
 			let total1 = 0;
@@ -244,7 +253,9 @@
 				$("#totalHarga").text(total2);
 			} else if (file === "pembelian4") {}
 		};
+		// ==================================================
 
+		// ==================================================
 		// fungsi pada halaman pembelian4 (detail)
 		$.fn.getKaryawan = function() {
 			let datas;
@@ -267,7 +278,7 @@
 
 					data.forEach(x => {
 						tag = document.createElement('option');
-						tag.value = x.nama;
+						tag.value = x.kode_karyawan;
 						tag.innerHTML = x.nama;
 						selectEl.append(tag);
 					});
@@ -277,7 +288,9 @@
 				}
 			})
 		};
+		// ==================================================
 
+		// ==================================================
 		// fungsi pada halaman pembelian3 (form pembelian)
 		// ambil waktu untuk kode pembelian dan tanggal
 		$.fn.ambilWaktu = function() {
@@ -288,10 +301,15 @@
 			let hour = dates.getHours();
 			let minute = dates.getMinutes();
 			let seconds = dates.getSeconds();
+			let miliseconds = dates.getMilliseconds();
 
-			$("#tanggal").val(dates.toLocaleDateString());
+			let kode = `${year}${month}${date}${hour}${minute}${seconds}${miliseconds}`;
+			return kode;
+			// $("#tanggal").val(dates.toLocaleDateString());
 		};
+		// ==================================================
 
+		// ==================================================
 		// fungsi membersihkan form
 		$.fn.clearform = function() {
 			$(`#kodebrg`).val("1");
@@ -300,16 +318,63 @@
 			$(`#harga`).val("");
 			$(`#jumlah`).val("");
 		};
+		// ==================================================
 
+		// ==================================================
 		// fungsi untuk remove barang
 		$.fn.removeBarang = function() {
 			let total = 0;
 			$("#myTable tbody").on("click", ".remove", function() {
-				$(this).closest("tr").remove();
+				let index = $(this).closest("tr").index();
+				datatablemyTable.row(index).remove().draw();
 				$.fn.hitungTotal("pembelian3", 4);
 			});
 		};
+		// ==================================================
 
+		// ==================================================
+		function updateTable() {
+			// select target table
+			let table = document.querySelector('#myTable tbody');
+
+			// create an observer instance
+			let observer = new MutationObserver(function(mutationsList) {
+				for (let mutation of mutationsList) {
+					// check if mutations is in table
+					console.log('tes');
+					console.log(mutation.type);
+					if (mutation.type === "childList") {
+						console.log('berhasil');
+						// datatablemyTable.destroy();
+						// datatablemyTable.DataTable();
+						// datatablemyTable.rows().invalidate().draw(false);
+						// check if rows was increased in table
+						// let addedRows;
+						// addedRows = Array.from(mutation.addedNodes).filter((node) => {
+						// 	node.nodeName === 'tr'
+						// })
+						// console.log(addedRows);
+						// console.log(addedRows.length);
+						// if (addedRows.size > 0) {
+						// 	console.log(`Tabel telah bertambah`);
+						// }
+					}
+				}
+			})
+
+			// configuration of the observer
+			let config = {
+				subtree: true,
+				childList: true,
+			};
+
+			// pass node to observer with the configuration
+			observer.observe(table, config);
+		}
+		updateTable()
+		// ==================================================
+
+		// ==================================================
 		// click untuk simpan barang
 		$.fn.saveBarang = function() {
 			if ($("#kodebrg").val() != 1) {
@@ -324,9 +389,11 @@
 				let jumlah = $(`#jumlah`).val();
 				let totalhrg = harga * jumlah;
 
-				$(`#myTable tbody`).append(
-					`<tr><td>${kode}</td><td>${nama}</td><td>${satuan}</td><td>${harga}</td><td>${jumlah}</td><td>${totalhrg}</td><td><button id="id${panjang}" class="remove btn btn-danger">X</button></td></tr>`
-				);
+				datatablemyTable.row.add([kode, nama, satuan, harga, jumlah, totalhrg, `<button id="id${panjang}" class="remove btn btn-danger">X</button>`]).draw();
+
+				// $(`#myTable tbody`).append(
+				// 	`<tr><td>${kode}</td><td>${nama}</td><td>${satuan}</td><td>${harga}</td><td>${jumlah}</td><td>${totalhrg}</td><td><button id="id${panjang}" class="remove btn btn-danger">X</button></td></tr>`
+				// );
 
 				$.fn.hitungTotal("pembelian3", 4);
 				$.fn.clearform();
@@ -334,9 +401,10 @@
 				alert("Barang masih kosong");
 			}
 		};
+		// ==================================================
 
+		// ==================================================
 		renderSelectBarang();
-
 		async function renderSelectBarang() {
 			const datas = await getDataBarang();
 
@@ -379,18 +447,45 @@
 			}
 
 		}
+		// ==================================================
 
-		$('#btnAddBarang').on('click', function() {
-			pilihBarang();
-		});
+		// ==================================================
+		function checkVisibilityModalBarang() {
+			const targetModal = document.querySelector('#modalBeliBarang');
 
+			const observer = new MutationObserver(function(mutationList) {
+				for (let mutation of mutationList) {
+					if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+						if (targetModal.classList.contains('show')) {
+							console.log(`Modal muncul!`);
+							pilihBarang();
+						}
+					}
+				}
+			})
+
+			const observerConfig = {
+				attributes: true,
+				attributeFilter: ['class']
+			}
+
+			observer.observe(targetModal, observerConfig)
+		}
+		checkVisibilityModalBarang()
+		// ==================================================
+
+		// ==================================================
 		async function getDataBarang() {
 			const response = await axios.get('./getBarang.php');
 			return response.data;
 		}
+		// ==================================================
 
+		// ==================================================
 		$.fn.removeBarang();
+		// ==================================================
 
+		// ==================================================
 		function pilihBarang() {
 			$(".check").click(function() {
 				let closestTR = $(this).closest("tr").children(0);
@@ -411,27 +506,47 @@
 				$("#harga").val(harga);
 			});
 		}
+		// ==================================================
 
-		$('#btnAddPermintaan').on('click', function() {
-			let kode = $('#konsumen').val()
-			let tanggal = $('#tanggal').val()
-			let konsumen = $('#konsumen').val()
-			let karyawan = $('#karyawan').val()
-			let telepon = $('#telpKonsumen').val()
-			let alamat = $('#alamatKaryawan').val()
-			let ket = $('#ketPermintaan').val()
+		// ==================================================
+		tambahPermintaan();
 
-			axios.post('./adddbpermintaan.php', {
-				kode: kode,
-				tanggal: tanggal,
-				konsumen: konsumen,
-				karyawan: karyawan,
-				telepon: telepon,
-				alamat: alamat,
-				keterangan: ket
-			}, 'json');
-		})
+		function tambahPermintaan() {
+			$('#btnSavePermintaan').on('click', function() {
+				let kode = $.fn.ambilWaktu();
+				let tanggal = $('#tanggal').val();
+				let konsumen = $('#konsumen').val();
+				let karyawan = $('#karyawan').val();
+				let telepon = $('#telpKonsumen').val();
+				let alamat = $('#alamatKaryawan').val();
+				let ket = $('#ketPermintaan').val();
 
+				let data = {
+					kode: kode,
+					tanggal: tanggal,
+					konsumen: konsumen,
+					karyawan: karyawan,
+					telepon: telepon,
+					alamat: alamat,
+					keterangan: ket
+				};
+
+				axios.post('./adddbpermintaan.php', JSON.stringify(data), {
+					headers: {
+						'Content-Type': 'application:json'
+					}
+				}).then((response) => {
+					alert(response.data);
+				}).catch((error) => {
+					console.log(error);
+				})
+
+
+			})
+		}
+		// ==================================================
+
+		// ==================================================
 		$('#btnCancelPermintaan').on('click', function() {
 			$('#isi').load('./permintaan.php');
 		});
