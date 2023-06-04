@@ -84,7 +84,7 @@
 
 <!-- Modal View -->
 <div class="modal fade" id="modalViewPermintaan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
 		<div class="modal-content">
 			<div class="modal-header" id="staticBackdropLabel">
 				<h1>Tambah Barang</h1>
@@ -192,17 +192,23 @@
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="js/demo/datatables-demo.js"></script>
+<!-- <script src="js/demo/datatables-demo.js"></script> -->
 
 <script>
 	$(document).ready(function() {
+		const datatablemain = $('#dataTable').DataTable();
+
+		// ===============================================================================
 		$("#btnAddPermintaan").click(function() {
 			$("#content #isi").load("./permintaantambah.php");
 		});
 		$(".btnViewPermintaan").click(function() {
 			hitungtotalmodal();
+			const datatableview = $('#myTable').DataTable();
 		});
+		// ===============================================================================
 
+		// ===============================================================================
 		function hitungtotalmodal() {
 			let table = document.querySelector(`#myTable tbody`);
 			let panjang = table.rows.length;
@@ -225,7 +231,9 @@
 			// console.log(total + "testt11");
 			document.querySelector(`#myTable #totalHarga`).innerHTML = total;
 		}
+		// ===============================================================================
 
+		// ===============================================================================
 		hitungtotalMain();
 
 		function hitungtotalMain() {
@@ -248,5 +256,24 @@
 			// console.log(total + "testt11");
 			document.querySelector(`#totalHarga`).innerHTML = total;
 		}
+		// ===============================================================================
+
+		// ===============================================================================
+		async function getDataPermintaan() {
+			const response = await axios.get('./getpermintaan.php');
+			return response.data;
+		}
+
+		renderPermintaan()
+		async function renderPermintaan() {
+			const datas = await getDataPermintaan();
+
+			console.log(datas);
+			// datatablemain.clear();
+			// datatablemain.rows.add(datas);
+			// datatablemain.draw();
+		}
+		// ===============================================================================
+
 	});
 </script>

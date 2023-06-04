@@ -333,48 +333,6 @@
 		// ==================================================
 
 		// ==================================================
-		function updateTable() {
-			// select target table
-			let table = document.querySelector('#myTable tbody');
-
-			// create an observer instance
-			let observer = new MutationObserver(function(mutationsList) {
-				for (let mutation of mutationsList) {
-					// check if mutations is in table
-					console.log('tes');
-					console.log(mutation.type);
-					if (mutation.type === "childList") {
-						console.log('berhasil');
-						// datatablemyTable.destroy();
-						// datatablemyTable.DataTable();
-						// datatablemyTable.rows().invalidate().draw(false);
-						// check if rows was increased in table
-						// let addedRows;
-						// addedRows = Array.from(mutation.addedNodes).filter((node) => {
-						// 	node.nodeName === 'tr'
-						// })
-						// console.log(addedRows);
-						// console.log(addedRows.length);
-						// if (addedRows.size > 0) {
-						// 	console.log(`Tabel telah bertambah`);
-						// }
-					}
-				}
-			})
-
-			// configuration of the observer
-			let config = {
-				subtree: true,
-				childList: true,
-			};
-
-			// pass node to observer with the configuration
-			observer.observe(table, config);
-		}
-		updateTable()
-		// ==================================================
-
-		// ==================================================
 		// click untuk simpan barang
 		$.fn.saveBarang = function() {
 			let kolomIndex = 0;
@@ -383,12 +341,11 @@
 
 			let prevJml, indexSameRow;
 			let sameItem = false;
-			console.log(kolomData);
 			for (let index = 0; index < kolomData.length; index++) {
 				if (kolomData[index][0] === $('#kodebrg').val()) {
 					// cek jika data sama
 					indexSameRow = index;
-					console.log(indexSameRow);
+					// console.log(indexSameRow);
 					prevJml = kolomData[index][4];
 					sameItem = true;
 				}
@@ -412,7 +369,7 @@
 				let harga = $('#harga').val();
 				let jumlah = $('#jumlah').val();
 
-				console.log(prevJml, indexSameRow, sameItem);
+				// console.log(prevJml, indexSameRow, sameItem);
 
 				jumlah = parseInt(jumlah) + parseInt(prevJml);
 				totalhrg = harga * jumlah;
@@ -472,7 +429,6 @@
 				cellharga.innerHTML = valhrgjual;
 				cellact.appendChild(btnAct);
 			}
-
 		}
 		// ==================================================
 
@@ -484,7 +440,6 @@
 				for (let mutation of mutationList) {
 					if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
 						if (targetModal.classList.contains('show')) {
-							console.log(`Modal muncul!`);
 							pilihBarang();
 						}
 					}
@@ -522,7 +477,7 @@
 				let harga = closestTR.eq(3).text();
 
 				$("#kodebrg").val(kodebrg);
-				console.log($("#kodebrg").val());
+				// console.log($("#kodebrg").val());
 
 				// ambil value (id) dari select
 				let currentSelect = $(this);
@@ -565,12 +520,34 @@
 						'Content-Type': 'application:json'
 					}
 				}).then((response) => {
-					alert(response.data);
+					// alert(response.data);
 				}).catch((error) => {
-					console.log(error);
+					// console.log(error);
 				})
 
+				$('#myTable tbody tr').each(function() {
+					let currentRow = $(this);
+					let kodebr = currentRow.find('td').eq(0).text();
+					let hargajual = currentRow.find('td').eq(3).text();
+					let jumlah = currentRow.find('td').eq(4).text();
 
+					axios.post('./adddbdetailpermintaan.php', JSON.stringify({
+						kodeper: kode,
+						kodebr: kodebr,
+						hargajual: hargajual,
+						jumlah: jumlah
+					}), {
+						headers: {
+							'Content-Type': 'application:json'
+						}
+					}).then((response) => {
+						// alert(response.data);
+					}).catch((error) => {
+						// console.log(error);
+					})
+				})
+
+				$('#isi').load('./permintaan.php');
 			})
 		}
 		// ==================================================
