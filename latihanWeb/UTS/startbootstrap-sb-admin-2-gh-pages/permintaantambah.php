@@ -218,7 +218,7 @@
 
 		// $('#btnAddBarang').on('click', function() {
 		// })
-		const datatablemyTable = $('#myTable').DataTable();
+		let datatablemyTable = $('#myTable').DataTable();
 
 		// ==================================================
 		// menghitung total dari total barang dan harga
@@ -377,7 +377,24 @@
 		// ==================================================
 		// click untuk simpan barang
 		$.fn.saveBarang = function() {
-			if ($("#kodebrg").val() != 1) {
+			let kolomIndex = 0;
+			datatablemyTable.draw();
+			let kolomData = datatablemyTable.rows().data().toArray();
+
+			let prevJml, indexSameRow;
+			let sameItem = false;
+			console.log(kolomData);
+			for (let index = 0; index < kolomData.length; index++) {
+				if (kolomData[index][0] === $('#kodebrg').val()) {
+					// cek jika data sama
+					indexSameRow = index;
+					console.log(indexSameRow);
+					prevJml = kolomData[index][4];
+					sameItem = true;
+				}
+			}
+
+			if (sameItem === false) {
 				// ambil panjang dari tabel
 				let panjang = $("#myTable").length;
 
@@ -391,15 +408,25 @@
 
 				datatablemyTable.row.add([kode, nama, satuan, harga, jumlah, totalhrg, `<button id="id${panjang}" class="remove btn btn-danger">X</button>`]).draw();
 
-				// $(`#myTable tbody`).append(
-				// 	`<tr><td>${kode}</td><td>${nama}</td><td>${satuan}</td><td>${harga}</td><td>${jumlah}</td><td>${totalhrg}</td><td><button id="id${panjang}" class="remove btn btn-danger">X</button></td></tr>`
-				// );
-
-				$.fn.hitungTotal("pembelian3", 4);
-				$.fn.clearform();
 			} else {
-				alert("Barang masih kosong");
+				let harga = $('#harga').val();
+				let jumlah = $('#jumlah').val();
+
+				console.log(prevJml, indexSameRow, sameItem);
+
+				jumlah = parseInt(jumlah) + parseInt(prevJml);
+				totalhrg = harga * jumlah;
+
+				kolomData[indexSameRow][4] = jumlah;
+				kolomData[indexSameRow][5] = totalhrg;
+
+				datatablemyTable.clear();
+				datatablemyTable.rows.add(kolomData);
+				datatablemyTable.draw();
 			}
+
+			$.fn.hitungTotal("pembelian3", 4);
+			$.fn.clearform();
 		};
 		// ==================================================
 
@@ -520,6 +547,7 @@
 				let telepon = $('#telpKonsumen').val();
 				let alamat = $('#alamatKaryawan').val();
 				let ket = $('#ketPermintaan').val();
+				let total = $('#totalHarga').val();
 
 				let data = {
 					kode: kode,
@@ -528,7 +556,8 @@
 					karyawan: karyawan,
 					telepon: telepon,
 					alamat: alamat,
-					keterangan: ket
+					keterangan: ket,
+					total: total
 				};
 
 				axios.post('./adddbpermintaan.php', JSON.stringify(data), {
