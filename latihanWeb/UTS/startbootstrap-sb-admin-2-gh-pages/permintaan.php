@@ -108,8 +108,8 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="mb-3">
-								<label for="viewSupplier" class="form-label input-group">Karyawan : Ani</label>
-								<label id="viewSupplier"></label>
+								<label for="viewKaryawan" class="form-label input-group">Karyawan : </label>
+								<label id="viewKaryawan"></label>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -193,54 +193,89 @@
 		$("#dataTable").on('click', '.btnViewPermintaan', function() {
 			const rowEl = $(this).closest('tr').find('td').eq(0);
 			const currkode = rowEl.text();
-
-			hitungtotalmodal();
+			console.log(currkode);
+			getListPermintaanBarang(currkode);
+			getDetailPermintaan(currkode);
 		});
 		// ===============================================================================
 
 		// ===============================================================================
+		async function getDetailPermintaan(kode) {
+			$.ajax({
+				url: './getviewpermintaan.php',
+				dataType: 'json',
+				type: 'POST',
+				data: {
+					kodeper: kode
+				},
+				success: function(data, response) {
+					$('#viewKode').text(data[0].kodeper);
+					$('#viewTanggal').text(data[0].tanggal);
+					$('#viewKaryawan').text(data[0].nama);
+					$('#viewKonsumen').text(data[0].konsumen);
+					$('#viewTelepon').text(data[0].telepon);
+					$('#viewAlamat').text(data[0].alamat);
+					$('#viewKeterangan').text(data[0].keterangan);
+				},
+				error: function(data, response) {}
+			})
+		}
+		// ===============================================================================
+
+		// ===============================================================================
 		async function getListPermintaanBarang(kode) {
-			axios.post('./getviewdetailpermintaan.php', JSON.stringify({
-				kode: kode
-			}), {
-				headers: {
-					'Content-Type': 'application:json'
+			let datas, totalitem = 0,
+				totalhrg = 0;
+
+			$.ajax({
+				url: './getviewdetailpermintaan.php',
+				dataType: 'json',
+				type: "POST",
+				data: {
+					kodeper: kode
+				},
+				success: function(data, response) {
+					datatableview.clear();
+					for (const iterator of data) {
+						let subtotal = parseInt(iterator.jumlah) * parseInt(iterator.harga_jual);
+						totalitem += parseInt(iterator.jumlah);
+						totalhrg += subtotal;
+						datatableview.row.add([iterator.kode_barang, iterator.nama_barang, iterator.satuan, iterator.harga_jual, iterator.jumlah, subtotal]).draw();
+					}
+					document.querySelector(`#myTable #totalItem`).innerHTML = totalitem;
+					document.querySelector(`#myTable #totalHarga`).innerHTML = totalhrg;
+				},
+				error: function(data, response) {
+
 				}
-			}).then((response) => {
-				// alert(response.data);
-			}).catch((error) => {
-				// console.log(error);
 			})
 		}
 		// ===============================================================================
 
 		// ===============================================================================
 		function hitungtotalmodal() {
-			let table = document.querySelector(`#myTable tbody`);
-			let panjang = table.rows.length;
-			let total = 0;
-			for (let i = 0; i < panjang; i++) {
-				let data = table.rows[i].cells[4];
-				data = parseInt(data.innerHTML);
-				total = total + data;
-			}
+			// let table = document.querySelector(`#myTable tbody`);
+			// let panjang = table.rows.length;
+			// let total = 0;
+			// for (let i = 0; i < panjang; i++) {
+			// 	let data = table.rows[i].cells[4];
+			// 	data = parseInt(data.innerHTML);
+			// 	total = total + data;
+			// }
 			// console.log(total + "testt11");
-			document.querySelector(`#myTable #totalItem`).innerHTML = total;
 
-			total = 0;
+			// total = 0;
 
-			for (let i = 0; i < panjang; i++) {
-				let data = table.rows[i].cells[5];
-				data = parseInt(data.innerHTML);
-				total = total + data;
-			}
+			// for (let i = 0; i < panjang; i++) {
+			// 	let data = table.rows[i].cells[5];
+			// 	data = parseInt(data.innerHTML);
+			// 	total = total + data;
+			// }
 			// console.log(total + "testt11");
-			document.querySelector(`#myTable #totalHarga`).innerHTML = total;
 		}
 		// ===============================================================================
 
 		// ===============================================================================
-		hitungtotalMain();
 
 		function hitungtotalMain() {
 			let table = document.querySelector(`#dataTable tbody`);
@@ -258,6 +293,7 @@
 				let data = table.rows[i].cells[5];
 				data = parseInt(data.innerHTML);
 				total = total + data;
+				console.log(i, total);
 			}
 			// console.log(total + "testt11");
 			document.querySelector(`#totalHarga`).innerHTML = total;
@@ -273,13 +309,14 @@
 		async function renderPermintaan() {
 			const datas = await getDataPermintaan();
 
-			// datatablemain.clear();
+			datatablemain.clear();
 			// datatablemain.rows.add(datas);
 			// datatablemain.draw();
 			datas.forEach(element => {
-				console.log(element);
+				// console.log(element);
 				datatablemain.row.add([element.kodeper, element.tanggal, element.konsumen, element.nama, element.totalitem, element.totalhrg, `<button class="btn btn-info update btnViewPermintaan" data-bs-toggle="modal" data-bs-target="#modalViewPermintaan">V</button>`]).draw();
 			});
+			hitungtotalMain();
 		}
 		// ===============================================================================
 

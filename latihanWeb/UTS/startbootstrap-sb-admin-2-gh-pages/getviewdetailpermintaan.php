@@ -1,9 +1,7 @@
 <?php
 include './connection.php';
 
-$data = json_decode(file_get_contents('php://input', true));
-
-$kodeper = $data['kodeper'];
+$kodeper = $_POST['kodeper'];
 
 $querySQL = "SELECT dp.kode_barang, b.nama_barang, b.satuan, dp.harga_jual, dp.jumlah FROM `detailpermintaan` dp JOIN `barang` b ON b.kode_barang=dp.kode_barang WHERE dp.kodeper=$kodeper";
 $result = mysqli_query($conn, $querySQL);
