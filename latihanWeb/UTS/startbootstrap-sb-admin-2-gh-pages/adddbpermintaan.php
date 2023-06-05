@@ -10,12 +10,14 @@ $karyawan = $data['karyawan'];
 $telepon = $data['telepon'];
 $alamat = $data['alamat'];
 $keterangan = $data['keterangan'];
+$totalhrg = $data['totalhrg'];
+$totalitem = $data['totalitem'];
 
 // echo json_encode($kodeper);
 
-$querySQL = 'INSERT INTO `permintaan`(`kodeper`, `kodekar`, `tanggal`, `konsumen`, `telepon`, `alamat`, `keterangan`) VALUES (?,?,?,?,?,?,?)';
+$querySQL = 'INSERT INTO `permintaan`(`kodeper`, `kodekar`, `tanggal`, `konsumen`, `telepon`, `alamat`, `keterangan`, `totalitem`, `totalhrg`) VALUES (?,?,?,?,?,?,?,?,?)';
 $stmt = $conn->prepare($querySQL);
-$stmt->bind_param('sssssss', $kodeper, $karyawan, $tanggal, $konsumen, $telepon, $alamat, $keterangan);
+$stmt->bind_param('sssssssdd', $kodeper, $karyawan, $tanggal, $konsumen, $telepon, $alamat, $keterangan, $totalitem, $totalhrg);
 $success = $stmt->execute();
 
 if ($success) {

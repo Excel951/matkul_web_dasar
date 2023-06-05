@@ -502,7 +502,8 @@
 				let telepon = $('#telpKonsumen').val();
 				let alamat = $('#alamatKaryawan').val();
 				let ket = $('#ketPermintaan').val();
-				let total = $('#totalHarga').val();
+				let totalhrg = $('#totalHarga').text();
+				let totalitem = $('#totalItem').text();
 
 				let data = {
 					kode: kode,
@@ -512,7 +513,8 @@
 					telepon: telepon,
 					alamat: alamat,
 					keterangan: ket,
-					total: total
+					totalhrg: totalhrg,
+					totalitem: totalitem
 				};
 
 				axios.post('./adddbpermintaan.php', JSON.stringify(data), {
@@ -541,9 +543,9 @@
 							'Content-Type': 'application:json'
 						}
 					}).then((response) => {
-						// alert(response.data);
+						console.log(response.data);
 					}).catch((error) => {
-						// console.log(error);
+						console.log(error);
 					})
 				})
 

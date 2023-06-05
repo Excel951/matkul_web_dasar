@@ -1,7 +1,7 @@
 <?php
 include './connection.php';
 
-$querySQL = "select p.kodeper,p.tanggal, p.konsumen, k.nama, p.telepon, p.alamat, p.keterangan from permintaan p join karyawan k on p.kodekar=k.kode_karyawan";
+$querySQL = "SELECT p.kodeper, p.tanggal, p.konsumen, k.nama, p.totalitem, p.totalhrg FROM `permintaan` p JOIN karyawan k ON p.kodekar=k.kode_karyawan";
 $result = mysqli_query($conn, $querySQL);
 
 while ($row = mysqli_fetch_assoc($result)) {

@@ -43,7 +43,7 @@
 								<td>3</td>
 								<td>200000</td>
 								<td>
-									<button type="submit" class="btn btn-info update btnViewPermintaan" data-bs-toggle="modal" data-bs-target="#modalViewPermintaan">
+									<button class="btn btn-info update btnViewPermintaan" data-bs-toggle="modal" data-bs-target="#modalViewPermintaan">
 										V
 									</button>
 								</td>
@@ -56,7 +56,7 @@
 								<td>4</td>
 								<td>300000</td>
 								<td>
-									<button type="submit" class="btn btn-info update btnViewPermintaan" data-bs-toggle="modal" data-bs-target="#modalViewPermintaan">
+									<button class="btn btn-info update btnViewPermintaan" data-bs-toggle="modal" data-bs-target="#modalViewPermintaan">
 										V
 									</button>
 								</td>
@@ -69,7 +69,7 @@
 								<td>5</td>
 								<td>500000</td>
 								<td>
-									<button type="submit" class="btn btn-info update btnViewPermintaan" data-bs-toggle="modal" data-bs-target="#modalViewPermintaan">
+									<button class="btn btn-info update btnViewPermintaan" data-bs-toggle="modal" data-bs-target="#modalViewPermintaan">
 										V
 									</button>
 								</td>
@@ -94,41 +94,42 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="mb-3">
-								<label for="">Kode : P005</label>
+								<label for="viewKode">Kode : </label>
+								<label id="viewKode"></label>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="mb-3">
-								<label for="tanggal" class="form-label input-group">Tanggal : 1-1-2023
-								</label>
+								<label for="viewTanggal" class="form-label input-group">Tanggal : </label>
+								<label id="viewTanggal"></label>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="mb-3">
-								<label for="supplier" class="form-label input-group">Karyawan : Ani
-								</label>
+								<label for="viewSupplier" class="form-label input-group">Karyawan : Ani</label>
+								<label id="viewSupplier"></label>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="mb-3">
-								<label for="kode" class="form-label input-group">Konsumen : Ali
-								</label>
+								<label for="viewKonsumen" class="form-label input-group">Konsumen : </label>
+								<label id="viewKonsumen"></label>
 							</div>
 						</div>
 					</div>
 					<div class="mb-3">
-						<label for="telpSupplier" class="form-label input-group">Telepon : 0812318236
-						</label>
+						<label for="viewTelepon" class="form-label input-group">Telepon : </label>
+						<label id="viewTelepon"></label>
 					</div>
 					<div class="mb-3">
-						<label for="alamatSupplier" class="form-label input-group">Alamat : Jl. Dinamika 98 Sby
-						</label>
+						<label for="viewAlamat" class="form-label input-group">Alamat : </label>
+						<label id="viewAlamat"></label>
 					</div>
 					<div class="mb-3">
-						<label for="telpSupplier" class="form-label input-group">Keterangan : Kirim dengan Gojek
-						</label>
+						<label for="viewKeterangan" class="form-label input-group">Keterangan : </label>
+						<label id="viewKeterangan"></label>
 					</div>
 					<div class="mb-3 col-md-6"></div>
 				</form>
@@ -145,22 +146,6 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>A01</td>
-								<td>RAM1</td>
-								<td>pcs</td>
-								<td>1000</td>
-								<td>100</td>
-								<td>100000</td>
-							</tr>
-							<tr>
-								<td>B01</td>
-								<td>CPU1</td>
-								<td>pcs</td>
-								<td>2000</td>
-								<td>50</td>
-								<td>100000</td>
-							</tr>
 						</tbody>
 						<tfoot>
 							<tr>
@@ -196,16 +181,37 @@
 
 <script>
 	$(document).ready(function() {
+		renderPermintaan();
+
 		const datatablemain = $('#dataTable').DataTable();
+		const datatableview = $('#myTable').DataTable();
 
 		// ===============================================================================
 		$("#btnAddPermintaan").click(function() {
 			$("#content #isi").load("./permintaantambah.php");
 		});
-		$(".btnViewPermintaan").click(function() {
+		$("#dataTable").on('click', '.btnViewPermintaan', function() {
+			const rowEl = $(this).closest('tr').find('td').eq(0);
+			const currkode = rowEl.text();
+
 			hitungtotalmodal();
-			const datatableview = $('#myTable').DataTable();
 		});
+		// ===============================================================================
+
+		// ===============================================================================
+		async function getListPermintaanBarang(kode) {
+			axios.post('./getviewdetailpermintaan.php', JSON.stringify({
+				kode: kode
+			}), {
+				headers: {
+					'Content-Type': 'application:json'
+				}
+			}).then((response) => {
+				// alert(response.data);
+			}).catch((error) => {
+				// console.log(error);
+			})
+		}
 		// ===============================================================================
 
 		// ===============================================================================
@@ -264,14 +270,16 @@
 			return response.data;
 		}
 
-		renderPermintaan()
 		async function renderPermintaan() {
 			const datas = await getDataPermintaan();
 
-			console.log(datas);
 			// datatablemain.clear();
 			// datatablemain.rows.add(datas);
 			// datatablemain.draw();
+			datas.forEach(element => {
+				console.log(element);
+				datatablemain.row.add([element.kodeper, element.tanggal, element.konsumen, element.nama, element.totalitem, element.totalhrg, `<button class="btn btn-info update btnViewPermintaan" data-bs-toggle="modal" data-bs-target="#modalViewPermintaan">V</button>`]).draw();
+			});
 		}
 		// ===============================================================================
 
