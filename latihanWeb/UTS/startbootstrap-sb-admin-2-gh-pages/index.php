@@ -93,6 +93,7 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Transaksi:</h6>
 						<a class="collapse-item" id="navbarPermintaan">Permintaan</a>
+						<a class="collapse-item" id="navbarPemesanan">Pemesanan</a>
 					</div>
 				</div>
 			</li>
@@ -360,12 +361,21 @@
 		$(document).ready(function() {
 			$.fn.pindahHalaman = function() {
 				$("#accordionSidebar .nav-item").click(function(event) {
+					// JIKA NAVIGASI BARANG DIKLIK
 					if (event.target.id === "navbarBarang") {
 						$("#content #isi").load("./barang.php");
-					} else if (event.target.id === "navbarPermintaan") {
+					}
+					// JIKA NAVIGASI PERMINTAAN DIKLIK
+					else if (event.target.id === "navbarPermintaan") {
 						$("#content #isi").load("./permintaan.php");
-					} else if (event.target.id === 'navbarKaryawan') {
+					}
+					// JIKA NAVIGASI KARYAWAN DIKLIK
+					else if (event.target.id === 'navbarKaryawan') {
 						$('#content #isi').load('./karyawan.php');
+					}
+					// JIKA NAVIGASI PEMESANAN DIKLIK
+					else if (event.target.id === 'navbarPemesanan') {
+						$('#content #isi').load('./pemesanan.php');
 					}
 				});
 			};

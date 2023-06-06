@@ -2,10 +2,13 @@
 <div class="card shadow mb-4">
 	<div class="card-body">
 		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<!-- Start Judul Halaman -->
 			<h1 class="h3 mb-0 text-gray-800" id="headingIndex">
 				Tambah Permintaan
 			</h1>
+			<!-- End Judul Halaman -->
 		</div>
+		<!-- Start Form Permintaan -->
 		<form target="_blank" method="post" autocomplete="on">
 			<div class="row">
 				<div class="col-md-6">
@@ -52,19 +55,23 @@
 			</div>
 			<div class="mb-3 col-md-6"></div>
 		</form>
+		<!-- End Form Permintaan -->
+		<!-- Start Container Pilih Barang -->
 		<div class="mb-3 row" id="tableAddItem">
-			<div class="col-md-2">
-				<label for="kodebrg" class="form-label input-group">Kode Barang:
-				</label>
-				<input type="text" name="kodebrg" id="kodebrg">
+			<div class="col-md-1">
+				<label for="btnAddBarang" class="form-label input-group">Pilih Barang</label>
 				<a class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" id="btnAddBarang" data-bs-toggle="modal" data-bs-target="#modalBeliBarang"><i class="fa fa-plus" aria-hidden="true"></i>
 					Tambah Barang</a>
+			</div>
+			<div class="col-md-1">
+				<label for="kodebrg" class="form-label input-group">Kode Barang:</label>
+				<input type="text" name="kodebrg" id="kodebrg" class="form-control input-group" readonly>
 			</div>
 			<div class="col-md-2">
 				<label for="nama" class="form-label input-group">Nama:</label>
 				<input type="text" name="nama" id="nama" class="form-control input-group" readonly />
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-1">
 				<label for="satuan" class="form-label input-group">Satuan:</label>
 				<input type="text" name="satuan" id="satuan" class="form-control input-group" readonly />
 			</div>
@@ -77,13 +84,17 @@
 				<input type="text" name="jumlah" id="jumlah" class="form-control input-group" />
 			</div>
 			<div class="col-md-2">
-				<label for="saveItemBuyed" class="form-label input-group text-white">.
+				<label for="" class="form-label input-group text-white">.
 				</label>
 				<button class="mx-auto btn btn-primary text-center" id="saveItemBuyed">
 					Save
 				</button>
 			</div>
 		</div>
+		<br>
+		<hr>
+		<br>
+		<!-- End Container Pilih Barang -->
 		<div class="">
 			<table class="table table-hover" id="myTable" border="1">
 				<thead style="background-color: #485fc7">
@@ -114,13 +125,18 @@
 				</tfoot>
 			</table>
 			<br />
+			<!-- Start Button Simpan Permintaan -->
 			<button id="btnSavePermintaan" class="btn btn-primary">Simpan Permintaan</button>
+			<!-- End Button Simpan Permintaan -->
+
+			<!-- Start Button Batalkan Permintaan -->
 			<button id="btnCancelPermintaan" class="btn btn-danger">Batalkan</button>
+			<!-- End Button Batalkan Permintaan -->
 		</div>
 	</div>
 </div>
 
-<!-- Modal View -->
+<!-- Start Modal View List Pilih Barang-->
 <div class="modal fade" id="modalBeliBarang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 		<div class="modal-content">
@@ -129,6 +145,7 @@
 			</div>
 			<div class="modal-body">
 				<div>
+					<!-- Start Table List Pilih Barang -->
 					<table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%">
 						<thead>
 							<tr>
@@ -197,16 +214,20 @@
 							</tr>
 						</tbody>
 					</table>
+					<!-- End Table List Pilih Barang -->
 				</div>
 			</div>
 			<div class="modal-footer">
+				<!-- Start Button Close Modal -->
 				<button type="button" class="btn btn-secondary" id="dismissBtn" data-bs-dismiss="modal">
 					Close
 				</button>
+				<!-- End Button Close Modal -->
 			</div>
 		</div>
 	</div>
 </div>
+<!-- End Modal View List Pilih Barang-->
 
 <!-- Page level plugins -->
 <script src="vendor/datatables/jquery.dataTables.min.js"></script>
@@ -214,7 +235,7 @@
 
 <script>
 	$(document).ready(function() {
-		$("#kodebrg").hide();
+		// $("#kodebrg").hide();
 
 		// $('#btnAddBarang').on('click', function() {
 		// })

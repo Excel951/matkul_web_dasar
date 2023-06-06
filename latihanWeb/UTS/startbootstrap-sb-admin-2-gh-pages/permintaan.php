@@ -20,8 +20,8 @@
 								<th>Tanggal</th>
 								<th>Konsumen</th>
 								<th>Karyawan</th>
-								<th>Item</th>
-								<th>Total</th>
+								<th>Jumlah Barang</th>
+								<th>Jumlah Harga</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -86,10 +86,13 @@
 <div class="modal fade" id="modalViewPermintaan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
 		<div class="modal-content">
+			<!-- Start Judul Modal -->
 			<div class="modal-header" id="staticBackdropLabel">
 				<h1>Tambah Barang</h1>
 			</div>
+			<!-- End Judul Modal -->
 			<div class="modal-body">
+				<!-- Start Form Permintaan -->
 				<form target="_blank" method="post" autocomplete="on">
 					<div class="row">
 						<div class="col-md-6">
@@ -133,7 +136,9 @@
 					</div>
 					<div class="mb-3 col-md-6"></div>
 				</form>
+				<!-- End Form Permintaan -->
 				<div>
+					<!-- Start Tabel List Permintaan Barang -->
 					<table class="table table-hover" id="myTable" border="1">
 						<thead class="bg-gradient-success">
 							<tr>
@@ -161,12 +166,15 @@
 							</tr>
 						</tfoot>
 					</table>
+					<!-- End Table List Permintaan Barang -->
 				</div>
 			</div>
 			<div class="modal-footer">
+				<!-- Start Button Close Modal -->
 				<button type="button" class="btn btn-secondary" id="dismissBtn" data-bs-dismiss="modal">
 					Close
 				</button>
+				<!-- End Button Close Modal -->
 			</div>
 		</div>
 	</div>
@@ -193,7 +201,7 @@
 		$("#dataTable").on('click', '.btnViewPermintaan', function() {
 			const rowEl = $(this).closest('tr').find('td').eq(0);
 			const currkode = rowEl.text();
-			console.log(currkode);
+			// console.log(currkode);
 			getListPermintaanBarang(currkode);
 			getDetailPermintaan(currkode);
 		});
@@ -293,7 +301,7 @@
 				let data = table.rows[i].cells[5];
 				data = parseInt(data.innerHTML);
 				total = total + data;
-				console.log(i, total);
+				// console.log(i, total);
 			}
 			// console.log(total + "testt11");
 			document.querySelector(`#totalHarga`).innerHTML = total;
