@@ -20,6 +20,7 @@
                                 <th>Tanggal</th>
                                 <th>Karyawan</th>
                                 <th>Supplier</th>
+                                <th>Telepon</th>
                                 <th>Jumlah Barang</th>
                                 <th>Jumlah Harga</th>
                                 <th>Action</th>
@@ -27,7 +28,7 @@
                         </thead>
                         <tfoot>
                             <tr>
-                                <th colspan="4">Total</th>
+                                <th colspan="5">Total</th>
                                 <th id="totalItem">Item</th>
                                 <th id="totalHarga" colspan="2">
                                     Total
@@ -40,6 +41,7 @@
                                 <td>1-1-2023</td>
                                 <td>Ali</td>
                                 <td>Ani</td>
+                                <td>3</td>
                                 <td>3</td>
                                 <td>200000</td>
                                 <td>
@@ -54,6 +56,7 @@
                                 <td>Budi</td>
                                 <td>Ani</td>
                                 <td>4</td>
+                                <td>4</td>
                                 <td>300000</td>
                                 <td>
                                     <button class="btn btn-info update btnViewPemesanan" data-bs-toggle="modal" data-bs-target="#modalViewPemesanan">
@@ -66,6 +69,7 @@
                                 <td>3-1-2023</td>
                                 <td>Cindi</td>
                                 <td>Ani</td>
+                                <td>5</td>
                                 <td>5</td>
                                 <td>500000</td>
                                 <td>
@@ -97,7 +101,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="viewKode">Kode : </label>
+                                <label for="viewKode">Kode : </label><br>
                                 <label id="viewKode"></label>
                             </div>
                         </div>
@@ -180,6 +184,7 @@
     </div>
 </div>
 <!-- End Modal View -->
+
 <!-- Page level plugins -->
 <script src="vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
@@ -189,8 +194,6 @@
 
 <script>
     $(document).ready(function() {
-        renderPemesanan();
-
         // ===============================================================================
         // DEKLARASI DATATABLE UNTUK HALAMAN UTAMA
         const datatablemain = $('#dataTable').DataTable();
@@ -198,6 +201,8 @@
         // DEKLARASI DATATABLE UNTUK HALAMAN DETAIL
         const datatableview = $('#myTable').DataTable();
         // ===============================================================================
+
+        renderPemesanan();
 
         // ===============================================================================
         // KETIKA KLIK TAMBAH PEMESANAN
@@ -302,7 +307,7 @@
             let panjang = table.rows.length;
             let total = 0;
             for (let i = 0; i < panjang; i++) {
-                let data = table.rows[i].cells[4];
+                let data = table.rows[i].cells[5];
                 data = parseInt(data.innerHTML);
                 total = total + data;
             }
@@ -310,7 +315,7 @@
             document.querySelector(`#totalItem`).innerHTML = total;
             total = 0;
             for (let i = 0; i < panjang; i++) {
-                let data = table.rows[i].cells[5];
+                let data = table.rows[i].cells[6];
                 data = parseInt(data.innerHTML);
                 total = total + data;
                 // console.log(i, total);

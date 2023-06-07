@@ -20,38 +20,40 @@
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="konsumen" class="form-label input-group">Konsumen:
+                        <label for="karyawan" class="form-label">Karyawan:
                         </label>
-                        <input type="text" name="konsumen" id="konsumen" class="form-control input-group" />
+                        <select name="karyawan" id="karyawan" class="form-control input-group">
+
+                        </select>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="karyawan">Karyawan: </label>
-                        <select class="form-control" name="karyawan" id="karyawan">
+                        <label for="supplier">Supplier: </label>
+                        <select class="form-control" name="supplier" id="supplier">
 
                         </select>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="telpKonsumen" class="form-label input-group">Telepon:
+                        <label for="telpSupplier" class="form-label input-group">Telepon:
                         </label>
-                        <input type="text" name="telpKonsumen" id="telpKonsumen" class="form-control input-group" />
+                        <input type="text" name="telpSupplier" id="telpSupplier" class="form-control input-group" readonly />
                     </div>
                 </div>
             </div>
             <div class="mb-3">
-                <label for="alamatKaryawan" class="form-label input-group">Alamat:
+                <label for="alamatSupplier" class="form-label input-group">Alamat:
                 </label>
-                <input type="text" name="alamatKaryawan" id="alamatKaryawan" class="form-control input-group" />
+                <input type="text" name="alamatSupplier" id="alamatSupplier" class="form-control input-group" readonly />
             </div>
             <div class="mb-3">
-                <label for="ketPermintaan" class="form-label input-group">Keterangan:
+                <label for="ketPemesanan" class="form-label input-group">Keterangan:
                 </label>
-                <input type="textarea" name="ketPermintaan" id="ketPermintaan" class="form-control input-group" />
+                <input type="textarea" name="ketPemesanan" id="ketPemesanan" class="form-control input-group" />
             </div>
             <div class="mb-3 col-md-6"></div>
         </form>
@@ -123,13 +125,13 @@
                 </tfoot>
             </table>
             <br />
-            <button id="btnSavePermintaan" class="btn btn-primary">Simpan Permintaan</button>
-            <button id="btnCancelPermintaan" class="btn btn-danger">Batalkan</button>
+            <button id="btnSavePemesanan" class="btn btn-primary">Simpan Pemesanan</button>
+            <button id="btnCancelPemesanan" class="btn btn-danger">Batalkan</button>
         </div>
     </div>
 </div>
 
-<!-- Modal View -->
+<!-- Modal View Pilih Barang-->
 <div class="modal fade" id="modalBeliBarang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -223,10 +225,6 @@
 
 <script>
     $(document).ready(function() {
-        $("#kodebrg").hide();
-
-        // $('#btnAddBarang').on('click', function() {
-        // })
         let datatablemyTable = $('#myTable').DataTable();
 
         // ==================================================
@@ -265,8 +263,8 @@
         // ==================================================
 
         // ==================================================
-        // fungsi pada halaman pembelian4 (detail)
-        $.fn.getKaryawan = function() {
+        // AMBIL DATA KARYAWAN UNTUK DIMASUKKAN KE DALAM PILIHAN DRAGDOWN
+        function getKaryawan() {
             let datas;
 
             $.ajax({
@@ -300,6 +298,57 @@
         // ==================================================
 
         // ==================================================
+        // AMBIL DATA UNTUK DIMASUKKAN KE DALAM DRAGDOWN DAN DATA UNTUK ALAMAT DAN TELEPON
+        let objSupplier = {};
+
+        function getSupplier() {
+            $.ajax({
+                url: './getSupplier.php',
+                dataType: 'json',
+                type: "POST",
+                data: {},
+                success: function(data, response) {
+                    const selectEl = document.querySelector('#supplier');
+                    while (selectEl.hasChildNodes()) {
+                        selectEl.removeChild(selectEl.firstChild);
+                    }
+
+                    let tag = document.createElement('option');
+                    tag.value = 'null';
+                    tag.innerHTML = 'Pilih Supplier';
+                    selectEl.append(tag);
+
+                    data.forEach(x => {
+                        tag = document.createElement('option');
+                        tag.value = x.kode_supp;
+                        tag.innerHTML = x.perusahaan;
+                        selectEl.append(tag);
+
+                        objSupplier[x.kode_supp] = {
+                            telp: x.telepon_sales,
+                            alamat: x.alamat
+                        };
+                    });
+                },
+                error: function(data, response) {
+
+                }
+            })
+            console.log(objSupplier);
+        };
+        // ==================================================
+
+        // ==================================================
+        // BERJALAN KETIKA USER MEMILIH SUPPLIER
+        // BERFUNGSI MENAMPILKAN TELEPON DAN ALAMAT
+        function pilihSupplier() {
+            const selectedSupp = $('#supplier').val();
+            $('#telpSupplier').val(objSupplier[selectedSupp].telp);
+            $('#alamatSupplier').val(objSupplier[selectedSupp].alamat);
+        }
+        // ==================================================
+
+        // ==================================================
         // fungsi pada halaman pembelian3 (form pembelian)
         // ambil waktu untuk kode pembelian dan tanggal
         $.fn.ambilWaktu = function() {
@@ -314,14 +363,13 @@
 
             let kode = `${year}${month}${date}${hour}${minute}${seconds}${miliseconds}`;
             return kode;
-            // $("#tanggal").val(dates.toLocaleDateString());
         };
         // ==================================================
 
         // ==================================================
         // fungsi membersihkan form
         $.fn.clearform = function() {
-            $(`#kodebrg`).val("1");
+            $(`#kodebrg`).val("");
             $(`#nama`).val("");
             $(`#satuan`).val("");
             $(`#harga`).val("");
@@ -413,7 +461,7 @@
                 let valkode = datas[index].kode_barang
                 let valnama = datas[index].nama_barang
                 let valsatuan = datas[index].satuan
-                let valhrgjual = datas[index].harga_jual
+                let valhrgjual = datas[index].harga
 
                 // add row
                 let rows = table.insertRow(index);
@@ -500,24 +548,25 @@
         // ==================================================
 
         // ==================================================
-        tambahPermintaan();
+        // BERJALAN KETIKA KLIK SIMPAN PEMESANAN
+        tambahPemesanan();
 
-        function tambahPermintaan() {
-            $('#btnSavePermintaan').on('click', function() {
+        function tambahPemesanan() {
+            $('#btnSavePemesanan').on('click', function() {
                 let kode = $.fn.ambilWaktu();
                 let tanggal = $('#tanggal').val();
-                let konsumen = $('#konsumen').val();
+                let supplier = $('#supplier').val();
                 let karyawan = $('#karyawan').val();
-                let telepon = $('#telpKonsumen').val();
-                let alamat = $('#alamatKaryawan').val();
-                let ket = $('#ketPermintaan').val();
+                let telepon = $('#telpSupplier').val();
+                let alamat = $('#alamatSupplier').val();
+                let ket = $('#ketPemesanan').val();
                 let totalhrg = $('#totalHarga').text();
                 let totalitem = $('#totalItem').text();
 
                 let data = {
                     kode: kode,
                     tanggal: tanggal,
-                    konsumen: konsumen,
+                    supplier: supplier,
                     karyawan: karyawan,
                     telepon: telepon,
                     alamat: alamat,
@@ -526,7 +575,7 @@
                     totalitem: totalitem
                 };
 
-                axios.post('./adddbpermintaan.php', JSON.stringify(data), {
+                axios.post('./adddbpemesanan.php', JSON.stringify(data), {
                     headers: {
                         'Content-Type': 'application:json'
                     }
@@ -539,33 +588,33 @@
                 $('#myTable tbody tr').each(function() {
                     let currentRow = $(this);
                     let kodebr = currentRow.find('td').eq(0).text();
-                    let hargajual = currentRow.find('td').eq(3).text();
+                    let hargabeli = currentRow.find('td').eq(3).text();
                     let jumlah = currentRow.find('td').eq(4).text();
 
-                    axios.post('./adddbdetailpermintaan.php', JSON.stringify({
-                        kodeper: kode,
+                    axios.post('./adddbdetailpemesanan.php', JSON.stringify({
+                        kodepem: kode,
                         kodebr: kodebr,
-                        hargajual: hargajual,
+                        hargabeli: hargabeli,
                         jumlah: jumlah
                     }), {
                         headers: {
                             'Content-Type': 'application:json'
                         }
                     }).then((response) => {
-                        console.log(response.data);
+                        // console.log(response.data);
                     }).catch((error) => {
-                        console.log(error);
+                        // console.log(error);
                     })
                 })
 
-                $('#isi').load('./permintaan.php');
+                $('#isi').load('./pemesanan.php');
             })
         }
         // ==================================================
 
         // ==================================================
-        $('#btnCancelPermintaan').on('click', function() {
-            $('#isi').load('./permintaan.php');
+        $('#btnCancelPemesanan').on('click', function() {
+            $('#isi').load('./pemesanan.php');
         });
 
         $("#saveItemBuyed").click(function() {
@@ -578,6 +627,10 @@
         // panggil function pindah halaman
         $.fn.pindahHalaman();
 
-        $.fn.getKaryawan();
+        getKaryawan();
+        getSupplier();
+
+        // $('#supplier').on('change', pilihSupplier());
+        document.querySelector('#supplier').addEventListener('change', pilihSupplier);
     });
 </script>

@@ -25,4 +25,4 @@ if (mysqli_num_rows($result) > 0) {
     $response["message"] = "No Items Found";
 }
 
-// echo json_encode($response);
+echo json_encode($response);
