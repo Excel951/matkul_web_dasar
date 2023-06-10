@@ -333,7 +333,7 @@
 		// ==================================================
 		// fungsi membersihkan form
 		$.fn.clearform = function() {
-			$(`#kodebrg`).val("1");
+			$(`#kodebrg`).val("");
 			$(`#nama`).val("");
 			$(`#satuan`).val("");
 			$(`#harga`).val("");

@@ -196,7 +196,11 @@
     $(document).ready(function() {
         // ===============================================================================
         // DEKLARASI DATATABLE UNTUK HALAMAN UTAMA
-        const datatablemain = $('#dataTable').DataTable();
+        const datatablemain = $('#dataTable').DataTable({
+            order: [
+                [0, 'desc']
+            ]
+        });
 
         // DEKLARASI DATATABLE UNTUK HALAMAN DETAIL
         const datatableview = $('#myTable').DataTable();

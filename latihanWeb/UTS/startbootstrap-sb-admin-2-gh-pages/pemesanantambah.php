@@ -39,14 +39,14 @@
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <label for="telpSupplier" class="form-label input-group">Telepon:
+                        <!-- <label for="telpSupplier" class="form-label input-group">Telepon: -->
                         </label>
                         <input type="text" name="telpSupplier" id="telpSupplier" class="form-control input-group" readonly />
                     </div>
                 </div>
             </div>
             <div class="mb-3">
-                <label for="alamatSupplier" class="form-label input-group">Alamat:
+                <!-- <label for="alamatSupplier" class="form-label input-group">Alamat: -->
                 </label>
                 <input type="text" name="alamatSupplier" id="alamatSupplier" class="form-control input-group" readonly />
             </div>
@@ -226,6 +226,9 @@
 <script>
     $(document).ready(function() {
         let datatablemyTable = $('#myTable').DataTable();
+
+        $('#alamatSupplier').hide();
+        $('#telpSupplier').hide();
 
         // ==================================================
         // menghitung total dari total barang dan harga
