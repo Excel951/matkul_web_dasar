@@ -191,7 +191,11 @@
 	$(document).ready(function() {
 		renderPermintaan();
 
-		const datatablemain = $('#dataTable').DataTable();
+		const datatablemain = $('#dataTable').DataTable({
+			order: [
+				[0, 'desc']
+			]
+		});
 		const datatableview = $('#myTable').DataTable();
 
 		// ===============================================================================
