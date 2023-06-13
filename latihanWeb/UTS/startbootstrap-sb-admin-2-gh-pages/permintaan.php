@@ -193,7 +193,7 @@
 
 		const datatablemain = $('#dataTable').DataTable({
 			order: [
-				[0, 'desc']
+				[1, 'desc']
 			]
 		});
 		const datatableview = $('#myTable').DataTable();
