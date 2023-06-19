@@ -9,17 +9,21 @@ $statement->execute();
 $result = $statement->get_result();
 
 $rows["list"] = array();
-while ($row = $result->fetch_assoc()) {
-    $item = array();
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $item = array();
 
-    $item["id"] = $row["id"];
-    $item["nama"] = $row["nama"];
-    $item["harga"] = $row["harga"];
-    $item["stock"] = $row["stock"];
+        $item["id"] = $row["id"];
+        $item["nama"] = $row["nama"];
+        $item["harga"] = $row["harga"];
+        $item["stock"] = $row["stock"];
 
-    array_push($rows["list"], $item);
+        array_push($rows["list"], $item);
+    }
+
+    $rows["success"] = true;
+} else {
+    $rows["success"] = false;
 }
 
-$rows["success"] = true;
-
-echo json_encode($rows);
+echo json_encode($rows, JSON_PRETTY_PRINT);
