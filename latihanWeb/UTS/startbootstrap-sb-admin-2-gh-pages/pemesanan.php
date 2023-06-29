@@ -348,6 +348,11 @@
             hitungtotalMain();
         }
         // ===============================================================================
+        // NOTIFY WHEN TABLE IS MOVING TO ANOTHER PAGE
+        $("#dataTable").on('draw.dt', function() {
+            hitungtotalMain();
+        })
+        // ===============================================================================
 
     });
 </script>

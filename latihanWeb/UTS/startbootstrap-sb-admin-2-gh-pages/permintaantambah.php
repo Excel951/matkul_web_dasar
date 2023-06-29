@@ -548,26 +548,28 @@
 					// console.log(error);
 				})
 
+				let dataBarang = [];
 				$('#myTable tbody tr').each(function() {
 					let currentRow = $(this);
 					let kodebr = currentRow.find('td').eq(0).text();
 					let hargajual = currentRow.find('td').eq(3).text();
 					let jumlah = currentRow.find('td').eq(4).text();
 
-					axios.post('./adddbdetailpermintaan.php', JSON.stringify({
+					dataBarang.push({
 						kodeper: kode,
 						kodebr: kodebr,
 						hargajual: hargajual,
 						jumlah: jumlah
-					}), {
-						headers: {
-							'Content-Type': 'application:json'
-						}
-					}).then((response) => {
-						console.log(response.data);
-					}).catch((error) => {
-						console.log(error);
 					})
+				})
+				axios.post('./adddbdetailpermintaan.php', JSON.stringify(dataBarang), {
+					headers: {
+						'Content-Type': 'application:json'
+					}
+				}).then((response) => {
+					console.log(response.data);
+				}).catch((error) => {
+					console.log(error);
 				})
 
 				$('#isi').load('./permintaan.php');
