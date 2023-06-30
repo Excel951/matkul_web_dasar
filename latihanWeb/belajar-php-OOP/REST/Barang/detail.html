@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title id="title">Detail</title>
+	</head>
+	<body>
+		<ul id="result"></ul>
+		<br />
+		<a href="./">
+			<button>Back</button>
+		</a>
+		<form
+			method="get"
+			action="./update.html">
+			<button
+				name="kode"
+				id="kodeEdit">
+				Edit
+			</button>
+		</form>
+		<!-- <form
+			id="deleteBarang"
+			method="post"> -->
+		<button
+			name="kode"
+			id="kodeDelete">
+			Delete
+		</button>
+		<!-- </form> -->
+	</body>
+	<script>
+		function deleteBarang(event) {
+			event.preventDefault();
+
+			let kode = document.querySelector("#kodeDelete").value;
+
+			fetch("../", {
+				method: "delete",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ kode: kode }),
+			})
+				.then((response) =>
+					response.json().then((json) => {
+						console.log(json);
+						window.location.href = "./";
+					})
+				)
+				.catch((err) => console.log(err));
+		}
+
+		document
+			.querySelector("#kodeDelete")
+			.addEventListener("click", deleteBarang);
+	</script>
+	<script>
+		// Fungsi untuk mengambil nilai parameter dari URL
+		function getParameterByName(name, url) {
+			if (!url) {
+				url = window.location.href;
+			}
+			name = name.replace(/[[\]]/g, "\\$&");
+			let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+				results = regex.exec(url);
+			if (!results) {
+				return null;
+			}
+			if (!results[2]) {
+				return "";
+			}
+			return decodeURIComponent(results[2].replace(/\+/g, " "));
+		}
+
+		// Mengambil kode dari parameter URL
+		let kodeBarang = getParameterByName("kode");
+
+		// Kirim permintaan ke API menggunakan metode GET
+		fetch("../?kode=" + kodeBarang)
+			.then((response) => {
+				response.json().then((response) => {
+					for (const key in response.data) {
+						if (Object.hasOwnProperty.call(response.data, key)) {
+							const element = response.data[key];
+
+							// setting judul
+							if (key === `nama_barang`)
+								document.querySelector(
+									"#title"
+								).innerHTML = `Detail ${element}`;
+
+							if (key === `kode_barang`) {
+								document.querySelector("#kodeEdit").value = element;
+								document.querySelector("#kodeDelete").value = element;
+							}
+
+							let li = document.createElement("li");
+							li.innerHTML = `${
+								key.charAt(0).toUpperCase() + key.slice(1).replace("_", " ")
+							}: ${element}`;
+
+							document.querySelector("#result").appendChild(li);
+						}
+					}
+				});
+			})
+			.catch((error) => {
+				// Tangani error jika terjadi
+				console.error("Error:", error);
+			});
+	</script>
+</html>

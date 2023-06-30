@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Edit Barang</title>
+	</head>
+	<body>
+		<form
+			method="post"
+			id="editBarang"></form>
+	</body>
+	<script>
+		function editBarang(event) {
+			event.preventDefault();
+
+			// Mengambil nilai input
+			let kode = document.getElementById("kode_barang").value;
+			let nama = document.getElementById("nama_barang").value;
+			let satuan = document.getElementById("satuan").value;
+			let hargabeli = document.getElementById("harga").value;
+			let hargajual = document.getElementById("harga_jual").value;
+			let stok = document.getElementById("stok").value;
+
+			fetch("../", {
+				headers: { "content-type": "application/json" },
+				method: "PATCH",
+				body: JSON.stringify({
+					kode_barang: kode,
+					nama_barang: nama,
+					satuan: satuan,
+					harga: hargabeli,
+					harga_jual: hargajual,
+					stok: stok,
+				}),
+			})
+				.then((response) =>
+					response.json().then((responseData) => {
+						console.log(responseData);
+						if (responseData.status == "200")
+							window.location.href = "./detail.html?kode=" + kode;
+					})
+				)
+				.catch((err) => console.log(err));
+		}
+
+		document
+			.querySelector("#editBarang")
+			.addEventListener("submit", editBarang);
+	</script>
+	<script>
+		// Fungsi untuk mengambil nilai parameter dari URL
+		function getParameterByName(name, url) {
+			if (!url) {
+				url = window.location.href;
+			}
+			name = name.replace(/[[\]]/g, "\\$&");
+			let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+				results = regex.exec(url);
+			if (!results) {
+				return null;
+			}
+			if (!results[2]) {
+				return "";
+			}
+			return decodeURIComponent(results[2].replace(/\+/g, " "));
+		}
+
+		// Mengambil kode dari parameter URL
+		let kodeBarang = getParameterByName("kode");
+
+		fetch("../?kode=" + kodeBarang)
+			.then((response) => {
+				response.json().then((responseData) => {
+					for (const key in responseData.data) {
+						if (Object.hasOwnProperty.call(responseData.data, key)) {
+							const element = responseData.data[key];
+
+							let label = document.createElement("label");
+							let input = document.createElement("input");
+							let br1 = document.createElement("br");
+							let br2 = document.createElement("br");
+
+							label.setAttribute("for", key);
+							label.innerHTML = (
+								key.charAt(0).toUpperCase() + key.slice(1)
+							).replace("_", " ");
+
+							if (key === "harga" || key === "hargajual" || key === "stok") {
+								input.type = "number";
+							} else {
+								input.type = "text";
+							}
+
+							input.setAttribute("id", key);
+							input.value = element;
+
+							document.getElementById("editBarang").appendChild(label);
+							document.getElementById("editBarang").appendChild(input);
+							document.getElementById("editBarang").appendChild(br1);
+							document.getElementById("editBarang").appendChild(br2);
+						}
+					}
+					let submit = document.createElement("button");
+					submit.innerHTML = "Submit";
+					document.querySelector("#editBarang").appendChild(submit);
+
+					let a = document.createElement("a");
+					a.href = "./detail.html?kode=" + kodeBarang;
+					let back = document.createElement("button");
+					back.innerHTML = "Back";
+					a.appendChild(back);
+					document.querySelector("#editBarang").after(a);
+				});
+			})
+			.catch((err) => console.log(err));
+	</script>
+</html>

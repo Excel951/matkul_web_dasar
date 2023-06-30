@@ -3,13 +3,16 @@ function deleteBarang()
 {
     require_once './Connection_API.php';
 
-    $kode = $_GET["kode"];
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    $kode = $data["kode"];
 
     $querySQL = "DELETE FROM BARANG WHERE kode_barang='$kode'";
 
     $result = mysqli_query($conn, $querySQL);
 
-    if ($result) {
+    if (mysqli_affected_rows($conn) > 0) {
         $responseDelete = array(
             'status' => '200',
             'message' => 'Success Delete Barang',

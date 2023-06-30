@@ -29,5 +29,8 @@ switch ($request_method) {
         break;
 
     default:
+        $data->status = 404;
+        $data->message = "Unknown request method";
+        echo json_encode($data);
         break;
 }

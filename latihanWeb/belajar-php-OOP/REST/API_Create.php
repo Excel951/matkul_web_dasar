@@ -3,28 +3,29 @@ function createBarang()
 {
     require_once './Connection_API.php';
 
-    $kode = $_POST["kode"];
-    $nama = $_POST["nama"];
-    $satuan = $_POST["satuan"];
-    $hargabeli = $_POST["hargabeli"];
-    $hargajual = $_POST["hargajual"];
-    $stok = $_POST["stok"];
+    $json = file_get_contents('php://input');
+    $data = json_decode($json, true);
+
+    $kode = $data["kode"];
+    $nama = $data["nama"];
+    $satuan = $data["satuan"];
+    $hargabeli = $data["hargabeli"];
+    $hargajual = $data["hargajual"];
+    $stok = $data["stok"];
 
     $querySQL = "INSERT INTO BARANG VALUES ('$kode', '$nama', '$satuan', $hargabeli, $hargajual, $stok)";
 
     $result = mysqli_query($conn, $querySQL);
 
-    if ($result) {
+    if (mysqli_affected_rows($conn) > 0) {
         $responseCreate = array(
             'status' => '200',
             'message' => 'Success Create Barang',
-            'data' => $result
         );
     } else {
         $responseCreate = array(
             'status' => '500',
             'message' => 'Failed to Create Barang',
-            'data' => null
         );
     }
 

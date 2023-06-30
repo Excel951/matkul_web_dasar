@@ -7,15 +7,22 @@ function viewBarang()
 
     $result = mysqli_query($conn, $querySQL);
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        $rows[] = $row;
-    }
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $rows[] = $row;
+        }
 
-    $responseView = array(
-        'status' => '200',
-        'message' => 'Success get data of barang',
-        'data' => $rows
-    );
+        $responseView = array(
+            'status' => '200',
+            'message' => 'Success get data of barang',
+            'data' => $rows
+        );
+    } else {
+        $responseView = array(
+            'status' => '500',
+            'message' => 'Failed get data of barang',
+        );
+    }
 
     header("Content-Type: application/json");
     echo json_encode($responseView);

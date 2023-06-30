@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<ul id="listBarang"></ul>
+		<a href="./new.html"><button>New Barang</button></a>
+	</body>
+	<script>
+		getBarang();
+		function getBarang() {
+			fetch("../index.php", { method: "GET" })
+				.then((res) => {
+					res.json().then((data) => {
+						let items = data.data;
+						for (const item of items) {
+							console.log(item.kode_barang, item.nama_barang);
+							let list = document.createElement("li");
+							list.innerHTML = `${item.kode_barang} - ${item.nama_barang}`;
+
+							let detail = document.createElement("button");
+							detail.name = `kode`;
+							detail.value = `${item.kode_barang}`;
+							detail.innerHTML = "Detail";
+
+							let form = document.createElement("form");
+							form.method = "GET";
+							form.action = `./detail.html`;
+
+							form.appendChild(detail);
+							list.appendChild(form);
+							document.querySelector(`#listBarang`).appendChild(list);
+						}
+					});
+				})
+				.catch((err) => {
+					console.log(err.json());
+				});
+		}
+	</script>
+</html>

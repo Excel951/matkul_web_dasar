@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Add New Barang</title>
+	</head>
+	<body>
+		<form
+			id="tambahBarang"
+			action="./"
+			method="post">
+			<label for="kode">Kode</label
+			><input
+				type="text"
+				name="kode"
+				id="kode" /><br /><br /><label for="nama">Nama</label
+			><input
+				type="text"
+				name="nama"
+				id="nama" /><br /><br /><label for="satuan">Satuan</label
+			><input
+				type="text"
+				name="satuan"
+				id="satuan" /><br /><br /><label for="hargabeli">Harga beli</label
+			><input
+				type="number"
+				name="hargabeli"
+				id="hargabeli" /><br /><br /><label for="hargajual">Harga jual</label
+			><input
+				type="number"
+				name="hargajual"
+				id="hargajual" /><br /><br /><label for="stok">Stok</label
+			><input
+				type="number"
+				name="stok"
+				id="stok" />
+			<br />
+			<button id="">Submit</button>
+		</form>
+		<a href="./"><button>Back</button></a>
+	</body>
+	<script>
+		function tambahBarang(event) {
+			event.preventDefault();
+
+			// Mengambil nilai input
+			let kode = document.getElementById("kode").value;
+			let nama = document.getElementById("nama").value;
+			let satuan = document.getElementById("satuan").value;
+			let hargabeli = document.getElementById("hargabeli").value;
+			let hargajual = document.getElementById("hargajual").value;
+			let stok = document.getElementById("stok").value;
+
+			fetch("../", {
+				method: "POST",
+				body: JSON.stringify({
+					kode: kode,
+					nama: nama,
+					satuan: satuan,
+					hargabeli: hargabeli,
+					hargajual: hargajual,
+					stok: stok,
+				}),
+				headers: { "Content-Type": "application/json" },
+			})
+				.then((response) => {
+					response.json().then((responseData) => {
+						console.log(responseData);
+						window.location.href = "./";
+					});
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
+
+		document
+			.querySelector("#tambahBarang")
+			.addEventListener("submit", tambahBarang);
+	</script>
+</html>
